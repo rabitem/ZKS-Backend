@@ -9,7 +9,7 @@ on:
 
 jobs:
   job_one:
-    name: Deploy to Production
+    name: Kill old instances
     runs-on: ubuntu-latest
     environment: Strato Server
     steps:
@@ -23,30 +23,32 @@ jobs:
           script: |
             echo "Kill all running processes"
             killall -9 java > /dev/null 2>&1 || true
-      - name: Run Tests and start application
-      - uses: appleboy/ssh-action@master
-      - uses: actions/setup-java@v2
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          java-version: '11'
-          distribution: 'zulu'
-          cache: 'maven'
-          script: |
-            cd /home/felix/ZKS-Backend
-            echo "Pull latest changes from Main"
-            git pull origin main
-            echo "Run a clean install"
-            mvn clean install
-            if [ $? -eq 0 ]; then
-              echo "Successfully installed"
-              echo "Starting Server"
-              mvn spring-boot:run
-              exit 0
-            else
-              echo "Test failed"
-              echo "Exiting Deployment"
-              exit 1
-            fi
+  job_two:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment: Strato Server
+    steps:
+    - name: Run Tests and start application
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+          cd /home/felix/ZKS-Backend
+          echo "Pull latest changes from Main"
+          git pull origin main
+          echo "Run a clean install"
+          mvn clean install
+          if [ $? -eq 0 ]; then
+            echo "Successfully installed"
+            echo "Starting Server"
+            mvn spring-boot:run
+            exit 0
+          else
+            echo "Test failed"
+            echo "Exiting Deployment"
+            exit 1
+          fi
