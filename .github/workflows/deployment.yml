@@ -45,7 +45,7 @@ jobs:
           if [ $? -eq 0 ]; then
             echo "Successfully installed"
             echo "Starting Server"
-            mvn spring-boot:run
+            ./scripts/start.sh
             exit 0
           else
             echo "Test failed"
