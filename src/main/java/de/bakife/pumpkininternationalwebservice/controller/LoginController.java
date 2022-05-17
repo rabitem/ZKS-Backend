@@ -17,7 +17,7 @@ import java.util.Map;
  */
 @Controller
 @Slf4j
-public class MainController {
+public class LoginController {
 
 
     /**
@@ -29,7 +29,7 @@ public class MainController {
      * Constructor. Initializes the services.
      * @param loginService The login service.
      */
-    public MainController(final LoginService loginService) {
+    public LoginController(final LoginService loginService) {
         this.loginService = loginService;
     }
 
