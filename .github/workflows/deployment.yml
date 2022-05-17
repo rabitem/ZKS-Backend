@@ -22,6 +22,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Change directory to /home/felix/ZKS-Backend"
+            echo "Current directory: $(pwd)"
             cd /home/felix/ZKS-Backend
       - name: Kill all running processes
         uses: appleboy/ssh-action@master
