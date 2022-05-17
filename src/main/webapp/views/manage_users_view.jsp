@@ -38,10 +38,10 @@
                 while (rslt.next()) {  %>
 
                     <tr>
-                        <td><%= rslt.getString(0) %></td>
                         <td><%= rslt.getString(1) %></td>
                         <td><%= rslt.getString(2) %></td>
                         <td><%= rslt.getString(3) %></td>
+                        <td><%= rslt.getString(4) %></td>
                     </tr>
             
                  <% }
