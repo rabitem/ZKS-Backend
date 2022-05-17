@@ -1,3 +1,5 @@
+<%@ page import = "java.sql.*" %>
+
 <div class="cMainContentManageUsers" id = "cMainContentSubFolder">
     <div class="cAdjustments cMainBox">
         <h2>Manage Users</h2>
