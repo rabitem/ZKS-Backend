@@ -18,6 +18,10 @@ public class FrontendController {
         return "index";
     }
 
+    /**
+     * The user management page.
+     * @return The user management page.
+     */
     @PostMapping("/manageUsers")
     public String postManageUsers() {
         return "manage_users_view";
