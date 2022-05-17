@@ -24,14 +24,15 @@ jobs:
             echo "Kill all running processes"
             killall -9 java > /dev/null 2>&1 || true
       - name: Run Tests and start application
-        uses: appleboy/ssh-action@master
+      - uses: appleboy/ssh-action@master
+      - uses: actions/setup-java@v2
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           java-version: '11'
-          distribution: 'jdk'
+          distribution: 'zulu'
           cache: 'maven'
           script: |
             cd /home/felix/ZKS-Backend
