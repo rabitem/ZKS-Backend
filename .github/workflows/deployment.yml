@@ -34,11 +34,11 @@ jobs:
             cd /home/felix/ZKS-Backend
             echo "Pull latest changes from Main"
             git pull origin main
-            echo "Run Tests"
-            mvn clean test
+            echo "Run a clean install"
+            mvn clean install
             if [ $? -eq 0 ]; then
-              echo "Successfully ran tests"
-              echo "Start Server"
+              echo "Successfully installed"
+              echo "Starting Server"
               mvn spring-boot:run
               exit 0
             else
