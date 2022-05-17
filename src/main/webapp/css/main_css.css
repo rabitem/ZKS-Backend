@@ -1,0 +1,614 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-Bold.ttf");
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: #f8f7f7;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #0a0c16;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #0a0c16;
+}
+
+h3 {
+    font-size: 1.6rem;
+    color: #0a0c16;
+}
+
+p {
+    font-size: 1.25em;
+}
+
+.cGlobal {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: auto;
+}
+
+.cContentSection {
+    padding: 1rem 1rem;
+    gap: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+}
+
+a {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover h3 {
+    color: #e9676e;
+}
+
+a:hover p {
+    color: #e9676e;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 0.6rem;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    padding: 30px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #99a0a3;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e9676e;
+}
+
+.cSidebar {
+    height: 100vh;
+    width: 15.5rem;
+    background-color: #0a0c16;
+    float: left;
+    top: 0;
+    left: 0;
+    padding-top: 3rem;
+    padding-left: 0.5rem;
+}
+
+.cSidebar .cSidebarHeader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.cSidebar h1 {
+    color: #ffff;
+    padding-left: 1rem;
+    padding-bottom: 3rem;
+    padding-right: 3rem;
+    opacity: 1;
+}
+
+.cSidebar .cSidebarNavArrow {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #ffff;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+    border-radius: 50%;
+    position: absolute;
+    top: 4rem;
+    left: 14.2rem;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    transition: -webkit-transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+}
+
+.cSidebar .cSidebarNavArrow svg {
+    stroke: #0a0c16;
+    width: 1.5rem;
+    height: 1.5rem;
+    z-index: 99;
+    position: relative;
+    top: 19%;
+    left: 15%;
+    cursor: pointer;
+}
+
+.cSidebar .cSidebarNavArrow svg:hover {
+    stroke-width: 5px;
+}
+
+.cSidebar .ulSidebar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in;
+}
+
+.cSidebar .ulSidebar .ulSidebarItem {
+    list-style: none;
+    cursor: pointer;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.cSidebar .ulSidebar .ulSidebarItem a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 0.5rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #ffff;
+}
+
+.cSidebar .ulSidebar .ulSidebarItem a path {
+    stroke: #ffff;
+}
+
+.cSidebar .ulSidebar .ulSidebarItem a svg {
+    z-index: 98;
+    -webkit-transition: -webkit-transform 0.25s ease;
+    transition: -webkit-transform 0.25s ease;
+    transition: transform 0.25s ease;
+    transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+}
+
+.cSidebar .ulSidebar .ulSidebarItem a p {
+    z-index: 100;
+    white-space: nowrap;
+    -webkit-transition: -webkit-transform 0.25s ease;
+    transition: -webkit-transform 0.25s ease;
+    transition: transform 0.25s ease;
+    transition: transform 0.25s ease, -webkit-transform 0.25s ease;
+}
+
+.cSidebar .ulSidebar .ulSidebarItem a:hover {
+    color: #e9676e;
+}
+
+.cSidebar .ulSidebar .ulSidebarItem a:hover svg, .cSidebar .ulSidebar .ulSidebarItem a:hover p {
+    -webkit-transform: translateX(0.5rem);
+    transform: translateX(0.5rem);
+}
+
+.cSidebar .ulSidebar .ulSidebarItem a:hover path {
+    stroke: #e9676e;
+}
+
+.cSidebar .ulSidebar .ulSidebarItemActive {
+    background-color: #f8f7f7;
+}
+
+.cSidebar .ulSidebar .ulSidebarItemActive a {
+    color: #e9676e;
+    font-weight: bold;
+}
+
+.cSidebar .ulSidebar .ulSidebarItemActive a path {
+    stroke: #e9676e;
+}
+
+.cSidebar .ulSidebar .ulSidebarItemActive a:before {
+    position: absolute;
+    content: '';
+    height: 30px;
+    width: 30px;
+    background: #0a0c16;
+    right: 0;
+    bottom: 100%;
+    border-bottom-right-radius: 15px;
+    -webkit-box-shadow: 0 15px 0 #f8f7f7;
+    box-shadow: 0 15px 0 #f8f7f7;
+}
+
+.cSidebar .ulSidebar .ulSidebarItemActive a:after {
+    position: absolute;
+    content: '';
+    height: 30px;
+    width: 30px;
+    background: #0a0c16;
+    right: 0;
+    top: 100%;
+    border-top-right-radius: 15px;
+    -webkit-box-shadow: 0 -15px 0 #f8f7f7;
+    box-shadow: 0 -15px 0 #f8f7f7;
+}
+
+.cSidebarClosed {
+    width: 4.5rem;
+}
+
+.cSidebarClosed .cSidebarNavArrow {
+    -webkit-transform: rotateZ(180deg);
+    transform: rotateZ(180deg);
+    left: 3.25rem;
+}
+
+.cSidebarClosed h1 {
+    opacity: 0;
+}
+
+.cSidebarClosed p {
+    display: none;
+}
+
+.cHeader {
+    background-color: #ffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+}
+
+.cHeader p {
+    -webkit-transform: translateY(0.75rem);
+    transform: translateY(0.75rem);
+}
+
+.cHeader #hCorpName {
+    float: left;
+    color: #e9676e;
+}
+
+.cMainContent {
+    width: 100%;
+    height: 100%;
+}
+
+.cMainContent #cMainContentSubFolder {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.cMainContent #cMainContentSubFolder .cMainBox {
+    padding: 0.5rem 2rem 0rem 2rem;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+    background-color: #ffff;
+    width: 100%;
+}
+
+.cMainContent #cMainContentSubFolder .cMainBox:last-of-type {
+    -webkit-box-flex: 3;
+    -ms-flex: 3;
+    flex: 3;
+}
+
+.cMainContent #cMainContentSubFolder h2 {
+    margin-bottom: 1rem;
+}
+
+.cAdjustments .cOptions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.cAdjustments .cOptions #svgAddSign path {
+    stroke: #18BD47;
+}
+
+.cAdjustments .cOptions #svgRemoveSign path {
+    stroke: #e9676e;
+}
+
+.cAdjustments .cOptions svg {
+    -webkit-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in;
+}
+
+.cAdjustments .cOptions svg:active {
+    -webkit-transform: scale(0.55);
+    transform: scale(0.55);
+}
+
+.cAdjustments .cOptions p {
+    font-weight: bold;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+table th {
+    padding: 0.5rem;
+    border-bottom: 2px solid #e9676e;
+    font-weight: bold;
+    font-size: 2.1em;
+    color: #0a0c16;
+}
+
+table td {
+    padding: 0.5rem;
+    font-size: 1.5em;
+}
+
+table tr:nth-child(even) {
+    background-color: #f6f5f5;
+}
+
+table tr:hover {
+    color: #e9676e;
+}
+
+.cSpinnerLoading {
+    border: 0.5rem solid #f2f2f2;
+    border-top: 0.5rem solid #e9676e;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    left: 50%;
+    -webkit-animation: spin 5s linear infinite;
+    animation: spin 5s linear infinite;
+    margin: auto;
+    margin-top: 1rem;
+    display: none;
+}
+
+#spinnerMainContent {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.cPopUpModal {
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.cPopUpModal .cPopUpContent {
+    background-color: #ffff;
+    margin: auto;
+    padding: 3rem;
+    border-radius: 0.5rem;
+    min-width: 25%;
+    max-width: 35%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.cPopUpModal .cPopUpContent .cPopUpHeader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.cPopUpModal .cPopUpContent .cPopUpHeader p {
+    -webkit-transform: translateY(2.75rem);
+    transform: translateY(2.75rem);
+}
+
+.cPopUpModal .cPopUpContent .btnClose {
+    color: #8b92b0;
+    float: right;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-left: auto;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.cPopUpModal .cPopUpContent .btnClose:hover, .cPopUpModal .cPopUpContent .btnClose:focus {
+    color: #e9676e;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cPopUpModal .cPopUpContent .btnClose:active {
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
+}
+
+.cPopUpModal .cPopUpContent form {
+    height: 100%;
+}
+
+.cPopUpModal .cPopUpContent .cInputWrapper {
+    width: 100%;
+    padding-top: 4rem;
+}
+
+.cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput {
+    height: 3.5rem;
+    width: 100%;
+    position: relative;
+}
+
+.cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput input:not(#iDelete) {
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 1.9rem;
+    color: #0a0c16;
+    border-bottom: 2px solid #8b92b0;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-color: #fafafa;
+}
+
+.cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput input:focus ~ label,
+.cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput input:valid ~ label {
+    -webkit-transform: translateY(-2.2rem);
+    transform: translateY(-2.2rem);
+}
+
+.cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput label {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    font-size: 1.25rem;
+    color: #8b92b0;
+    position: absolute;
+    pointer-events: none;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput .cInputUnderline {
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    bottom: 0px;
+    background: #e9676e;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+}
+
+.cPopUpModal input[type=checkbox] {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    float: right;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center;
+}
+
+.cPopUpModal input[type=submit], .cPopUpModal button[type=button] {
+    border: none;
+    outline: none;
+    margin-top: 4.4rem;
+    background: #0a0c16;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.8em;
+    width: 100%;
+    border-radius: 3px;
+    border: #fff solid 1px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.cPopUpModal input[type=submit]:hover, .cPopUpModal button[type=button]:hover {
+    background-color: #e9676e;
+}
+/*# sourceMappingURL=main_css.css.map */
