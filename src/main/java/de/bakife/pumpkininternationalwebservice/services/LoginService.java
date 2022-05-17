@@ -49,7 +49,11 @@ public class LoginService {
             return result;
         }
 
-
+        // check if user has authorization for location
+        if (!this.checkAuthorization(user, location)) {
+            result.put("User has no authorization for this location!", 403);
+            return result;
+        }
         return 1;
     }
 
