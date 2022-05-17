@@ -1,4 +1,4 @@
-package de.bakife.pumpkininternationalwebservice.services;
+package de.bakife.pumpkininternationalwebservice.repositories;
 
 import de.bakife.pumpkininternationalwebservice.entities.Location;
 import org.springframework.data.repository.CrudRepository;

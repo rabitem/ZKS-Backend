@@ -4,6 +4,10 @@ import de.bakife.pumpkininternationalwebservice.Constants;
 import de.bakife.pumpkininternationalwebservice.entities.AuthorizationHistory;
 import de.bakife.pumpkininternationalwebservice.entities.Location;
 import de.bakife.pumpkininternationalwebservice.entities.User;
+import de.bakife.pumpkininternationalwebservice.repositories.AuthorizationHistoryRepository;
+import de.bakife.pumpkininternationalwebservice.repositories.LocationAuthorizationRepository;
+import de.bakife.pumpkininternationalwebservice.repositories.LocationRepository;
+import de.bakife.pumpkininternationalwebservice.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
