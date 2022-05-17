@@ -2,8 +2,9 @@
 
 $(document).ready(async () => {
 
-    // load inital view: manage users
+    // load inital view: manage users and enable buttons of view
     $.fn.loadNewMainContent("/manageUsers", "- Manage Users");
+    
     initializeManageUsers();
     
     // change views: epic roadmap View
