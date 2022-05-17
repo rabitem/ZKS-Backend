@@ -33,7 +33,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Kill all running processes"
-            killall -9 java > /dev/null 2>&1
+            killall -9 java > /dev/null 2>&1 || true
       - name: Run Tests and start application
         uses: appleboy/ssh-action@master
         with:
