@@ -19,23 +19,40 @@
                 <th>User Name</th>
                 <th>User Role</th>
                 <th>User RFID</th>
+                <th>Current Location</th>
             </tr>
-            <!-- TO BE GENERATED WITH JSP -->
-            <tr>
-                <td>Kilian Bilz</td>
-                <td>Admin</td>
-                <td>#1235GHJDBN21678SAD</td>
-            </tr>
-            <tr>
-                <td>Kilian Bilz</td>
-                <td>Admin</td>
-                <td>#1235GHJDBN21678SAD</td>
-            </tr>
-            <tr>
-                <td>Kilian Bilz</td>
-                <td>Admin</td>
-                <td>#1235GHJDBN21678SAD</td>
-            </tr>
+            <!-- Generated JSP Content -->
+            <% 
+            try {
+            
+                Class.forName("org.mariadb.jdbc.Driver");
+            
+                Connection connection=DriverManager.getConnection("jdbc:mariadb://localhost:3306/ZKS_Database","kilian","start123");
+                        
+                Statement stmt = connection.createStatement();
+            
+                ResultSet rslt = stmt.executeQuery("SELECT u.name, u.rfid, r.label as role, l.label as location FROM user as u INNER JOIN role as r ON u.role = r.id INNER JOIN location as l ON u.current_loc = l.id;");
+            
+                while (rslt.next()) {  %>
+
+                    <tr>
+                        <td>rslt.getString(0)</td>
+                        <td>rslt.getString(2)</td>
+                        <td>rslt.getString(1)</td>
+                        <td>rslt.getString(3)</td>
+                    </tr>
+            
+                 <% }
+            
+                    stmt.close();
+                    connection.close();
+
+                } catch (Exception e) {
+                    
+                    out.println(e);
+                }
+            %>
+
         </table>
     </div>
 </div>

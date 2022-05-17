@@ -1,0 +1,557 @@
+// Sass Colors - Low Contrast Theme ----------------------------------
+
+$color_sidebar_dark: #0a0c16;
+$color_sidebar_white: #ffff;
+$color_background_white: #f8f7f7;
+$color_primary: #e9676e;
+$color_shadow: rgba(0, 0, 0, 0.075);
+$color_text_secondary: rgb(139, 146, 176);
+$color_rag_red: #ea1212;
+$color_rag_amber: #f3ae00;
+$color_rag_green: #18BD47;
+
+// Sass Colors - Dark Theme -----------------------------------------
+
+// $color_sidebar_dark: #ffffff;
+// $color_sidebar_white: rgb(7, 7, 8);
+// $color_background_white: #07080d;
+// $color_primary: #00d188;
+// $color_shadow: rgba(0, 47, 33, 0.075);
+// $color_text_secondary: rgb(139, 146, 176);
+// $color_rag_red: #ea1212;
+// $color_rag_amber: #f3ae00;
+// $color_rag_green: #18BD47;
+
+// Custom Font (weights) ---------------------------------------------
+
+@font-face { 
+    font-family: "Poppins";
+    src: url("Poppins-Regular.ttf"); 
+} 
+
+@font-face { 
+    font-family: "Poppins";
+    src: url("Poppins-Bold.ttf"); 
+    font-weight: bold;
+}
+
+// Global Elements ----------------------------------------------------
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+body {
+
+    min-height: 100vh;
+    width: 100%;
+    background: $color_background_white;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: $color_sidebar_dark;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: $color_sidebar_dark;
+}
+
+h3 {
+    font-size: 1.6rem;
+    color: $color_sidebar_dark;
+}
+
+p { font-size: 1.25em; }
+
+.cGlobal {
+    display: flex;
+    width: auto;
+}
+
+.cContentSection {
+    padding: 1rem 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+a { color: black }
+
+a:link { text-decoration: none }
+
+a:hover {
+    h3 { color: $color_primary};
+    p { color: $color_primary};
+}
+  
+a:visited {
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 0.6rem;
+    top: 20px;
+    left: 20px;
+    bottom: 20px;
+    right: 20px;
+    padding: 30px; 
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+    width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(153, 160, 163); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $color_primary; 
+}
+
+
+// Sidebar Elements --------------------------------------------------
+
+.cSidebar {
+    
+    height: 100vh;
+    width: 15.5rem;
+    background-color: $color_sidebar_dark;
+    float: left;
+    top: 0;
+    left: 0;
+    padding-top: 3rem;
+    padding-left: 0.5rem;
+    
+    .cSidebarHeader {
+        display: flex;
+        align-items: center;
+    }
+
+    h1 {
+        
+        color: $color_sidebar_white;
+        padding-left: 1rem;
+        padding-bottom: 3rem;
+        padding-right: 3rem;
+        opacity: 1;
+    }
+
+    .cSidebarNavArrow {
+        
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: $color_sidebar_white;
+        box-shadow: 0px 0px 10px $color_shadow;
+        border-radius: 50%;
+        position: absolute;
+        top: 4rem;
+        left: 14.2rem;
+        transition: transform 0.3s ease-in-out;
+
+        svg {
+           
+            stroke: $color_sidebar_dark;
+            width: 1.5rem;
+            height: 1.5rem;
+            z-index: 99;
+            position: relative;
+            top: 19%;
+            left: 15%;
+            cursor: pointer;
+            &:hover {
+                stroke-width:5px;
+            }
+        }
+    }
+
+    .ulSidebar {
+        
+        display: flex;
+        flex-direction: column;
+        transition: all 0.4s ease-in;
+
+        .ulSidebarItem {
+            
+            list-style: none;
+            cursor: pointer;
+            border-bottom-left-radius: 30px;
+            border-top-left-radius: 30px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+            position:relative;
+            
+            a {
+                
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+                text-decoration: none;
+                color: $color_sidebar_white;
+                
+                path { stroke: $color_sidebar_white; }
+
+                svg {
+                    
+                    z-index: 98; 
+                    transition: transform 0.25s ease;
+                }
+
+                p { 
+                    
+                    z-index: 100;
+                    white-space: nowrap;
+                    transition: transform 0.25s ease;
+                }
+            }
+
+            a:hover {
+                svg, p {
+                    transform: translateX(0.5rem);
+                }
+                color: $color_primary;
+                path { stroke: $color_primary; }                
+            }
+
+            &Active {
+
+                background-color: $color_background_white;
+
+                a {
+                    color: $color_primary;
+                    font-weight: bold;
+                    path { stroke: $color_primary; }
+                    //padding-right: 0.75rem
+                }
+
+                a:before {
+                    
+                    position: absolute;
+                    content: '';
+                    height: 30px;
+                    width: 30px;
+                    background: $color_sidebar_dark;
+                    right: 0;
+                    bottom: 100%;
+                    border-bottom-right-radius: 15px;
+                    box-shadow: 0 15px 0 $color_background_white;
+                }
+    
+                a:after {
+                    
+                    position: absolute;
+                    content: '';
+                    height: 30px;
+                    width: 30px;
+                    background: $color_sidebar_dark;
+                    right: 0;
+                    top: 100%;
+                    border-top-right-radius: 15px;
+                    box-shadow: 0 -15px 0 $color_background_white;
+                }
+            }
+        }
+    }
+
+    // collapsed sidebar
+    &Closed {
+        
+        width: 4.5rem;
+        
+        .cSidebarNavArrow { 
+            transform: rotateZ(180deg); 
+            left: 3.25rem;
+        }
+        
+        h1 { opacity: 0 }
+        p  { display:none }
+    }
+}
+
+// Header Elements ---------------------------------------------------
+
+.cHeader {
+   
+    background-color: $color_sidebar_white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px $color_shadow;
+
+    p { transform: translateY(0.75rem) }
+    #hCorpName { 
+        float: left;
+        color: $color_primary;
+     }
+}
+
+// Main Content Elements ---------------------------------------------
+
+.cMainContent {
+
+    width: 100%;
+    height: 100%;
+
+    #cMainContentSubFolder {
+
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .cMainBox {
+
+            padding: 0.5rem 2rem 0rem 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0px 0px 10px $color_shadow;
+            background-color: $color_sidebar_white;
+            width: 100%;
+        }
+
+        .cMainBox:last-of-type {
+            flex: 3;
+        }
+
+        h2 { margin-bottom: 1rem }
+    }
+
+}
+
+// Manage Users ---------------------------------------------------------
+
+.cAdjustments .cOptions{
+
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+
+    #svgAddSign path {
+        stroke: $color_rag_green;
+    }
+
+    #svgRemoveSign path {
+        stroke: $color_primary;
+    }
+
+    svg { transition: all 0.3s ease-in }
+    svg:active { transform: scale(0.55) }
+
+    p { font-weight: bold;}
+}
+
+// Table Formatting -----------------------------------------------------
+
+table {
+
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+
+    th { 
+        padding: 0.5rem;
+        border-bottom: 2px solid $color_primary;
+        font-weight: bold;
+        font-size: 1.8em;
+        color: $color_sidebar_dark
+    }
+    td { 
+        padding: 0.5rem ;
+        font-size: 1.5em;
+    }
+
+    tr:nth-child(even){ background-color: #f6f5f5 }
+    tr:hover { color: $color_primary }
+
+}
+
+// Pop-Ups -------------------------------------------------------------
+
+.cSpinnerLoading {
+    
+    border: 0.5rem solid #f2f2f2; 
+    border-top: 0.5rem solid $color_primary;
+    border-radius: 50%;
+    width: 8rem;
+    height: 8rem;
+    left: 50%;
+    animation: spin 5s linear infinite;
+    margin: auto;
+    margin-top: 1rem;
+    display: none;
+}
+
+#spinnerMainContent {
+    
+    top: 50%;
+    left: 50%;
+    position: absolute;
+}
+
+@keyframes spin {
+   
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.cPopUpModal {
+    
+    position: fixed;
+    z-index: 200;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.7); 
+    display: none;
+
+    .cPopUpContent {
+        
+        background-color: $color_sidebar_white;
+        margin: auto;
+        padding: 3rem;
+        border-radius: 0.5rem;
+        min-width: 25%;
+        max-width: 35%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        
+        .cPopUpHeader {
+            
+            display: flex;
+            //align-items: center;
+            align-items: flex-start;
+            gap: 1rem;
+            p { transform: translateY(2.75rem); }
+        }
+
+        .btnClose {
+            
+            color: $color_text_secondary;
+            float: right;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-left: auto; 
+            transition: all 0.3s ease;
+
+            &:hover, &:focus {
+                
+                color: $color_primary;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            &:active {
+                transform: scale(0.75);
+            }
+        }
+
+        form {
+            height: 100%;
+        }
+        
+        .cInputWrapper {
+            
+            width: 100%;
+            padding-top: 4rem;
+        
+            .cSingleInput {
+                
+                height: 3.5rem;
+                width: 100%;
+                position: relative;
+        
+                input:not(#iDelete) {
+                    
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    font-size: 1.9rem;
+                    color: $color_sidebar_dark;
+                    border-bottom: 2px solid $color_text_secondary;
+                    transition: all 0.5s ease;
+                    background-color: darken(#fdfdfd, $amount: 1);;
+                }
+        
+                // when text is entered or user is entering text
+                input:focus ~ label,
+                input:valid ~ label{
+                    transform: translateY(-2.2rem);
+                }
+        
+                label {
+                    
+                    position: absolute;
+                    bottom: 10px;
+                    left: 0px;
+                    font-size: 1.25rem;
+                    color: $color_text_secondary;
+                    position: absolute;
+                    pointer-events: none;
+                    transition: all 0.3s ease;
+                }
+        
+                .cInputUnderline {
+                    
+                    position: absolute;
+                    height: 2px;
+                    width: 100%;
+                    bottom: 0px;
+                    background: $color_primary;
+                    transition: all 0.3s ease;
+                    transform: scaleX(0);
+                }
+            }
+        }
+    }
+
+    input[type=checkbox ] {
+        
+        transform: scale(1.2);
+        float: right;
+        margin-top: 1rem;
+        margin-right: 0.5rem;
+        align-self: center;
+    }
+
+    input[type=submit], button[type=button] {
+        
+        border: none;
+        outline: none;
+        margin-top: 4.4rem;
+        background:$color_sidebar_dark;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: bold;
+        padding: 0.8em;
+        width: 100%;
+        border-radius: 3px;
+        border: #fff solid 1px;
+        transition: all 0.3s ease;
+    }
+    
+    input[type=submit]:hover, button[type=button]:hover {
+        background-color: $color_primary;
+    }       
+}
