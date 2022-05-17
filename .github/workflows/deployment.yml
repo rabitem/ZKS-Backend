@@ -7,22 +7,33 @@ on:
     branches:
       - main
       - develop
+
+env:
+  host: h2948228.stratoserver.neth2948228.stratoserver.net
+  key: ${{ secrets.SSH_PRIVATE_KEY}}
+  port: 22
+
 jobs:
   job_one:
     name: Upload to Server
     runs-on: ubuntu-latest
     steps:
-      - name: Check SSH Connection
-        uses: actions/check-ssh@v2
+      - name: Change directory to project root
+        uses: appleboy/ssh-action@master
         env:
-          host: h2948228.stratoserver.neth2948228.stratoserver.net
-          key: ${{ secrets.SSH_PRIVATE_KEY}}
-          port: 22
           script: |
             echo "Change directory to /home/felix/ZKS-Backend"
             cd /home/felix/ZKS-Backend
-            echo "Kill all running processes on Port 8080"
-            kill -9 $(lsof -t -i:8080)
+      - name: Kill all running processes
+        uses: appleboy/ssh-action@master
+        env:
+          script: |
+          echo "Kill all running processes"
+          killall -9 java
+      - name: Run Tests and start application
+        uses: appleboy/ssh-action@master
+        env:
+            script: |
             echo "Pull latest changes from Main"
             git pull origin main
             echo "Run Tests"
