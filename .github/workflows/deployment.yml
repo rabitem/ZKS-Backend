@@ -12,18 +12,6 @@ jobs:
     name: Deploy to Production
     runs-on: ubuntu-latest
     environment: Strato Server
-    steps:
-      - name: Change directory to project root
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            echo "Change directory to /home/felix/ZKS-Backend"
-                  echo "Current directory: $pwd"
-                  cd /home/felix/ZKS-Backend
       - name: Kill all running processes
         uses: appleboy/ssh-action@master
         with:
@@ -42,6 +30,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            cd /home/felix/ZKS-Backend
             echo "Pull latest changes from Main"
             git pull origin main
             echo "Run Tests"
@@ -55,4 +44,4 @@ jobs:
               echo "Test failed"
               echo "Exiting Deployment"
               exit 1
-              fi
+            fi
