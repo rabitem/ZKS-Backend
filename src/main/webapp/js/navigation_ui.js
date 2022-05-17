@@ -52,6 +52,7 @@ window.onmousedown = (event) => {
 // Color Change for input on edit -------------------------------------------------------------
 
 const keyColors = {
+    
     colorPrimary: "#e9676e",
     colorTextPrimary: "#0a0c16",
     colorTextSecondary: "##11abd6"
