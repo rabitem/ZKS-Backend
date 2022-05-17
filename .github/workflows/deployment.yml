@@ -30,6 +30,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
+          java-version: '11'
+          distribution: 'jdk'
+          cache: 'maven'
           script: |
             cd /home/felix/ZKS-Backend
             echo "Pull latest changes from Main"
