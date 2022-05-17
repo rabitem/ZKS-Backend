@@ -6,7 +6,6 @@ on:
   pull_request:
     branches:
       - main
-      - develop
 
 env:
   host: h2948228.stratoserver.neth2948228.stratoserver.net
@@ -15,36 +14,45 @@ env:
 
 jobs:
   job_one:
-    name: Upload to Server
+    name: Deploy to Production
     runs-on: ubuntu-latest
     steps:
       - name: Change directory to project root
         uses: appleboy/ssh-action@master
-        env:
+        with:
+          host: $host
+          port: $port
+          key: $key
           script: |
             echo "Change directory to /home/felix/ZKS-Backend"
             cd /home/felix/ZKS-Backend
       - name: Kill all running processes
         uses: appleboy/ssh-action@master
-        env:
+        with:
+          host: $host
+          port: $port
+          key: $key
           script: |
             echo "Kill all running processes"
             killall -9 java
       - name: Run Tests and start application
         uses: appleboy/ssh-action@master
-        env:
-            script: |
-              echo "Pull latest changes from Main"
-              git pull origin main
-              echo "Run Tests"
-              mvn clean test
-              if [ $? -eq 0 ]; then
-                echo "Successfully ran tests"
-                echo "Start Server"
-                mvn spring-boot:run
-                exit 0
-              else
-                echo "Test failed"
-                echo "Exiting Deployment"
-                exit 1
-              fi
+        with:
+          host: $host
+          port: $port
+          key: $key
+          script: |
+            echo "Pull latest changes from Main"
+            git pull origin main
+            echo "Run Tests"
+            mvn clean test
+            if [ $? -eq 0 ]; then
+              echo "Successfully ran tests"
+              echo "Start Server"
+              mvn spring-boot:run
+              exit 0
+            else
+              echo "Test failed"
+              echo "Exiting Deployment"
+              exit 1
+            fi
