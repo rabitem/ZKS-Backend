@@ -28,23 +28,23 @@ jobs:
         uses: appleboy/ssh-action@master
         env:
           script: |
-          echo "Kill all running processes"
-          killall -9 java
+            echo "Kill all running processes"
+            killall -9 java
       - name: Run Tests and start application
         uses: appleboy/ssh-action@master
         env:
             script: |
-            echo "Pull latest changes from Main"
-            git pull origin main
-            echo "Run Tests"
-            mvn clean test
-            if [ $? -eq 0 ]; then
-              echo "Successfully ran tests"
-              echo "Start Server"
-              mvn spring-boot:run
-              exit 0
-            else
-              echo "Test failed"
-              echo "Exiting Deployment"
-              exit 1
-            fi
+              echo "Pull latest changes from Main"
+              git pull origin main
+              echo "Run Tests"
+              mvn clean test
+              if [ $? -eq 0 ]; then
+                echo "Successfully ran tests"
+                echo "Start Server"
+                mvn spring-boot:run
+                exit 0
+              else
+                echo "Test failed"
+                echo "Exiting Deployment"
+                exit 1
+              fi
