@@ -11,4 +11,6 @@ public class Constants {
     public static String USER_ALREADY_LOGGED_IN = "User already logged in";
 
     public static String USER_NOT_AUTHORIZED = "User not authorized";
+
+    public static String USER_ALREADY_LOGGED_OUT = "User already logged out";
 }
