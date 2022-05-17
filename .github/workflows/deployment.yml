@@ -7,11 +7,6 @@ on:
     branches:
       - main
 
-env:
-  host: h2948228.stratoserver.neth2948228.stratoserver.net
-  key: ${{ secrets.SSH_PRIVATE_KEY}}
-  port: 22
-
 jobs:
   job_one:
     name: Deploy to Production
@@ -20,27 +15,30 @@ jobs:
       - name: Change directory to project root
         uses: appleboy/ssh-action@master
         with:
-          host: $host
-          port: $port
-          key: $key
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Change directory to /home/felix/ZKS-Backend"
             cd /home/felix/ZKS-Backend
       - name: Kill all running processes
         uses: appleboy/ssh-action@master
         with:
-          host: $host
-          port: $port
-          key: $key
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Kill all running processes"
             killall -9 java
       - name: Run Tests and start application
         uses: appleboy/ssh-action@master
         with:
-          host: $host
-          port: $port
-          key: $key
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Pull latest changes from Main"
             git pull origin main
