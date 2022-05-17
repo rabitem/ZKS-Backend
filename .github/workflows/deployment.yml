@@ -1,0 +1,39 @@
+name: Deployment Workflow
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+      - develop
+jobs:
+  job_one:
+    name: Upload to Server
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check SSH Connection
+        uses: actions/check-ssh@v2
+        env:
+          host: h2948228.stratoserver.neth2948228.stratoserver.net
+          key: ${{ secrets.SSH_PRIVATE_KEY}}
+          port: 22
+          script: |
+            echo "Change directory to /home/felix/ZKS-Backend"
+            cd /home/felix/ZKS-Backend
+            echo "Kill all running processes on Port 8080"
+            kill -9 $(lsof -t -i:8080)
+            echo "Pull latest changes from Main"
+            git pull origin main
+            echo "Run Tests"
+            mvn clean test
+            if [ $? -eq 0 ]; then
+              echo "Successfully ran tests"
+              echo "Start Server"
+              mvn spring-boot:run
+              exit 0
+            else
+              echo "Test failed"
+              echo "Exiting Deployment"
+              exit 1
+            fi
