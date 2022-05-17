@@ -12,6 +12,7 @@ jobs:
     name: Deploy to Production
     runs-on: ubuntu-latest
     environment: Strato Server
+    steps:
       - name: Kill all running processes
         uses: appleboy/ssh-action@master
         with:
