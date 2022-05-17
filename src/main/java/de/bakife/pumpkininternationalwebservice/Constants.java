@@ -1,16 +1,31 @@
 package de.bakife.pumpkininternationalwebservice;
 
+/**
+ * @author rabitem
+ */
 public class Constants {
 
-    public static String SUCCESSFULLY_LOGGED_IN = "Successfully logged in";
+    private Constants() {
+        // Prevent instantiation
+    }
 
-    public static String SUCCESSFULLY_LOGGED_OUT = "Successfully logged out";
+    /**
+     * Constant for successful login.
+     */
+    public static final String SUCCESSFULLY_LOGGED_IN = "Successfully logged in";
 
-    public static String USER_OR_LOCATION_NOT_FOUND = "User or Location not found";
+    /**
+     * Constant for already logged in.
+     */
+    public static final String USER_ALREADY_LOGGED_IN = "User already logged in";
 
-    public static String USER_ALREADY_LOGGED_IN = "User already logged in";
+    /**
+     * Constant for not authorized.
+     */
+    public static final String USER_NOT_AUTHORIZED = "User not authorized";
 
-    public static String USER_NOT_AUTHORIZED = "User not authorized";
-
-    public static String USER_ALREADY_LOGGED_OUT = "User already logged out";
+    /**
+     * Constant for already logged out.
+     */
+    public static final String USER_ALREADY_LOGGED_OUT = "User already logged out";
 }

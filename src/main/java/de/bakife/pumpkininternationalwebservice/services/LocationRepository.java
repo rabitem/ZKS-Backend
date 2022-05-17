@@ -8,5 +8,10 @@ import java.util.Optional;
 
 @Repository
 public interface LocationRepository extends CrudRepository<Location, Integer> {
-    Optional<Location> findByMacAddress(String rfid);
+    /**
+     * Finds a Location by the mac address.
+     * @param macAddress mac address to find the Location for.
+     * @return The Location if it exists, otherwise empty.
+     */
+    Optional<Location> findByMacAddress(String macAddress);
 }

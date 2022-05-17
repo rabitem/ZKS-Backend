@@ -8,5 +8,10 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
+    /**
+     * Finds a User by the given rfid.
+     * @param rfid The rfid to find the User for.
+     * @return
+     */
     Optional<User> findByRfid(String rfid);
 }
