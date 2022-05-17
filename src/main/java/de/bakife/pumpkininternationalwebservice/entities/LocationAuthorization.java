@@ -1,14 +1,13 @@
 package de.bakife.pumpkininternationalwebservice.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity(name = "location_authorization")
 @Table(name = "location_authorization")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class LocationAuthorization {

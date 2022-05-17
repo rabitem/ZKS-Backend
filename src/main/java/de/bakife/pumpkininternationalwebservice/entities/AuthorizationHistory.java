@@ -1,15 +1,14 @@
 package de.bakife.pumpkininternationalwebservice.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "authorization_history")
 @Table(name = "authorization_history")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthorizationHistory {

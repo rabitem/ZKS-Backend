@@ -33,6 +33,8 @@ public class User {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "current_loc", referencedColumnName = "id")
+    @Getter
+    @Setter
     private Location location;
 
     @Column(name = "role", nullable = true)

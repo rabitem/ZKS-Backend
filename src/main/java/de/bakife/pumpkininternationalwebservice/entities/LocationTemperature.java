@@ -1,15 +1,14 @@
 package de.bakife.pumpkininternationalwebservice.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "location_temperature")
 @Table(name = "location_temperature")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class LocationTemperature {
