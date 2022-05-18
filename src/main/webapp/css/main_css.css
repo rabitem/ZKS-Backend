@@ -488,7 +488,7 @@ table tr:hover {
           transform: translate(-50%, -50%);
 }
 
-.cPopUpModal .cPopUpContent #pManageUserResponse {
+.cPopUpModal .cPopUpContent .pResponseText {
   display: none;
 }
 

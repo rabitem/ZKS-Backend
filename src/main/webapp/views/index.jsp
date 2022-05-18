@@ -12,13 +12,13 @@
 <body>
 
 <!-- Pop_ups -->
-<div class = "cPopUpModal" id = "popUpManageUser">
+<div class = "cPopUpModal" id = "popUpManageUser" data-remove = "false">
     <div class = "cPopUpContent">
         <div class="cPopUpHeader">
             <h1 id = "hManageUser">Manage User</h1>
             <span class="btnClose" id = "btnCloseManageUser">&times;</span>
         </div>
-        <p id = "pManageUserResponse"></p>
+        <p class = "pResponseText" id = "pManageUserResponse"></p>
         <form method="POST" id="updateUserForm">
 
             <div class="cInputWrapper">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="cInputWrapper">
+            <div class="cInputWrapper" id = "inputWrapperRole">
                 <div class="cSingleInput">
                     <input type="text"  id="iUserRole" name="iUserRole" required
                            onfocus="pInputOnFocus('iUserRole', 'lUserRoleLabel', 'cUserRoleUnderline')"
@@ -41,7 +41,7 @@
                 </div>
             </div>
 
-            <div class="cInputWrapper">
+            <div class="cInputWrapper" id = "inputWrapperRFID">
                 <div class="cSingleInput">
                     <input type="text"  id="iUserRFID" name="iUserRFID" required
                            onfocus="pInputOnFocus('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')"
@@ -55,6 +55,75 @@
         </form>
     </div>
 </div>
+
+<div class = "cPopUpModal" id = "popUpManageLocation" data-remove = "false">
+    <div class = "cPopUpContent">
+        <div class="cPopUpHeader">
+            <h1 id = "hManageLocation">Add Location</h1>
+            <span class="btnClose" id = "btnCloseManageLocation">&times;</span>
+        </div>
+        <p class = "pResponseText" id = "pManageLocationResponse"></p>
+        <form method="POST" id="updateLocationForm">
+
+            <div class="cInputWrapper">
+                <div class="cSingleInput">
+                    <input type="text"  id="iLocationName" name="iLocationName" required
+                           onfocus="pInputOnFocus('iLocationName', 'lLocationNameLabel', 'cLocationNameUnderline')"
+                           onblur="pInputOnBlur('iLocationName', 'lLocationNameLabel', 'cLocationNameUnderline')">
+                    <div class="cInputUnderline" id="cLocationNameUnderline"></div>
+                    <label id="lLocationNameLabel">Location Name</label>
+                </div>
+            </div>
+
+            <div class="cInputWrapper">
+                <div class="cSingleInput">
+                    <input type="text"  id="iLocationMACAdress" name="iLocationMACAdress" required
+                           onfocus="pInputOnFocus('iLocationMACAdress', 'lLocationMACAdressLabel', 'cLocationMACAdressUnderline')"
+                           onblur="pInputOnBlur('iLocationMACAdress', 'lLocationMACAdressLabel', 'cLocationMACAdressUnderline')">
+                    <div class="cInputUnderline" id="cLocationMACAdressUnderline"></div>
+                    <label id="lLocationMACAdressLabel">Location MACAdress</label>
+                </div>
+            </div>
+
+            <input type="submit" id="button_manage_location" value="Add Location">
+        </form>
+    </div>
+</div>
+
+<div class = "cPopUpModal" id = "popUpManageAuthorization" data-remove = "false">
+    <div class = "cPopUpContent">
+        <div class="cPopUpHeader">
+            <h1 id = "hManageAuthorization">Add Authorization</h1>
+            <span class="btnClose" id = "btnCloseManageAuthorization">&times;</span>
+        </div>
+        <p class = "pResponseText" id = "pManageAuthorizationResponse"></p>
+        <form method="POST" id="updateAuthorizationForm">
+
+            <div class="cInputWrapper">
+                <div class="cSingleInput">
+                    <input type="text"  id="iAuthLocationName" name="iAuthLocationName" required
+                           onfocus="pInputOnFocus('iAuthLocationName', 'lAuthLocationNameLabel', 'cAuthLocationNameUnderline')"
+                           onblur="pInputOnBlur('iAuthLocationName', 'lAuthLocationNameLabel', 'cAuthLocationNameUnderline')">
+                    <div class="cInputUnderline" id="cAuthLocationNameUnderline"></div>
+                    <label id="lAuthLocationNameLabel">Location Name</label>
+                </div>
+            </div>
+
+            <div class="cInputWrapper">
+                <div class="cSingleInput">
+                    <input type="text"  id="iAuthUserName" name="iAuthUserName" required
+                           onfocus="pInputOnFocus('iAuthUserName', 'lAuthUserNameLabel', 'cAuthUserNameUnderline')"
+                           onblur="pInputOnBlur('iAuthUserName', 'lAuthUserNameLabel', 'cAuthUserNameUnderline')">
+                    <div class="cInputUnderline" id="cAuthUserNameUnderline"></div>
+                    <label id="lAuthUserNameLabel">User Name</label>
+                </div>
+            </div>
+
+            <input type="submit" id="button_manage_Authorization" value="Add Authorization">
+        </form>
+    </div>
+</div>
+
 
 <!-- Main Content -->
 <div class="cGlobal">
@@ -80,7 +149,7 @@
                 </li>
                 <!-- Element 02: Administer Locations -->
                 <li class="ulSidebarItem">
-                    <a href = "#" id = "navManageLocations">
+                    <a href = "" id = "navManageLocations">
                         <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 21V11H13V21M1 8L10 1L19 8V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H3C2.46957 21 1.96086 20.7893 1.58579 20.4142C1.21071 20.0391 1 19.5304 1 19V8Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>

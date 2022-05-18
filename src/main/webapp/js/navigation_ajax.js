@@ -1,15 +1,29 @@
 // jquery navigation ajax ------------------------------------------------------------
 
-$(document).ready(async () => {
+$(document).ready(() => {
 
     // load inital view: manage users and enable buttons of view
     $.fn.loadManageUserView();
     
-    // change views: epic roadmap View
-    $("#navManageUsers").click(async (event) => {
+    // change views: manage users
+    $("#navManageUsers").click((event) => {
         
         event.preventDefault();
         $.fn.loadManageUserView();
+    });
+
+    // change views: manage locations
+    $("#navManageLocations").click((event) => {
+    
+        event.preventDefault();
+        $.fn.loadManageLocations();
+    });
+
+    // change views: manage authorizations
+    $("#navManageAccess").click((event) => {
+
+        event.preventDefault();
+        $.fn.loadManageAuthorizations();
     });
 });
 
@@ -19,6 +33,18 @@ $.fn.loadManageUserView = async () => {
 
     await $.fn.loadNewMainContent("/manageUsers", "- Manage Users");
     initializeManageUsers();
+}
+
+$.fn.loadManageLocations = async () => {
+
+    await $.fn.loadNewMainContent("/manageLocations", "- Manage Locations");
+    initializeManageLocations();
+}
+
+$.fn.loadManageAuthorizations = async () => {
+
+    await $.fn.loadNewMainContent("/manageAuthorizations", "- Manage Authorizations");
+    initializeManageAuthorizations();
 }
 
 // insert sub page content -----------------------------------------------------------
