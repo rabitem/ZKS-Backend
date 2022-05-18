@@ -99,7 +99,7 @@ public class FrontendController {
         user.setRfid(addUserPayload.getRfid());
         user.setName(addUserPayload.getName());
         user.setRole(roleRepository.findByLabel(addUserPayload.getRole()).orElseThrow());
-        user.setLocation(locationRepository.findById(1).orElseThrow());
+        user.setLocation(null);
 
         // save user
         userRepository.save(user);

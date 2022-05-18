@@ -10,10 +10,7 @@ import de.bakife.pumpkininternationalwebservice.repositories.LocationRepository;
 import de.bakife.pumpkininternationalwebservice.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * @author rabitem
@@ -79,41 +76,45 @@ public class LoginService {
             return result;
         }
 
-        // check if user is already in location (skipped if log out)
-        if (user.getLocation().getId() != 1 && location.getId() != 1) {
-            this.createAuthorizationHistory(user, location, Constants.USER_ALREADY_LOGGED_IN);
-            result.put("status", "400");
-            result.put("message", "User already logged in!");
+        // if user is logged in
+        if (Objects.nonNull(user.getLocation())) {
+            // log out user
+            if (location.getId() == user.getLocation().getId()) {
+                user.setLocation(null);
+                this.userRepository.save(user);
+
+                this.createAuthorizationHistory(user, location, Constants.SUCCESSFULLY_LOGGED_OUT);
+
+                result.put("status", "200");
+                result.put("message", Constants.SUCCESSFULLY_LOGGED_OUT);
+            }
+            // user logged in elsewhere, throw error
+            else {
+                this.createAuthorizationHistory(user, location, Constants.USER_ALREADY_LOGGED_IN);
+                result.put("status", "400");
+                result.put("message", Constants.USER_ALREADY_LOGGED_IN);
+            }
             return result;
         }
 
-        // check if user has authorization for location (skipped if log out)
-        if (!this.checkAuthorization(user, location) && location.getId() != 1) {
+        // check if user is authorized to enter location
+        if (this.checkAuthorization(user, location)) {
+            user.setLocation(location);
+            this.userRepository.save(user);
+
+            this.createAuthorizationHistory(user, location, Constants.SUCCESSFULLY_LOGGED_IN);
+
+            result.put("status", "200");
+            result.put("message", user.getName());
+            return result;
+        }
+        // user not authorized, throw error
+        else {
             this.createAuthorizationHistory(user, location, Constants.USER_NOT_AUTHORIZED);
             result.put("status", "403");
-            result.put("message", "User has no authorization for this location!");
+            result.put("message", Constants.USER_NOT_AUTHORIZED);
             return result;
         }
-
-        // check if user already logged out
-        if (user.getLocation().getId() == 1 && location.getId() == 1) {
-            this.createAuthorizationHistory(user, location, Constants.USER_ALREADY_LOGGED_OUT);
-            result.put("status", "400");
-            result.put("message", "User already logged out!");
-            return result;
-        }
-
-        // set user to location
-        user.setLocation(location);
-        this.userRepository.save(user);
-
-        // create authorization history
-        this.createAuthorizationHistory(user, location, Constants.SUCCESSFULLY_LOGGED_IN);
-
-        // return result
-        result.put("status", "200");
-        result.put("message", user.getName());
-        return result;
     }
 
     /**

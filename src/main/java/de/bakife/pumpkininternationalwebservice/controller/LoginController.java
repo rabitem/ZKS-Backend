@@ -47,18 +47,4 @@ public class LoginController {
         Map<String, String> result = this.loginService.login(rfid, macAddress);
         return new ResponseEntity<>(result.get("message"), HttpStatus.valueOf(Integer.parseInt(result.get("status"))));
     }
-
-    /**
-     * Checks whether user is logged in or not
-     * @param payload The payload containing the rfid.
-     * @return True if logged in; false if logged out.
-     */
-    @GetMapping(value = "/isLoggedIn", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<Boolean> isLoggedIn(@RequestBody Map<String, Object> payload){
-        String rfid = (String) payload.get("rfid");
-        log.info("user is logged in request with rfid: {}", rfid);
-        User user = this.loginService.checkUserByRfid(rfid);
-        return new ResponseEntity<>(user.getLocation().getId() != 1, HttpStatus.OK);
-    }
 }
