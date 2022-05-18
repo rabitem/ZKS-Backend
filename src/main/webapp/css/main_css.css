@@ -410,20 +410,20 @@ a:visited {
   margin-bottom: 1rem;
 }
 
-.cAdjustments .cOptions #svgAddSign path {
+#svgAddSign path {
   stroke: #18BD47;
 }
 
-.cAdjustments .cOptions #svgRemoveSign path {
+#svgRemoveSign path {
   stroke: #e9676e;
 }
 
-.cAdjustments .cOptions svg {
+svg {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
 }
 
-.cAdjustments .cOptions svg:active {
+svg:active {
   -webkit-transform: scale(0.55);
           transform: scale(0.55);
 }

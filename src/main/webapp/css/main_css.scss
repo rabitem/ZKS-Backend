@@ -355,18 +355,20 @@ a:visited {
     flex-direction: row;
     gap: 0.8rem;
     margin-bottom: 1rem;
-
-    #svgAddSign path {
-        stroke: $color_rag_green;
-    }
-
-    #svgRemoveSign path {
-        stroke: $color_primary;
-    }
-
-    svg { transition: all 0.3s ease-in }
-    svg:active { transform: scale(0.55) }
 }
+
+// Options for Buttons --------------------------------------------------
+
+#svgAddSign path {
+    stroke: $color_rag_green;
+}
+
+#svgRemoveSign path {
+    stroke: $color_primary;
+}
+
+svg { transition: all 0.3s ease-in }
+svg:active { transform: scale(0.55) }
 
 // Table Formatting -----------------------------------------------------
 
