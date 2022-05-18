@@ -28,13 +28,13 @@ $(document).ready(() => {
                     rfid: rfid
                 }),
 
-                success: (res) => {
+                success: (res, statusText, rhx) => {
 
                     $("#pManageUserResponse").css("display", "block");
 
-                    if (res.status !== 200) {
+                    if (rhx.status !== 200) {
                         
-                        $("#pManageUserResponse").text("Failed to create new User. Error Code: " + res.status);
+                        $("#pManageUserResponse").text("Failed to create new User. Error Code: " + rhx.status);
                         return;
                     }
 
@@ -62,13 +62,13 @@ $(document).ready(() => {
                     id: targetID
                 }),
 
-                success: (res) => {
+                success: (res, statusText, rhx) => {
 
                     $("#pManageUserResponse").css("display", "block");
 
-                    if (res.status !== 200) {
+                    if (rhx.status !== 200) {
                         
-                        $("#pManageUserResponse").text("Failed to remove User. Error Code: " + res.status);
+                        $("#pManageUserResponse").text("Failed to remove User. Error Code: " + rhx.status);
                         return;
                     }
 
