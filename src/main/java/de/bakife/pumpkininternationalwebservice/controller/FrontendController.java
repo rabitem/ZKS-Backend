@@ -1,5 +1,6 @@
 package de.bakife.pumpkininternationalwebservice.controller;
 
+import de.bakife.pumpkininternationalwebservice.entities.Location;
 import de.bakife.pumpkininternationalwebservice.entities.Role;
 import de.bakife.pumpkininternationalwebservice.entities.User;
 import de.bakife.pumpkininternationalwebservice.repositories.LocationRepository;
@@ -12,10 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -60,7 +58,16 @@ public class FrontendController {
      * @return The frontend page.
      */
     @GetMapping("/")
-    public String getIndex() {
+    public String getIndex(Model model) {
+        List<Role> roles = StreamSupport.stream(this.roleRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        List<User> users = StreamSupport.stream(this.userRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        List<Location> locations = StreamSupport.stream(this.locationRepository.findAll().spliterator(), true)
+                .collect(Collectors.toList());
+        model.addAttribute("roles", roles);
+        model.addAttribute("users", users);
+        model.addAttribute("locations", locations);
         return "index";
     }
 
@@ -71,7 +78,7 @@ public class FrontendController {
     @GetMapping("/manageUsers")
     public String getManageUsers(Model model) {
         List<User> users =
-                StreamSupport.stream(userRepository.findAll().spliterator(), true)
+                StreamSupport.stream(this.userRepository.findAll().spliterator(), true)
                         .collect(Collectors.toList());
         model.addAttribute("users", users);
         return "manage_users_view";
@@ -82,8 +89,8 @@ public class FrontendController {
      * @param addUserPayload The payload containing the user data.
      * @return The response entity.
      */
-    @PostMapping("/addUser")
-    public ResponseEntity<?> addUser(@RequestBody @Valid AddUserPayload addUserPayload) {
+    @PutMapping("/addUser")
+    public ResponseEntity<?> putUser(@RequestBody @Valid AddUserPayload addUserPayload) {
         log.info("Adding user request: {}", addUserPayload);
 
         // create user
@@ -100,6 +107,21 @@ public class FrontendController {
     }
 
     /**
+     * Removes a user from the database.
+     * @param removeUserByNamePayload The payload containing the user id.
+     * @return The response entity.
+     */
+    @DeleteMapping("/removeUserByName")
+    public ResponseEntity<?> deleteUserById(@RequestBody @Valid RemoveUserByNamePayload removeUserByNamePayload) {
+        log.info("Removing user request for id: {}", removeUserByNamePayload.getId());
+
+        // remove user
+        userRepository.deleteById(removeUserByNamePayload.getId());
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
      * The payload for adding a user.
      */
     @Data
@@ -107,5 +129,13 @@ public class FrontendController {
         private String name;
         private String role;
         private String rfid;
+    }
+
+    /**
+     * The payload for removing a user.
+     */
+    @Data
+    static class RemoveUserByNamePayload {
+        private int id;
     }
 }
