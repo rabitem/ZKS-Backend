@@ -22,48 +22,78 @@ function updateSidebarSelectionVisuals () {
     this.classList.add("ulSidebarItemActive");
 }
 
-// Pop-Up Manage Users ------------------------------------------------------------------------
+// Pop-Up Manage Users: Add User ---------------------------------------------------------------
 
-const manageUsersModal = document.querySelector("#popUpManageUser");
-const manageUserClose  = document.querySelector("#btnCloseManageUser");
-const manageUserStatus = document.querySelector("#pManageUserResponse");
-const manageUserHeader = document.querySelector("#hManageUser");
+const addUsersModal = document.querySelector("#popUpAddUser");
+const addUserClose  = document.querySelector("#btnCloseAddUser");
+const addUserStatus = document.querySelector("#pAddUserResponse");
 
-function initializeManageUsers () {
+function initializeAddUsers () {
  
     const addUserBtn = document.querySelector("#svgAddSign");
-    
-    // hide and show inputs, based on add/remove option
-    const inputWrapperRole = document.querySelector("#inputWrapperRole");
-    const inputWrapperRFID = document.querySelector("#inputWrapperRFID");
-    const submitButton     = document.querySelector("#button_manage_user");
- 
-    // add new user
+     
     addUserBtn.addEventListener("click", () => {
-        
-        manageUsersModal.style.display = "block";
-        inputWrapperRole.style.display = "block";
-        inputWrapperRFID.style.display = "block";
+        addUsersModal.style.display = "block";
+    });
+}
 
-        manageUsersModal.setAttribute("data-remove", false);
-        manageUserHeader.innerHTML = "Add User";
+// Pop-Up Manage Users: Remove User -----------------------------------------------------------
 
-        submitButton.value = "Add User";
+const removeUsersModal = document.querySelector("#popUpRemoveUser");
+const removeUserClose  = document.querySelector("#btnCloseRemoveUser");
+const removeUserStatus = document.querySelector("#pRemoveUserResponse");
+
+function initializeRemoveUsers () {
+ 
+    const removeUserBtn = document.querySelector("#svgRemoveSign");
+     
+    removeUserBtn.addEventListener("click", () => {
+        removeUsersModal.style.display = "block";
     });
 
-    // try to remove existing user
-    const rmvUserBtn = document.querySelector("#svgRemoveSign");
+    buildDropdown("#cDropdownRemUser");
+}
 
-    rmvUserBtn.addEventListener("click", () => {
+// Build dropdown - prev items are removed in ajax control -----------------------------------
+
+function buildDropdown(imTargetDropDownID) {
+
+    const dropDownContainer = document.querySelector(imTargetDropDownID);
+    const firstDropDownItem = dropDownContainer.querySelector(".pDropdownFirst");
+    const dropDownContent   = dropDownContainer.querySelector(".cDropdownContent");
+
+    // get existing data rows
+    const dataRows = document.querySelectorAll("tr");
+
+    // exclude header from data table
+    if (dataRows.length <= 1) { return }
+
+    for (let i = 1; i < array.length; i++) {
         
-        manageUsersModal.style.display = "block";
-        inputWrapperRole.style.display = "none";
-        inputWrapperRFID.style.display = "none";
-    
-        submitButton.value = "Remove User";
+        const dataObj = dataRows[i];
+        const dataID  = dataObj.getAttribute("data-valueID");
+        const label   = dataObj.getAttribute("data-label");
+        
+        // first element
+        if (i === 1) {
+            firstDropDownItem.innerHTML = label + " (" + dataID + ")";
+            firstDropDownItem.setAttribute("data-id") = dataID;
 
-        manageUsersModal.setAttribute("data-remove", true);
-    });
+        }
+        
+        // insert dropdown item
+        const newHTMLObj = document.createElement("p")
+        newHTMLObj.innerHTML = label + " (" + dataID + ")";
+        newHTMLObj.classList.add("dropdownItem");
+        newHTMLObj.setAttribute("data-id") = dataID;
+
+        dropDownContent.appendChild(newHTMLObj);
+
+        // dropdown click functionality
+        newHTMLObj.addEventListener("click", () => {
+            firstDropDownItem.setAttribute("data-id") = newHTMLObj.getAttribute("data-id");
+        });
+    }
 }
 
 manageUserClose.addEventListener("click", () => {
@@ -74,7 +104,7 @@ manageUserClose.addEventListener("click", () => {
 
 });
 
-// Pop-Up Manage Location -----------------------------------------------------------------------
+// Pop-Up Manage Location: -----------------------------------------------------------------------
 
 const manageLocationsModal = document.querySelector("#popUpManageLocation");
 const manageLocationClose  = document.querySelector("#btnCloseManageLocation");

@@ -339,7 +339,10 @@ a:visited {
         }
 
         .cMainBox:last-of-type {
+            
             flex: 3;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         h2 { margin-bottom: 1rem }
@@ -410,15 +413,15 @@ svg:active { transform: scale(0.55) }
         overflow-y: auto;
         border-radius: 0.2rem;
 
-        .dropdownTeamItem {
+        .dropdownItem {
             
-            color: black;
+            color: $color_sidebar_dark;
             padding: 0.4rem 0.4rem;
             display: block;
             cursor: pointer;         
         }
 
-        .dropdownTeamItem:hover { 
+        .dropdownItem:hover { 
 
             background-color: #f1f1f1;
             color: $color_primary;

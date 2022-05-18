@@ -78,6 +78,7 @@
     </div>
 </div>
 
+<!-- Pop-Up Add User -->
 <div class = "cPopUpModal" id = "popUpManageLocation" data-remove = "false">
     <div class = "cPopUpContent">
         <div class="cPopUpHeader">
@@ -112,6 +113,7 @@
     </div>
 </div>
 
+<!-- Pop-Up Add Authorization -->
 <div class = "cPopUpModal" id = "popUpManageAuthorization" data-remove = "false">
     <div class = "cPopUpContent">
         <div class="cPopUpHeader">
@@ -145,7 +147,6 @@
         </form>
     </div>
 </div>
-
 
 <!-- Main Content -->
 <div class="cGlobal">

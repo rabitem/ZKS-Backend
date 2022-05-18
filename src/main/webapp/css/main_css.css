@@ -392,6 +392,8 @@ a:visited {
   -webkit-box-flex: 3;
       -ms-flex: 3;
           flex: 3;
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .cMainContent #cMainContentSubFolder h2 {
@@ -465,14 +467,14 @@ svg:active {
   border-radius: 0.2rem;
 }
 
-.cTeamDropDown .cDropDownContent .dropdownTeamItem {
-  color: black;
+.cTeamDropDown .cDropDownContent .dropdownItem {
+  color: #0a0c16;
   padding: 0.4rem 0.4rem;
   display: block;
   cursor: pointer;
 }
 
-.cTeamDropDown .cDropDownContent .dropdownTeamItem:hover {
+.cTeamDropDown .cDropDownContent .dropdownItem:hover {
   background-color: #f1f1f1;
   color: #e9676e;
 }
