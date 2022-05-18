@@ -3,21 +3,25 @@
 $(document).ready(async () => {
 
     // load inital view: manage users and enable buttons of view
-    $.fn.loadNewMainContent("/manageUsers", "- Manage Users");
-    
-    initializeManageUsers();
+    $.fn.loadManageUserView();
     
     // change views: epic roadmap View
     $("#navManageUsers").click(async (event) => {
         
         event.preventDefault();
-        await $.fn.loadNewMainContent("/manageUsers", "- Manage Users");
-        initializeManageUsers();
-
+        $.fn.loadManageUserView();
     });
 });
 
-// jquery function definitions ----------------------------------------------------
+// sub pages functions ---------------------------------------------------------------
+
+$.fn.loadManageUserView = async () => {
+
+    await $.fn.loadNewMainContent("/manageUsers", "- Manage Users");
+    initializeManageUsers();
+}
+
+// insert sub page content -----------------------------------------------------------
 
 $.fn.loadNewMainContent = (imRoute, imViewName) => {
 
@@ -33,7 +37,7 @@ $.fn.loadNewMainContent = (imRoute, imViewName) => {
     return $.ajax({
         
         url: imRoute,
-        method: "POST",
+        method: "GET",
         dataType: "html",
         contentType: "application/json; charset=utf-8",
                     

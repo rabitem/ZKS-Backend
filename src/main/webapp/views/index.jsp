@@ -15,10 +15,10 @@
 <div class = "cPopUpModal" id = "popUpManageUser">
     <div class = "cPopUpContent">
         <div class="cPopUpHeader">
-            <h1>Manage User</h1>
+            <h1 id = "hManageUser">Manage User</h1>
             <span class="btnClose" id = "btnCloseManageUser">&times;</span>
         </div>
-
+        <p id = "pManageUserResponse"></p>
         <form method="POST" id="updateUserForm">
 
             <div class="cInputWrapper">
@@ -43,9 +43,9 @@
 
             <div class="cInputWrapper">
                 <div class="cSingleInput">
-                    <input type="text"  id="iUserFID" name="iUserFID" required
-                           onfocus="pInputOnFocus('iUserFID', 'lUserFIDLabel', 'cUserFIDUnderline')"
-                           onblur="pInputOnBlur('iUserFID', 'lUserFIDLabel', 'cUserFIDUnderline')">
+                    <input type="text"  id="iUserRFID" name="iUserRFID" required
+                           onfocus="pInputOnFocus('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')"
+                           onblur="pInputOnBlur('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')">
                     <div class="cInputUnderline" id="cUserFIDUnderline"></div>
                     <label id="lUserFIDLabel">User RFID</label>
                 </div>

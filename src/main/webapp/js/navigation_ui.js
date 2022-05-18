@@ -25,19 +25,36 @@ function updateSidebarSelectionVisuals () {
 // Pop-Up Manage Users ------------------------------------------------------------------------
 
 const manageUsersModal = document.querySelector("#popUpManageUser");
-const manageUserClose = document.querySelector("#btnCloseManageUser");
+const manageUserClose  = document.querySelector("#btnCloseManageUser");
+const manageUserStatus = document.querySelector("#pManageUserResponse");
 
 function initializeManageUsers () {
  
     const addUserBtn = document.querySelector("#svgAddSign");
  
+    // add new user
     addUserBtn.addEventListener("click", () => {
+        
         manageUsersModal.style.display = "block";
+    });
+
+    // try to remove existing user
+    const rmvUserBtn = document.querySelector("#svgRemoveSign");
+
+    rmvUserBtn.addEventListener("click", () => {
+        
+        manageUsersModal.style.display = "block";
+    
+        document.querySelector("#hManageUser").innerHTML = "Add User";
     });
 }
 
 manageUserClose.addEventListener("click", () => {
+    
     manageUsersModal.style.display = "none";
+    manageUserStatus.style.display = "none";
+    document.querySelector("#hManageUser").innerHTML = "Remove User";
+
 });
 
 // close all pop-ups if user clicks outside of pop-up ui --------------------------------------
@@ -45,7 +62,9 @@ manageUserClose.addEventListener("click", () => {
 window.onmousedown = (event) => {
 
     if (event.target === manageUsersModal) {
+
         manageUsersModal.style.display = "none";
+        manageUserStatus.style.display = "none";
     }
 }
 
