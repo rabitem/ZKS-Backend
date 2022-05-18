@@ -1,8 +1,8 @@
 $(document).ready(() => {
 
-    // Manage Users View ----------------------------------------------------------------------------------
+    // Add Users Form ----------------------------------------------------------------------------------
 
-    $("#updateUserForm").on("submit", (event) => {
+    $("#pAddUserResponse").on("submit", (event) => {
 
         // prevents POST form to refresh the page
         event.preventDefault();
@@ -12,71 +12,71 @@ $(document).ready(() => {
         const role = $("#iUserRole").val();
         const rfid = $("#iUserRFID").val();
 
-        const removeUser = document.querySelector("#popUpManageUser").getAttribute("data-remove");
-
-        // remove and add user functionality
-        if (removeUser === "false") {
-
-            $.ajax({
+        $.ajax({
                 
-                url: "/addUser",
-                method: "PUT",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    name: name,
-                    role: role,
-                    rfid: rfid
-                }),
+            url: "/addUser",
+            method: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify({
+                name: name,
+                role: role,
+                rfid: rfid
+            }),
 
-                success: (res, statusText, rhx) => {
+            success: (res, statusText, rhx) => {
 
-                    let messageStatus = "Successfully created a new user";
-                    
-                    if (rhx.status !== 200) {
-                        messageStatus = "Failed to create user. Error Code: " + rhx.status;
-                    }
-
-                    updateStatusText("#pManageUserResponse",rhx.status, messageStatus);
-                    
-                    $.fn.loadManageUserView();
-
-                    // clears input fields
-                    $("#iUserName").val("");
-                    $("#iUserRole").val("");
-                    $("#iUserRFID").val("");
-                }
-            });
-        
-        } else {
-
-            const targetID = getDatabaseIDByLabel(name);
-
-            $.ajax({
+                let messageStatus = "Successfully created a new user";
                 
-                url: "/removeUserById",
-                method: "DELETE",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    id: targetID
-                }),
-
-                success: (res, statusText, rhx) => {
-
-                    let messageStatus = "Successfully removed User";
-                    
-                    if (rhx.status !== 200) {
-                        messageStatus = "Failed to remove User. Error Code: " + rhx.status;
-                    }
-
-                    updateStatusText("#pManageUserResponse",rhx.status, messageStatus);
-                    
-                    $.fn.loadManageUserView();
-
-                    // clears input fields
-                    $("#iUserName").val("");
+                if (rhx.status !== 200) {
+                    messageStatus = "Failed to create user. Error Code: " + rhx.status;
                 }
-            });
-        }
+
+                updateStatusText("#pManageUserResponse",rhx.status, messageStatus);
+                
+                $.fn.loadManageUserView();
+
+                // clears input fields
+                $("#iUserName").val("");
+                $("#iUserRole").val("");
+                $("#iUserRFID").val("");
+            }
+        });
+
+    });
+
+    // Remove Users Form ----------------------------------------------------------------------------------
+    $("#removeUserForm").on("submit", (event) => {
+
+        // prevents POST form to refresh the page
+        event.preventDefault();
+        const name = $("#pRemoveUserDropFirst").getAttribute("data-id");
+        const targetID = getDatabaseIDByLabel(name);
+
+        $.ajax({
+            
+            url: "/removeUserById",
+            method: "DELETE",
+            contentType: "application/json",
+            data: JSON.stringify({
+                id: targetID
+            }),
+
+            success: (res, statusText, rhx) => {
+
+                let messageStatus = "Successfully removed User";
+                
+                if (rhx.status !== 200) {
+                    messageStatus = "Failed to remove User. Error Code: " + rhx.status;
+                }
+
+                updateStatusText("#pManageUserResponse",rhx.status, messageStatus);
+                
+                $.fn.loadManageUserView();
+
+                // clears input fields
+                $("#iUserName").val("");
+            }
+        });
     });
 
     // Manage Locations View ------------------------------------------------------------------------------

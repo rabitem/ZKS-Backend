@@ -19,7 +19,7 @@
             <span class="btnClose" id = "btnCloseAddUser">&times;</span>
         </div>
         <p class = "pResponseText" id = "pAddUserResponse"></p>
-        <form method="POST" id="updateUserForm">
+        <form method="POST" id="addUserForm">
 
             <div class="cInputWrapper">
                 <div class="cSingleInput">
@@ -64,10 +64,10 @@
             <span class="btnClose" id = "btnCloseRemoveUser">&times;</span>
         </div>
         <p class = "pResponseText" id = "pRemoveUserResponse"></p>
-        <form method="POST" id="updateUserForm">
+        <form method="POST" id="removeUserForm">
 
-            <div class = "cDropdown">
-                <p class = "pDropdownFirst" id = "pRemoveUserDropFirst"></p>
+            <div class = "cDropdown" id = "cDropdownRemUser">
+                <p class = "pDropdownFirst" id = "pRemoveUserDropFirst" data-id=""></p>
                 <div class = "cDropdownIcon"></div>
                 <div class = "cDropdownContent" id = "cDropdownContentRemoveUser">
                 </div>
