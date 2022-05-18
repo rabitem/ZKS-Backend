@@ -10,6 +10,7 @@ import de.bakife.pumpkininternationalwebservice.repositories.RoleRepository;
 import de.bakife.pumpkininternationalwebservice.repositories.UserRepository;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -150,7 +151,12 @@ public class FrontendController {
         log.info("Removing user request for id: {}", removeUserByIdPayload.getId());
 
         // remove user
-        userRepository.deleteById(removeUserByIdPayload.getId());
+        try {
+            userRepository.deleteById(removeUserByIdPayload.getId());
+        } catch (EmptyResultDataAccessException e) {
+            log.error("User with id {} not found", removeUserByIdPayload.getId());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -185,9 +191,82 @@ public class FrontendController {
         log.info("Removing location request for id: {}", removeLocationByIdPayload.getId());
 
         // remove location
-        locationRepository.deleteById(removeLocationByIdPayload.getId());
+        try {
+            locationRepository.deleteById(removeLocationByIdPayload.getId());
+        } catch (EmptyResultDataAccessException e) {
+            log.error("Location with id {} not found", removeLocationByIdPayload.getId());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Adds a location authorization to the database.
+     * @param addAuthorizationPayload The payload containing the location authorization data.
+     * @return The response entity.
+     */
+    @PutMapping("/addAuthorization")
+    public ResponseEntity<?> putAuthorization(@RequestBody @Valid AddAuthorizationPayload addAuthorizationPayload) {
+        log.info("Adding authorization request: {}", addAuthorizationPayload);
+
+        if (locationAuthorizationRepository.findByUserAndLocation(this.userRepository.findById(addAuthorizationPayload.getUserId()).orElseThrow(),
+                this.locationRepository.findById(addAuthorizationPayload.getLocationId()).orElseThrow()).isPresent()) {
+            // throw error, already exists
+            log.info("Authorization from userId {} to locationId {} already exists",
+                    addAuthorizationPayload.getUserId(), addAuthorizationPayload.getLocationId());
+            return new ResponseEntity<>("Authorization already exists!", HttpStatus.BAD_REQUEST);
+        }
+
+        // create location authorization
+        LocationAuthorization locationAuthorization = new LocationAuthorization();
+        locationAuthorization.setUser(this.userRepository.findById(addAuthorizationPayload.getUserId()).orElseThrow());
+        locationAuthorization.setLocation(this.locationRepository.findById(addAuthorizationPayload.getLocationId()).orElseThrow());
+
+        // save location authorization
+        locationAuthorizationRepository.save(locationAuthorization);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Removes a location authorization from the database.
+     * @param removeAuthorizationPayload The payload containing the location authorization id.
+     * @return The response entity.
+     */
+    @DeleteMapping("/removeAuthorization")
+    public ResponseEntity<?> deleteAuthorization(@RequestBody @Valid RemoveAuthorizationPayload removeAuthorizationPayload) {
+        log.info("Removing authorization request for id: {}", removeAuthorizationPayload.getId());
+
+        // remove location authorization
+        try {
+            locationAuthorizationRepository.deleteById(removeAuthorizationPayload.getId());
+        } catch (EmptyResultDataAccessException e) {
+            log.info("Authorization with id {} does not exist", removeAuthorizationPayload.getId());
+            return new ResponseEntity<>("Authorization does not exist!", HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * The payload for removing authorization by id.
+     */
+    @Data
+    static class RemoveAuthorizationPayload {
+        @Positive(message = "Authorization id must be positive")
+        private int id;
+    }
+
+    /**
+     * Add authorization payload.
+     */
+    @Data
+    static class AddAuthorizationPayload {
+        @Positive(message = "User id must be positive")
+        private int userId;
+        @Positive(message = "Location id must be positive")
+        private int locationId;
     }
 
     /**
