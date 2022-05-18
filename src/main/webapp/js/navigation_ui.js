@@ -134,7 +134,8 @@ function initializeManageAuthorizations () {
     
     // add new Auth
     addAuthBtn.addEventListener("click", () => {
-        
+        manageAuthsModal.style.display = "block";
+
         manageAuthsModal.setAttribute("data-remove", false);
 
         submitButton.value = "Add Auth";
@@ -144,7 +145,8 @@ function initializeManageAuthorizations () {
     const rmvAuthBtn = document.querySelector("#svgRemoveSignAuthorization");
 
     rmvAuthBtn.addEventListener("click", () => {
-            
+        manageAuthsModal.style.display = "block";
+
         submitButton.value = "Remove Auth";
 
         manageAuthsModal.setAttribute("data-remove", true);

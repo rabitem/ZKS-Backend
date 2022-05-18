@@ -158,7 +158,7 @@ $(document).ready(() => {
 
     // Manage Authorization View ---------------------------------------------------------------------------
 
-    $("#button_manage_Authorization").on("submit", (event) => {
+    $("#updateAuthorizationForm").on("submit", (event) => {
 
         // prevents POST form to refresh the page
         event.preventDefault();
