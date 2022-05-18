@@ -31,10 +31,10 @@
             <jsp:useBean id="authorizations" scope="request" type="java.util.List"/>
             <c:forEach items="${authorizations}" var="authObj">
                 <tr>
-                    <td class = "trCurData" id = "${"trData" + user.name}" data-valueID = ${user.id}>${authObj.user.name}</td>
+                    <td class = "trCurData" id = "<%= "trData" + ${user.name}" %>" data-valueID = ${user.id}>${authObj.user.name}</td>
                     <td>${authObj.user.role}</td>
                     <td>${authObj.user.rfid}</td>
-                    <td class = "trCurData" id = "${"trData" + location.label}" data-valueID = ${location.id} >${authObj.location.label}</td>
+                    <td class = "trCurData" id = "<%= "trData" + ${location.label}" %>" data-valueID = ${location.id} >${authObj.location.label}</td>
                     <td>${authObj.location.macAdress}</td>
                 </tr>
             </c:forEach>
