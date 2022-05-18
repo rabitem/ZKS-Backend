@@ -81,7 +81,7 @@ $(document).ready(() => {
 
     // Manage Locations View ------------------------------------------------------------------------------
 
-    $("#button_manage_location").on("submit", (event) => {
+    $("#updateLocationForm").on("submit", (event) => {
 
         // prevents POST form to refresh the page
         event.preventDefault();
@@ -93,7 +93,7 @@ $(document).ready(() => {
         const removeLocation = document.querySelector("#popUpManageLocation").getAttribute("data-remove");
 
         // remove and add user functionality
-        if (removeLocation === false) {
+        if (removeLocation === "false") {
            
             $.ajax({
                 
@@ -102,7 +102,7 @@ $(document).ready(() => {
                 contentType: "application/json",
                 data: JSON.stringify({
                     label: locationName,
-                    macAdress: locationMACAdress
+                    macAddress: locationMACAdress
                 }),
 
                 success: (res, statusText, rhx) => {
@@ -170,7 +170,7 @@ $(document).ready(() => {
         const removeLocation = document.querySelector("#popUpManageAuthorization").getAttribute("data-remove");
 
         // remove and add user functionality
-        if (removeLocation === false) {
+        if (removeLocation === "false") {
             
             $.ajax({
                 
@@ -242,7 +242,6 @@ function getDatabaseIDByLabel(imTargetLabel) {
 
     for (let i = 0; i < tableData.length; i++) {
         const obj = tableData[i];
-        console.log(obj.getAttribute("data-valueID"));
 
         if (obj.id === "trData" + imTargetLabel) {
             return obj.getAttribute("data-valueID");

@@ -32,7 +32,7 @@
             <c:forEach items="${authorizations}" var="authObj">
                 <tr class = "trCurData" id = "trData${authObj.user.name}${authObj.location.label}" data-valueID = "${authObj.id}">
                     <td>${authObj.user.name}</td>
-                    <td>${authObj.user.role}</td>
+                    <td>${authObj.user.role.label}</td>
                     <td>${authObj.user.rfid}</td>
                     <td>${authObj.location.label}</td>
                     <td>${authObj.location.macAddress}</td>

@@ -27,9 +27,9 @@
             <!-- Generated JSP Content -->
             <jsp:useBean id="locations" scope="request" type="java.util.List"/>
             <c:forEach items="${locations}" var="location">
-                <tr class = "trCurData" id = trData${location.label}" data-valueID = ${location.id}>
+                <tr class = "trCurData" id = "trData${location.label}" data-valueID = ${location.id}>
                     <td>${location.label}</td>
-                    <td>${location.macAdress}</td>
+                    <td>${location.macAddress}</td>
                 </tr>
             </c:forEach>
         </table>
