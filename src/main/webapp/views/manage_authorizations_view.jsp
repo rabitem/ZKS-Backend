@@ -25,16 +25,16 @@
                 <th>User Role</th>
                 <th>User RFID</th>
                 <th>Location Name</th>
-                <th>Location MAC-Adress</th>
+                <th>Location MAC-Address</th>
             </tr>
             <!-- Generated JSP Content -->
             <jsp:useBean id="authorizations" scope="request" type="java.util.List"/>
             <c:forEach items="${authorizations}" var="authObj">
                 <tr class = "trCurData" id = "trData${authObj.user.name}${authObj.location.label}" data-valueID = "${authObj.id}">
-                    <td>${authObj.user.name}</td>
+                    <td class = "trCurData" id = "trData${authObj.user.name}" data-valueID = "${authObj.user.id}">${authObj.user.name}</td>
                     <td>${authObj.user.role.label}</td>
                     <td>${authObj.user.rfid}</td>
-                    <td>${authObj.location.label}</td>
+                    <td class = "trCurData" id = "trData${authObj.location.label}" data-valueID = "${authObj.location.id}">${authObj.location.label}</td>
                     <td>${authObj.location.macAddress}</td>
                 </tr>
             </c:forEach>

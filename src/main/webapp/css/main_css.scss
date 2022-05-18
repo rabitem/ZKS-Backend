@@ -26,12 +26,12 @@ $color_rag_green: #18BD47;
 
 @font-face { 
     font-family: "Poppins";
-    src: url("Poppins-Regular.ttf"); 
+    src: url("/fonts/Poppins-Regular.ttf"); 
 } 
 
 @font-face { 
     font-family: "Poppins";
-    src: url("Poppins-Bold.ttf"); 
+    src: url("/fonts/Poppins-Bold.ttf"); 
     font-weight: bold;
 }
 
@@ -367,8 +367,70 @@ a:visited {
     stroke: $color_primary;
 }
 
-svg { transition: all 0.3s ease-in }
+svg { transition: all 0.2s }
 svg:active { transform: scale(0.55) }
+
+// Dropdown -------------------------------------------------------------
+
+.cTeamDropDown {
+            
+    position: relative;
+    display: inline-block;
+
+    .dropdownIcon {
+        
+        float: right;
+        margin-left: 0.5rem;
+        margin-top: 0.2rem;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 1rem 0.55rem 0 0.55rem;
+        border-color: $color_sidebar_dark transparent transparent transparent;
+    }
+    
+    #dropDownCurTeamText {
+        
+        font-weight: bold;
+        float: left;
+        border: none;
+        cursor: pointer;
+    }
+
+    .cDropDownContent {
+        
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 0px 10px $color_shadow;
+        z-index: 1;
+        padding: 0.3rem;
+        max-height: 50vh;
+        overflow-y: auto;
+        border-radius: 0.2rem;
+
+        .dropdownTeamItem {
+            
+            color: black;
+            padding: 0.4rem 0.4rem;
+            display: block;
+            cursor: pointer;         
+        }
+
+        .dropdownTeamItem:hover { 
+
+            background-color: #f1f1f1;
+            color: $color_primary;
+        }
+    }
+}
+
+.cTeamDropDown:hover {
+    .cDropDownContent {
+        display: block;
+    }
+}
 
 // Table Formatting -----------------------------------------------------
 

@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Poppins";
-  src: url("Poppins-Regular.ttf");
+  src: url("/fonts/Poppins-Regular.ttf");
 }
 
 @font-face {
   font-family: "Poppins";
-  src: url("Poppins-Bold.ttf");
+  src: url("/fonts/Poppins-Bold.ttf");
   font-weight: bold;
 }
 
@@ -419,13 +419,66 @@ a:visited {
 }
 
 svg {
-  -webkit-transition: all 0.3s ease-in;
-  transition: all 0.3s ease-in;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 svg:active {
   -webkit-transform: scale(0.55);
           transform: scale(0.55);
+}
+
+.cTeamDropDown {
+  position: relative;
+  display: inline-block;
+}
+
+.cTeamDropDown .dropdownIcon {
+  float: right;
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1rem 0.55rem 0 0.55rem;
+  border-color: #0a0c16 transparent transparent transparent;
+}
+
+.cTeamDropDown #dropDownCurTeamText {
+  font-weight: bold;
+  float: left;
+  border: none;
+  cursor: pointer;
+}
+
+.cTeamDropDown .cDropDownContent {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+  z-index: 1;
+  padding: 0.3rem;
+  max-height: 50vh;
+  overflow-y: auto;
+  border-radius: 0.2rem;
+}
+
+.cTeamDropDown .cDropDownContent .dropdownTeamItem {
+  color: black;
+  padding: 0.4rem 0.4rem;
+  display: block;
+  cursor: pointer;
+}
+
+.cTeamDropDown .cDropDownContent .dropdownTeamItem:hover {
+  background-color: #f1f1f1;
+  color: #e9676e;
+}
+
+.cTeamDropDown:hover .cDropDownContent {
+  display: block;
 }
 
 table {

@@ -25,6 +25,20 @@ $(document).ready(() => {
         event.preventDefault();
         $.fn.loadManageAuthorizations();
     });
+
+    // change views: view temparatures
+    $("#navTemparature").click((event) => {
+
+        event.preventDefault();
+        $.fn.loadTempView();
+    });
+
+    // change views: view logs
+    $("#navLogs").click((event) => {
+
+        event.preventDefault();
+        $.fn.loadLogsViews();
+    });
 });
 
 // sub pages functions ---------------------------------------------------------------
@@ -45,6 +59,16 @@ $.fn.loadManageAuthorizations = async () => {
 
     await $.fn.loadNewMainContent("/manageAuthorizations", "- Manage Authorizations");
     initializeManageAuthorizations();
+}
+
+$.fn.loadTempView = () => {
+
+    $.fn.loadNewMainContent("/viewTemparature", "- View Temparatures");
+}
+
+$.fn.loadLogsViews = () => {
+
+    $.fn.loadNewMainContent("/viewLogs", "- View Logs");
 }
 
 // insert sub page content -----------------------------------------------------------

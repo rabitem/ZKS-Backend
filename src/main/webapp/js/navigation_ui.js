@@ -27,6 +27,7 @@ function updateSidebarSelectionVisuals () {
 const manageUsersModal = document.querySelector("#popUpManageUser");
 const manageUserClose  = document.querySelector("#btnCloseManageUser");
 const manageUserStatus = document.querySelector("#pManageUserResponse");
+const manageUserHeader = document.querySelector("#hManageUser");
 
 function initializeManageUsers () {
  
@@ -35,7 +36,7 @@ function initializeManageUsers () {
     // hide and show inputs, based on add/remove option
     const inputWrapperRole = document.querySelector("#inputWrapperRole");
     const inputWrapperRFID = document.querySelector("#inputWrapperRFID");
-    const submitButton     = document.querySelector("#button_manage_location");
+    const submitButton     = document.querySelector("#button_manage_user");
  
     // add new user
     addUserBtn.addEventListener("click", () => {
@@ -45,6 +46,7 @@ function initializeManageUsers () {
         inputWrapperRFID.style.display = "block";
 
         manageUsersModal.setAttribute("data-remove", false);
+        manageUserHeader.innerHTML = "Add User";
 
         submitButton.value = "Add User";
     });

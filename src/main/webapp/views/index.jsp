@@ -11,14 +11,14 @@
 
 <body>
 
-<!-- Pop_ups -->
-<div class = "cPopUpModal" id = "popUpManageUser" data-remove = "false">
+<!-- Pop-Up Add User -->
+<div class = "cPopUpModal" id = "popUpAddUser" data-remove = "false">
     <div class = "cPopUpContent">
         <div class="cPopUpHeader">
-            <h1 id = "hManageUser">Manage User</h1>
-            <span class="btnClose" id = "btnCloseManageUser">&times;</span>
+            <h1 id = "hAddUser">Add User</h1>
+            <span class="btnClose" id = "btnCloseAddUser">&times;</span>
         </div>
-        <p class = "pResponseText" id = "pManageUserResponse"></p>
+        <p class = "pResponseText" id = "pAddUserResponse"></p>
         <form method="POST" id="updateUserForm">
 
             <div class="cInputWrapper">
@@ -51,7 +51,29 @@
                 </div>
             </div>
 
-            <input type="submit" id="button_manage_user">
+            <input type="submit" id="button_Add_user">
+        </form>
+    </div>
+</div>
+
+<!-- Pop-Up Remove User -->
+<div class = "cPopUpModal" id = "popUpRemoveUser" data-remove = "false">
+    <div class = "cPopUpContent">
+        <div class="cPopUpHeader">
+            <h1>Remove User</h1>
+            <span class="btnClose" id = "btnCloseRemoveUser">&times;</span>
+        </div>
+        <p class = "pResponseText" id = "pRemoveUserResponse"></p>
+        <form method="POST" id="updateUserForm">
+
+            <div class = "cDropdown">
+                <p class = "pDropdownFirst" id = "pRemoveUserDropFirst"></p>
+                <div class = "cDropdownIcon"></div>
+                <div class = "cDropdownContent" id = "cDropdownContentRemoveUser">
+                </div>
+            </div>     
+
+            <input type="submit" id="button_Remove_user">
         </form>
     </div>
 </div>
@@ -167,7 +189,7 @@
                 </li>
                 <!-- Element 04: Logs -->
                 <li class="ulSidebarItem">
-                    <a href = "#" id = "navLogs">
+                    <a href = "" id = "navLogs">
                         <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15 5H1M19 1H1M19 9H1M15 13H1" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -176,7 +198,7 @@
                 </li>
                 <!-- Element 05: Temparature -->
                 <li class="ulSidebarItem">
-                    <a href = "#" id = "navTemparature">
+                    <a href = "" id = "navTemparature">
                         <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17 8H18C19.0609 8 20.0783 8.42143 20.8284 9.17157C21.5786 9.92172 22 10.9391 22 12C22 13.0609 21.5786 14.0783 20.8284 14.8284C20.0783 15.5786 19.0609 16 18 16H17M17 8H1V17C1 18.0609 1.42143 19.0783 2.17157 19.8284C2.92172 20.5786 3.93913 21 5 21H13C14.0609 21 15.0783 20.5786 15.8284 19.8284C16.5786 19.0783 17 18.0609 17 17V8ZM5 1V4M9 1V4M13 1V4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
