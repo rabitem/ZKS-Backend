@@ -111,7 +111,7 @@ public class FrontendController {
      * @param removeUserByNamePayload The payload containing the user id.
      * @return The response entity.
      */
-    @DeleteMapping("/removeUserByName")
+    @DeleteMapping("/removeUserById")
     public ResponseEntity<?> deleteUserById(@RequestBody @Valid RemoveUserByNamePayload removeUserByNamePayload) {
         log.info("Removing user request for id: {}", removeUserByNamePayload.getId());
 
