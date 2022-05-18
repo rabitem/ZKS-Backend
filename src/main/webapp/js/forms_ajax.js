@@ -2,7 +2,7 @@ $(document).ready(() => {
 
     // Manage Users View ----------------------------------------------------------------------------------
 
-    $("#button_manage_user").on("submit", (event) => {
+    $("#updateUserForm").on("submit", (event) => {
 
         // prevents POST form to refresh the page
         event.preventDefault();
@@ -15,7 +15,7 @@ $(document).ready(() => {
         const removeUser = document.querySelector("#popUpManageUser").getAttribute("data-remove");
 
         // remove and add user functionality
-        if (removeUser === false) {
+        if (removeUser === "false") {
 
             $.ajax({
                 
