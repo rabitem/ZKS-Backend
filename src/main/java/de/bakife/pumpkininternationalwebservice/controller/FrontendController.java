@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -152,6 +153,61 @@ public class FrontendController {
         userRepository.deleteById(removeUserByIdPayload.getId());
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Adds a location to the database.
+     * @param addLocationPayload The payload containing the location data.
+     * @return The response entity.
+     */
+    @PutMapping("/addLocation")
+    public ResponseEntity<?> putLocation(@RequestBody @Valid AddLocationPayload addLocationPayload) {
+        log.info("Adding location request: {}", addLocationPayload);
+
+        // create location
+        Location location = new Location();
+        location.setLabel(addLocationPayload.getLabel());
+        location.setMacAddress(addLocationPayload.getMacAddress());
+
+        // save location
+        locationRepository.save(location);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Removes a location from the database.
+     * @param removeLocationByIdPayload The payload containing the location id.
+     * @return The response entity.
+     */
+    @DeleteMapping("/removeLocationById")
+    public ResponseEntity<?> deleteLocationById(@RequestBody @Valid  RemoveLocationByIdPayload removeLocationByIdPayload) {
+        log.info("Removing location request for id: {}", removeLocationByIdPayload.getId());
+
+        // remove location
+        locationRepository.deleteById(removeLocationByIdPayload.getId());
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * Removes a location from the database.
+     */
+    @Data
+    static class RemoveLocationByIdPayload {
+        @Positive
+        private int id;
+    }
+
+    /**
+     * The payload for the add location endpoint.
+     */
+    @Data
+     static class AddLocationPayload {
+        @Pattern(regexp = "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$", message = "Invalid MAC address")
+        private String macAddress;
+        @NotBlank(message = "Label is required")
+        private String label;
     }
 
     /**
