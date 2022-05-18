@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <input type="submit" id="button_manage_user" value="Add User">
+            <input type="submit" id="button_manage_user">
         </form>
     </div>
 </div>
@@ -85,7 +85,7 @@
                 </div>
             </div>
 
-            <input type="submit" id="button_manage_location" value="Add Location">
+            <input type="submit" id="button_manage_location">
         </form>
     </div>
 </div>
@@ -119,7 +119,7 @@
                 </div>
             </div>
 
-            <input type="submit" id="button_manage_Authorization" value="Add Authorization">
+            <input type="submit" id="button_manage_Authorization">
         </form>
     </div>
 </div>

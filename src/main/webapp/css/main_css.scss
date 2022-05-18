@@ -123,6 +123,19 @@ a:visited {
     background: $color_primary; 
 }
 
+// RAG Elements ------------------------------------------------------
+
+.colorRed   { background-color: $color_rag_red }
+.colorGreen { background-color: $color_rag_green }
+.colorAmber { background-color: $color_rag_amber }
+.colorGrey  { background-color: $color_text_secondary }
+.colorBlue  { background-color: $color_sidebar_dark }
+
+.colorRedText   { color: $color_rag_red }
+.colorGreenText { color: $color_rag_green }
+.colorAmberText { color: $color_rag_amber }
+.colorGreyText  { color: $color_text_secondary }
+.colorBlueText  { color: $color_sidebar_dark }
 
 // Sidebar Elements --------------------------------------------------
 
@@ -435,7 +448,10 @@ table {
         left: 50%;
         transform: translate(-50%, -50%);
         
-        .pResponseText { display: none }
+        .pResponseText { 
+            display: none;
+            margin-top: 1rem;
+        }
 
         .cPopUpHeader {
             

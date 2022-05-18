@@ -30,15 +30,13 @@ $(document).ready(() => {
 
                 success: (res, statusText, rhx) => {
 
-                    $("#pManageUserResponse").css("display", "block");
-
+                    let messageStatus = "Successfully created a new user";
+                    
                     if (rhx.status !== 200) {
-                        
-                        $("#pManageUserResponse").text("Failed to create new User. Error Code: " + rhx.status);
-                        return;
+                        messageStatus = "Failed to create user. Error Code: " + rhx.status;
                     }
 
-                    $("#pManageUserResponse").text("Successfully created a new User");
+                    updateStatusText("#pManageUserResponse",rhx.status, messageStatus);
                     
                     $.fn.loadManageUserView();
 
@@ -64,15 +62,13 @@ $(document).ready(() => {
 
                 success: (res, statusText, rhx) => {
 
-                    $("#pManageUserResponse").css("display", "block");
-
+                    let messageStatus = "Successfully removed User";
+                    
                     if (rhx.status !== 200) {
-                        
-                        $("#pManageUserResponse").text("Failed to remove User. Error Code: " + rhx.status);
-                        return;
+                        messageStatus = "Failed to remove User. Error Code: " + rhx.status;
                     }
 
-                    $("#pManageUserResponse").text("Successfully removed User");
+                    updateStatusText("#pManageUserResponse",rhx.status, messageStatus);
                     
                     $.fn.loadManageUserView();
 
@@ -98,30 +94,27 @@ $(document).ready(() => {
 
         // remove and add user functionality
         if (removeLocation === false) {
-
-            const targetID = getDatabaseIDByLabel(locationName);
-
+           
             $.ajax({
                 
                 url: "/addLocation",
                 method: "PUT",
                 contentType: "application/json",
                 data: JSON.stringify({
-                    id: targetID,
+                    label: locationName,
+                    macAdress: locationMACAdress
                 }),
 
-                success: (res) => {
-
-                    $("#pManageLocationResponse").css("display", "block");
-
-                    if (res.status !== 200) {
-                        
-                        $("#pManageLocationResponse").text("Failed to create new User. Error Code: " + res.status);
-                        return;
+                success: (res, statusText, rhx) => {
+                
+                    let messageStatus = "Successfully created a new Location";
+                    
+                    if (rhx.status !== 200) {
+                        messageStatus = "Failed to create new Location. Error Code: " + rhx.status;
                     }
 
-                    $("#pManageLocationResponse").text("Successfully created a new User");
-                    
+                    updateStatusText("#pManageLocationResponse",rhx.status, messageStatus);
+
                     $.fn.loadManageLocations();
 
                     // clears input fields
@@ -132,27 +125,27 @@ $(document).ready(() => {
         
         } else {
 
+            const targetID = getDatabaseIDByLabel(locationName);
+
             $.ajax({
                 
-                url: "/removeLocation",
+                url: "/removeLocationById",
                 method: "DELETE",
                 contentType: "application/json",
                 data: JSON.stringify({
-                    label: locationName,
+                    id: targetID,
                 }),
 
-                success: (res) => {
-
-                    $("#pManageLocationResponse").css("display", "block");
-
-                    if (res.status !== 200) {
-                        
-                        $("#pManageLocationResponse").text("Failed to create new Location. Error Code: " + res.status);
-                        return;
+                success: (res, statusText, rhx) => {
+                
+                    let messageStatus = "Successfully removed location " + locationName;
+                    
+                    if (rhx.status !== 200) {
+                        messageStatus = "Failed to remove location " + locationName + ". Error Code: " + rhx.status;
                     }
 
-                    $("#pManageLocationResponse").text("Successfully created a new Location");
-                    
+                    updateStatusText("#pManageLocationResponse",rhx.status, messageStatus);
+
                     $.fn.loadManageLocations();
 
                     // clears input fields
@@ -162,10 +155,87 @@ $(document).ready(() => {
             });
         }
     });
+
+    // Manage Authorization View ---------------------------------------------------------------------------
+
+    $("#button_manage_Authorization").on("submit", (event) => {
+
+        // prevents POST form to refresh the page
+        event.preventDefault();
+
+        // retrieves data from input fields
+        const locationName = $("#iAuthLocationName").val();
+        const userName     =  $("#iAuthUserName").val();
+        
+        const removeLocation = document.querySelector("#popUpManageAuthorization").getAttribute("data-remove");
+
+        // remove and add user functionality
+        if (removeLocation === false) {
+            
+            $.ajax({
+                
+                url: "/addAuthorization",
+                method: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    label: locationName,
+                    name: userName
+                }),
+
+                success: (res, statusText, rhx) => {
+                
+                    let messageStatus = "Successfully granted user " + userName + " access to location: " + locationName;
+                    
+                    if (rhx.status !== 200) {
+                        messageStatus = "Failed to create new Authorisation. Error Code: " + rhx.status;
+                    }
+
+                    updateStatusText("#pManageAuthorizationResponse",rhx.status, messageStatus);
+
+                    $.fn.loadManageAuthorizations();
+
+                    // clears input fields
+                    $("#iAuthLocationName").val("");
+                    $("#iAuthUserName").val("");
+                }
+            });
+        
+        } else {
+
+            const targetAuthID = getDatabaseIDByLabel(userName + locationName);
+            
+            $.ajax({
+                
+                url: "/removeAuthorizationById",
+                method: "DELETE",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    id: targetAuthID,
+                }),
+
+                success: (res, statusText, rhx) => {
+                
+                    let messageStatus = "Successfully granted user " + userName + " access to location: " + locationName;
+                    
+                    if (rhx.status !== 200) {
+                        messageStatus = "Failed to create new Authorisation. Error Code: " + rhx.status;
+                    }
+
+                    updateStatusText("#pManageAuthorizationResponse",rhx.status, messageStatus);
+
+                    $.fn.loadManageAuthorizations();
+
+                    // clears input fields
+                    $("#iAuthLocationName").val("");
+                    $("#iAuthUserName").val("");
+                }
+            });
+        }
+    });
 });
 
+// searches all elements of class trCurData for id trDate + imLabel ------------------------------------------------
 
-// searches all elements of class trCurData for id trDate + imLabel
 function getDatabaseIDByLabel(imTargetLabel) {
 
     const tableData = document.querySelectorAll(".trCurData");
@@ -181,4 +251,20 @@ function getDatabaseIDByLabel(imTargetLabel) {
     
     console.error("Invalid Input. " + imTargetLabel + " cannot be found");
     return 0;
+}
+
+// updates information paragraph for a specific window --------------------------------------------------------------
+
+function updateStatusText(imElementID, imStatus, imMessage) {
+
+    const statusObj = document.querySelector(imElementID);
+    statusObj.style.display = "block";
+
+    if (imStatus === 200) {
+        statusObj.style.color = "green";
+    } else {
+        statusObj.style.color = "red";
+    }
+
+    statusObj.innerHTML = imMessage
 }

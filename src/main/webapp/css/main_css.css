@@ -112,6 +112,46 @@ a:visited {
   background: #e9676e;
 }
 
+.colorRed {
+  background-color: #ea1212;
+}
+
+.colorGreen {
+  background-color: #18BD47;
+}
+
+.colorAmber {
+  background-color: #f3ae00;
+}
+
+.colorGrey {
+  background-color: #8b92b0;
+}
+
+.colorBlue {
+  background-color: #0a0c16;
+}
+
+.colorRedText {
+  color: #ea1212;
+}
+
+.colorGreenText {
+  color: #18BD47;
+}
+
+.colorAmberText {
+  color: #f3ae00;
+}
+
+.colorGreyText {
+  color: #8b92b0;
+}
+
+.colorBlueText {
+  color: #0a0c16;
+}
+
 .cSidebar {
   height: 100vh;
   width: 15.5rem;
@@ -486,6 +526,7 @@ table tr:hover {
 
 .cPopUpModal .cPopUpContent .pResponseText {
   display: none;
+  margin-top: 1rem;
 }
 
 .cPopUpModal .cPopUpContent .cPopUpHeader {
