@@ -1,8 +1,10 @@
 package de.bakife.pumpkininternationalwebservice.controller;
 
 import de.bakife.pumpkininternationalwebservice.entities.Location;
+import de.bakife.pumpkininternationalwebservice.entities.LocationAuthorization;
 import de.bakife.pumpkininternationalwebservice.entities.Role;
 import de.bakife.pumpkininternationalwebservice.entities.User;
+import de.bakife.pumpkininternationalwebservice.repositories.LocationAuthorizationRepository;
 import de.bakife.pumpkininternationalwebservice.repositories.LocationRepository;
 import de.bakife.pumpkininternationalwebservice.repositories.RoleRepository;
 import de.bakife.pumpkininternationalwebservice.repositories.UserRepository;
@@ -41,6 +43,11 @@ public class FrontendController {
     private final RoleRepository roleRepository;
 
     /**
+     * the location authorization repository.
+     */
+    private final LocationAuthorizationRepository locationAuthorizationRepository;
+
+    /**
      * Constructor. Initializes the services.
      * @param userRepository the user repository.
      * @param locationRepository the location repository.
@@ -48,10 +55,12 @@ public class FrontendController {
      */
     public FrontendController(final UserRepository userRepository,
                               final LocationRepository locationRepository,
-                              final RoleRepository roleRepository) {
+                              final RoleRepository roleRepository,
+                              final LocationAuthorizationRepository locationAuthorizationRepository) {
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
         this.roleRepository = roleRepository;
+        this.locationAuthorizationRepository = locationAuthorizationRepository;
     }
 
     /**
@@ -83,6 +92,29 @@ public class FrontendController {
                         .collect(Collectors.toList());
         model.addAttribute("users", users);
         return "manage_users_view";
+    }
+
+    /**
+     * The location management page.
+     * @param model The model.
+     * @return The location management page.
+     */
+    @GetMapping("manageLocations")
+    public String getManageLocations(Model model) {
+        List<Location> locations =
+                StreamSupport.stream(this.locationRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        model.addAttribute("locations", locations);
+        return "manage_locations_view";
+    }
+
+    @GetMapping("/manageAuthorizations")
+    public String getManageAuthorizations(Model model) {
+        List<LocationAuthorization> authorizations =
+                StreamSupport.stream(this.locationAuthorizationRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        model.addAttribute("authorizations", authorizations);
+        return "manage_authorizations_view";
     }
 
     /**
