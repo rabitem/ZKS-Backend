@@ -30,45 +30,12 @@
             <jsp:useBean id="users" scope="request" type="java.util.List"/>
             <c:forEach items="${users}" var="user">
                 <tr>
+                    <td>${user.name}</td>
                     <td>${user.role}</td>
+                    <td>${user.rfid}</td>
+                    <td>${user.location.label}</td>
                 </tr>
             </c:forEach>
-
-            <%-- try {
-            
-                Class.forName("org.mariadb.jdbc.Driver");
-            
-                Connection connection=DriverManager.getConnection("jdbc:mariadb://localhost:3306/ZKS_Database","kilian","start123");
-                        
-                Statement stmt = connection.createStatement();
-            
-                ResultSet rslt = stmt.executeQuery("SELECT u.name, u.rfid, r.label as role, l.label as location 
-                                                    FROM user as u 
-                                                    INNER JOIN role as r 
-                                                        ON u.role = r.id
-                                                    INNER JOIN location as l
-                                                        ON u.current_loc = l.id;");
-            
-                while (rslt.next()) {  %>
-
-                    <tr>
-                        <td><%= rslt.name %></td>
-                        <td><%= rslt.role %></td>
-                        <td><%= rslt.rfid %></td>
-                        <td><%= rslt.location %></td>
-                    </tr>
-            
-                <%
-                }
-            
-                stmt.close();
-                connection.close();
-
-            } catch (Exception e) {
-                
-                out.println(e);
-            } --%>
-
         </table>
     </div>
 </div>

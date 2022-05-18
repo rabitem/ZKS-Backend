@@ -488,6 +488,10 @@ table tr:hover {
           transform: translate(-50%, -50%);
 }
 
+.cPopUpModal .cPopUpContent #pManageUserResponse {
+  display: none;
+}
+
 .cPopUpModal .cPopUpContent .cPopUpHeader {
   display: -webkit-box;
   display: -ms-flexbox;
