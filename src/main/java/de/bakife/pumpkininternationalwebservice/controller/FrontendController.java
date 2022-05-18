@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -108,15 +107,15 @@ public class FrontendController {
 
     /**
      * Removes a user from the database.
-     * @param removeUserByNamePayload The payload containing the user id.
+     * @param removeUserByIdPayload The payload containing the user id.
      * @return The response entity.
      */
     @DeleteMapping("/removeUserById")
-    public ResponseEntity<?> deleteUserById(@RequestBody @Valid RemoveUserByNamePayload removeUserByNamePayload) {
-        log.info("Removing user request for id: {}", removeUserByNamePayload.getId());
+    public ResponseEntity<?> deleteUserById(@RequestBody @Valid FrontendController.RemoveUserByIdPayload removeUserByIdPayload) {
+        log.info("Removing user request for id: {}", removeUserByIdPayload.getId());
 
         // remove user
-        userRepository.deleteById(removeUserByNamePayload.getId());
+        userRepository.deleteById(removeUserByIdPayload.getId());
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -135,7 +134,7 @@ public class FrontendController {
      * The payload for removing a user.
      */
     @Data
-    static class RemoveUserByNamePayload {
+    static class RemoveUserByIdPayload {
         private int id;
     }
 }
