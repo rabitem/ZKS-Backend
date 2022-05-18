@@ -25,7 +25,18 @@
             </tr>
             <!-- Generated JSP Content -->
             <% 
-            try {
+            for (userObj : users) { %>
+
+                <tr>
+                    <td><%= users.getName() %></td>
+                    <td><%= users.getRole() %></td>
+                    <td><%= users.getRfid() %></td>
+                    <td><%= users.getLocation().getLabel() %></td>
+                </tr>
+
+            <% } %>
+
+            <%-- try {
             
                 Class.forName("org.mariadb.jdbc.Driver");
             
@@ -33,26 +44,32 @@
                         
                 Statement stmt = connection.createStatement();
             
-                ResultSet rslt = stmt.executeQuery("SELECT u.name, u.rfid, r.label as role, l.label as location FROM user as u INNER JOIN role as r ON u.role = r.id INNER JOIN location as l ON u.current_loc = l.id;");
+                ResultSet rslt = stmt.executeQuery("SELECT u.name, u.rfid, r.label as role, l.label as location 
+                                                    FROM user as u 
+                                                    INNER JOIN role as r 
+                                                        ON u.role = r.id
+                                                    INNER JOIN location as l
+                                                        ON u.current_loc = l.id;");
             
                 while (rslt.next()) {  %>
 
                     <tr>
-                        <td><%= rslt.getString(1) %></td>
-                        <td><%= rslt.getString(2) %></td>
-                        <td><%= rslt.getString(3) %></td>
-                        <td><%= rslt.getString(4) %></td>
+                        <td><%= rslt.name %></td>
+                        <td><%= rslt.role %></td>
+                        <td><%= rslt.rfid %></td>
+                        <td><%= rslt.location %></td>
                     </tr>
             
-                 <% }
-            
-                    stmt.close();
-                    connection.close();
-
-                } catch (Exception e) {
-                    
-                    out.println(e);
+                <%
                 }
+            
+                stmt.close();
+                connection.close();
+
+            } catch (Exception e) {
+                
+                out.println(e);
+            } --%>
             %>
 
         </table>
