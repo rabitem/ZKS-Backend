@@ -7,20 +7,20 @@ $(document).ready(() => {
         event.preventDefault();
 
         // retrieves data from input fields
-        const userName = $("#iUserName").val();
-        const userRole = $("#iUserRole").val();
-        const userRFID = $("#iUserRFID").val();
+        const name = $("#iUserName").val();
+        const role = $("#iUserRole").val();
+        const rfid = $("#iUserRFID").val();
 
         // execute post request
         $.ajax({
             
-            url: "/addNewUser",
+            url: "/addUser",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                newUserName: userName,
-                newUserRole: userRole,
-                newUserRDIF: userRFID
+                name: name,
+                role: role,
+                rfid: rfid
             }),
 
             success: (res) => {
