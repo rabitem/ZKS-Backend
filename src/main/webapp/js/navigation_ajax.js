@@ -63,7 +63,7 @@ $.fn.loadManageAuthorizations = async () => {
 
 $.fn.loadTempView = () => {
 
-    $.fn.loadNewMainContent("/viewTemparature", "- View Temparatures");
+    $.fn.loadNewMainContent("/viewTemperature", "- View Temperatures");
 }
 
 $.fn.loadLogsViews = () => {

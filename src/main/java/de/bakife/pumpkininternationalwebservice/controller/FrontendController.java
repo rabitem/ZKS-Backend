@@ -49,6 +49,11 @@ public class FrontendController {
     private final AuthorizationHistoryRepository authorizationHistoryRepository;
 
     /**
+     * The location template repository.
+     */
+    private final LocationTemperatureRepository locationTemperatureRepository;
+
+    /**
      * Constructor. Initializes the services.
      * @param userRepository the user repository.
      * @param locationRepository the location repository.
@@ -58,12 +63,14 @@ public class FrontendController {
                               final LocationRepository locationRepository,
                               final RoleRepository roleRepository,
                               final LocationAuthorizationRepository locationAuthorizationRepository,
-                              final AuthorizationHistoryRepository authorizationHistoryRepository) {
+                              final AuthorizationHistoryRepository authorizationHistoryRepository,
+                              final LocationTemperatureRepository locationTemperatureRepository) {
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
         this.roleRepository = roleRepository;
         this.locationAuthorizationRepository = locationAuthorizationRepository;
         this.authorizationHistoryRepository = authorizationHistoryRepository;
+        this.locationTemperatureRepository = locationTemperatureRepository;
     }
 
     /**
@@ -257,6 +264,15 @@ public class FrontendController {
                         .collect(Collectors.toList());
         model.addAttribute("logs", logs);
         return "logs_view";
+    }
+
+    @GetMapping("/viewTemperature")
+    public String getTemperature(Model model) {
+        List<LocationTemperature> temperatures =
+                StreamSupport.stream(this.locationTemperatureRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        model.addAttribute("temperatures", temperatures);
+        return "temperature_view";
     }
 
     /**

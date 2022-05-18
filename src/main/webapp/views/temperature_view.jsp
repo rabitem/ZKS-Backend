@@ -8,14 +8,12 @@
         <h2>Temperature Data</h2>
         <table>
             <tr>
-                <th>User Name</th>
-                <th>User Role</th>
-                <th>User RFID</th>
-                <th>Current Location</th>
+                <th>Temperature</th>
+                <th>Timestamp</th>
             </tr>
             <!-- Generated JSP Content -->
-            <jsp:useBean id="location_temperature" scope="request" type="java.util.List"/>
-            <c:forEach items="${location_temperature}" var="temperature">
+            <jsp:useBean id="temperatures" scope="request" type="java.util.List"/>
+            <c:forEach items="${temperatures}" var="temperature">
                 <tr class = "trCurData" id = "trData${temperature.id}" data-valueID = ${temperature.id}>
                     <td>${temperature.temperature}</td>
                     <td>${temperature.timestamp}</td>
