@@ -33,7 +33,7 @@
 
             <div class="cInputWrapper" id = "inputWrapperRole">
                 <div class="cSingleInput">
-                    <input type="text"  id="iUserRole" name="iUserRole" required
+                    <input type="text"  id="iUserRole" name="iUserRole"
                            onfocus="pInputOnFocus('iUserRole', 'lUserRoleLabel', 'cUserRoleUnderline')"
                            onblur="pInputOnBlur('iUserRole', 'lUserRoleLabel', 'cUserRoleUnderline')">
                     <div class="cInputUnderline" id="cUserRoleUnderline"></div>
@@ -43,7 +43,7 @@
 
             <div class="cInputWrapper" id = "inputWrapperRFID">
                 <div class="cSingleInput">
-                    <input type="text"  id="iUserRFID" name="iUserRFID" required
+                    <input type="text"  id="iUserRFID" name="iUserRFID"
                            onfocus="pInputOnFocus('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')"
                            onblur="pInputOnBlur('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')">
                     <div class="cInputUnderline" id="cUserFIDUnderline"></div>

@@ -55,7 +55,7 @@ $(document).ready(() => {
 
             $.ajax({
                 
-                url: "/removeUser",
+                url: "/removeUserById",
                 method: "DELETE",
                 contentType: "application/json",
                 data: JSON.stringify({
@@ -170,17 +170,14 @@ function getDatabaseIDByLabel(imTargetLabel) {
 
     const tableData = document.querySelectorAll(".trCurData");
 
-    tableData.forEach(obj => {
-        
-        const objHTLMID = obj.id;
+    for (let i = 0; i < tableData.length; i++) {
+        const obj = tableData[i];
+        console.log(obj.getAttribute("data-valueID"));
 
-        if (objHTLMID === "trData" + imTargetLabel) {
-
-            const targetID = obj.getAttribute("data-valueID");
-
-            return targetID;
+        if (obj.id === "trData" + imTargetLabel) {
+            return obj.getAttribute("data-valueID");
         }
-    });
+    }
     
     console.error("Invalid Input. " + imTargetLabel + " cannot be found");
     return 0;
