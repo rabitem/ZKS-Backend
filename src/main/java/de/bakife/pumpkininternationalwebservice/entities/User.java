@@ -37,8 +37,10 @@ public class User {
     @Setter
     private Location location;
 
-    @Column(name = "role", nullable = true)
-    @Enumerated(EnumType.ORDINAL)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role", referencedColumnName = "id")
+    @Getter
+    @Setter
     private Role role;
 
     @OneToMany(mappedBy = "user")

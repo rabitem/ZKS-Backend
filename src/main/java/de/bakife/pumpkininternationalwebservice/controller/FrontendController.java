@@ -3,8 +3,12 @@ package de.bakife.pumpkininternationalwebservice.controller;
 import de.bakife.pumpkininternationalwebservice.entities.Role;
 import de.bakife.pumpkininternationalwebservice.entities.User;
 import de.bakife.pumpkininternationalwebservice.repositories.LocationRepository;
+import de.bakife.pumpkininternationalwebservice.repositories.RoleRepository;
 import de.bakife.pumpkininternationalwebservice.repositories.UserRepository;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -21,14 +26,33 @@ import java.util.stream.StreamSupport;
 @Controller
 public class FrontendController {
 
+    /**
+     * the user repository.
+     */
     private final UserRepository userRepository;
 
+    /**
+     * the location repository.
+     */
     private final LocationRepository locationRepository;
 
+    /**
+     * the role repository.
+     */
+    private final RoleRepository roleRepository;
+
+    /**
+     * Constructor. Initializes the services.
+     * @param userRepository the user repository.
+     * @param locationRepository the location repository.
+     * @param roleRepository the role repository.
+     */
     public FrontendController(final UserRepository userRepository,
-                              final LocationRepository locationRepository) {
+                              final LocationRepository locationRepository,
+                              final RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
+        this.roleRepository = roleRepository;
     }
 
     /**
@@ -51,5 +75,37 @@ public class FrontendController {
                         .collect(Collectors.toList());
         model.addAttribute("users", users);
         return "manage_users_view";
+    }
+
+    /**
+     * Adds a user to the database.
+     * @param addUserPayload The payload containing the user data.
+     * @return The response entity.
+     */
+    @PostMapping("/addUser")
+    public ResponseEntity<?> addUser(@RequestBody @Valid AddUserPayload addUserPayload) {
+        log.info("Adding user request: {}", addUserPayload);
+
+        // create user
+        User user = new User();
+        user.setRfid(addUserPayload.getRfid());
+        user.setName(addUserPayload.getName());
+        user.setRole(roleRepository.findByLabel(addUserPayload.getRole()).orElseThrow());
+        user.setLocation(locationRepository.findById(1).orElseThrow());
+
+        // save user
+        userRepository.save(user);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    /**
+     * The payload for adding a user.
+     */
+    @Data
+    static class AddUserPayload {
+        private String name;
+        private String role;
+        private String rfid;
     }
 }
