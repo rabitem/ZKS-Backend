@@ -1,6 +1,6 @@
 CREATE TABLE `location` (
                             `id` int(11) NOT NULL AUTO_INCREMENT,
-                            `mac_address` varchar(12) NOT NULL,
+                            `mac_address` varchar(255) NOT NULL,
                             `label` varchar(255) NOT NULL,
                             PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
@@ -17,7 +17,7 @@ CREATE TABLE `user` (
                         `rfid` varchar(255) NOT NULL,
                         `password` varchar(255) DEFAULT NULL,
                         `role` int(11) DEFAULT NULL,
-                        `current_loc` int(11) NOT NULL DEFAULT 1,
+                        `current_loc` int(11) DEFAULT NULL,
                         PRIMARY KEY (`id`),
                         KEY `role` (`role`),
                         KEY `currentLoc` (`current_loc`),
