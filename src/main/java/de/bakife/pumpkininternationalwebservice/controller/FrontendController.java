@@ -1,6 +1,7 @@
 package de.bakife.pumpkininternationalwebservice.controller;
 
 import de.bakife.pumpkininternationalwebservice.entities.Role;
+import de.bakife.pumpkininternationalwebservice.entities.User;
 import de.bakife.pumpkininternationalwebservice.repositories.LocationRepository;
 import de.bakife.pumpkininternationalwebservice.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -39,7 +40,6 @@ public class FrontendController {
     @PostMapping("/manageUsers")
     public String postManageUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
-        model.addAttribute("locations", locationRepository.findAll());
         return "manage_users_view";
     }
 }
