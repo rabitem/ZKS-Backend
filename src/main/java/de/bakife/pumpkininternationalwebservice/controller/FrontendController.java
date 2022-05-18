@@ -1,13 +1,7 @@
 package de.bakife.pumpkininternationalwebservice.controller;
 
-import de.bakife.pumpkininternationalwebservice.entities.Location;
-import de.bakife.pumpkininternationalwebservice.entities.LocationAuthorization;
-import de.bakife.pumpkininternationalwebservice.entities.Role;
-import de.bakife.pumpkininternationalwebservice.entities.User;
-import de.bakife.pumpkininternationalwebservice.repositories.LocationAuthorizationRepository;
-import de.bakife.pumpkininternationalwebservice.repositories.LocationRepository;
-import de.bakife.pumpkininternationalwebservice.repositories.RoleRepository;
-import de.bakife.pumpkininternationalwebservice.repositories.UserRepository;
+import de.bakife.pumpkininternationalwebservice.entities.*;
+import de.bakife.pumpkininternationalwebservice.repositories.*;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -50,6 +44,11 @@ public class FrontendController {
     private final LocationAuthorizationRepository locationAuthorizationRepository;
 
     /**
+     * the authorization history repository.
+     */
+    private final AuthorizationHistoryRepository authorizationHistoryRepository;
+
+    /**
      * Constructor. Initializes the services.
      * @param userRepository the user repository.
      * @param locationRepository the location repository.
@@ -58,11 +57,13 @@ public class FrontendController {
     public FrontendController(final UserRepository userRepository,
                               final LocationRepository locationRepository,
                               final RoleRepository roleRepository,
-                              final LocationAuthorizationRepository locationAuthorizationRepository) {
+                              final LocationAuthorizationRepository locationAuthorizationRepository,
+                              final AuthorizationHistoryRepository authorizationHistoryRepository) {
         this.userRepository = userRepository;
         this.locationRepository = locationRepository;
         this.roleRepository = roleRepository;
         this.locationAuthorizationRepository = locationAuthorizationRepository;
+        this.authorizationHistoryRepository = authorizationHistoryRepository;
     }
 
     /**
@@ -247,6 +248,15 @@ public class FrontendController {
         }
 
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/viewLogs")
+    public String getLogs(Model model) {
+        List<AuthorizationHistory> logs =
+                StreamSupport.stream(this.authorizationHistoryRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        model.addAttribute("logs", logs);
+        return "logs_view";
     }
 
     /**
