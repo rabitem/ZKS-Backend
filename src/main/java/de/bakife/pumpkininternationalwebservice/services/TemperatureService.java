@@ -15,18 +15,33 @@ import java.util.Optional;
 @Slf4j
 public class TemperatureService {
 
+    /**
+     * The Location Temperature repository.
+     */
     private final LocationTemperatureRepository locationTemperatureRepository;
 
-
+    /**
+     * The Location repository.
+     */
     private final LocationRepository locationRepository;
 
+    /**
+     * Constructor. Initializes the repositories.
+     * @param locationTemperatureRepository The location temperature repository.
+     * @param locationRepository The location repository.
+     */
     public TemperatureService(final LocationTemperatureRepository locationTemperatureRepository,
                               final LocationRepository locationRepository) {
         this.locationTemperatureRepository = locationTemperatureRepository;
         this.locationRepository = locationRepository;
     }
 
-
+    /**
+     * Save the temperature for a location.
+     * @param macAddress The mac address of the location.
+     * @param temperature The temperature.
+     * @throws IllegalArgumentException If the mac address is not found.
+     */
     public void saveLocationTemperature(final String macAddress, final float temperature) throws IllegalArgumentException {
         Location location;
         try {

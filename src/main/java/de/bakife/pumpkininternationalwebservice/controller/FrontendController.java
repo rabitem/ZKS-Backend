@@ -44,8 +44,8 @@ public class FrontendController {
      * The user management page.
      * @return The user management page.
      */
-    @PostMapping("/manageUsers")
-    public String postManageUsers(Model model) {
+    @GetMapping("/manageUsers")
+    public String getManageUsers(Model model) {
         List<User> users =
                 StreamSupport.stream(userRepository.findAll().spliterator(), true)
                         .collect(Collectors.toList());
