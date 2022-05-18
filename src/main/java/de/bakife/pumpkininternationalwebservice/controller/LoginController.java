@@ -61,6 +61,4 @@ public class LoginController {
         User user = this.loginService.checkUserByRfid(rfid);
         return new ResponseEntity<>(user.getLocation().getId() != 1, HttpStatus.OK);
     }
-
-
 }
