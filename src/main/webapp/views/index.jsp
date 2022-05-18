@@ -33,7 +33,7 @@
 
             <div class="cInputWrapper" id = "inputWrapperRole">
                 <div class="cSingleInput">
-                    <input type="text"  id="iUserRole" name="iUserRole"
+                    <input type="text"  id="iUserRole" name="iUserRole" required
                            onfocus="pInputOnFocus('iUserRole', 'lUserRoleLabel', 'cUserRoleUnderline')"
                            onblur="pInputOnBlur('iUserRole', 'lUserRoleLabel', 'cUserRoleUnderline')">
                     <div class="cInputUnderline" id="cUserRoleUnderline"></div>
@@ -43,7 +43,7 @@
 
             <div class="cInputWrapper" id = "inputWrapperRFID">
                 <div class="cSingleInput">
-                    <input type="text"  id="iUserRFID" name="iUserRFID"
+                    <input type="text"  id="iUserRFID" name="iUserRFID" required
                            onfocus="pInputOnFocus('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')"
                            onblur="pInputOnBlur('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')">
                     <div class="cInputUnderline" id="cUserFIDUnderline"></div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <input type="submit" id="button_Add_user">
+            <input type="submit" id="button_Add_user" value = "Add User">
         </form>
     </div>
 </div>
@@ -73,7 +73,7 @@
                 </div>
             </div>     
 
-            <input type="submit" id="button_Remove_user">
+            <input type="submit" id="button_Remove_user" value = "Remove User">
         </form>
     </div>
 </div>
@@ -223,7 +223,6 @@
         <div class = "cHeader">
             <h1 id = "hCorpName">Pumpkin Intl.</h1>
             <h1 id = "hCurView" > - Manage Users</h1>
-            <p class = "paragraphHeaderDate"><%= "THIS IS JSP"  %></p>
         </div>
         <div class = "cMainContent">
             <!-- Global Spinning Bar -->
