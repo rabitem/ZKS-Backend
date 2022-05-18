@@ -40,8 +40,6 @@ jobs:
           cd /home/felix/ZKS-Backend
           echo "Pull latest changes from Main"
           git pull origin main
-          echo "Run a clean install"
-          mvn clean install
           if [ $? -eq 0 ]; then
             echo "Successfully installed"
             echo "Starting Server"
