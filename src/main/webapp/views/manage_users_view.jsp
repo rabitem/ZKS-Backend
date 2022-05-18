@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List"%>
 <%@ page import = "java.sql.*" %>
 
 <div class="cMainContentManageUsers" id = "cMainContentSubFolder">
@@ -24,17 +27,12 @@
                 <th>Current Location</th>
             </tr>
             <!-- Generated JSP Content -->
-            <% 
-            for (userObj : users) { %>
-
+            <jsp:useBean id="users" scope="request" type="java.util.List"/>
+            <c:forEach items="${users}" var="user">
                 <tr>
-                    <td><%= users.getName() %></td>
-                    <td><%= users.getRole() %></td>
-                    <td><%= users.getRfid() %></td>
-                    <td><%= users.getLocation().getLabel() %></td>
+                    <td>${user.role}</td>
                 </tr>
-
-            <% } %>
+            </c:forEach>
 
             <%-- try {
             
@@ -70,7 +68,6 @@
                 
                 out.println(e);
             } --%>
-            %>
 
         </table>
     </div>

@@ -7,8 +7,15 @@ import de.bakife.pumpkininternationalwebservice.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Slf4j
 @Controller
@@ -39,7 +46,10 @@ public class FrontendController {
      */
     @PostMapping("/manageUsers")
     public String postManageUsers(Model model) {
-        model.addAttribute("users", userRepository.findAll());
+        List<User> users =
+                StreamSupport.stream(userRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        model.addAttribute("users", users);
         return "manage_users_view";
     }
 }
