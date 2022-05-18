@@ -46,7 +46,8 @@ $(document).ready(() => {
 $.fn.loadManageUserView = async () => {
 
     await $.fn.loadNewMainContent("/manageUsers", "- Manage Users");
-    initializeManageUsers();
+    initializeAddUsers();
+    initializeRemoveUsers();
 }
 
 $.fn.loadManageLocations = async () => {
