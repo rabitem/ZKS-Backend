@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -125,8 +127,11 @@ public class FrontendController {
      */
     @Data
     static class AddUserPayload {
+        @NotBlank(message = "Name is required")
         private String name;
+        @NotBlank(message = "Role is required")
         private String role;
+        @NotBlank(message = "RFID must not be empty")
         private String rfid;
     }
 
@@ -135,6 +140,7 @@ public class FrontendController {
      */
     @Data
     static class RemoveUserByIdPayload {
+        @Positive(message = "id must be positive")
         private int id;
     }
 }
