@@ -132,7 +132,7 @@ public class LoginService {
      * @return user
      * @throws IllegalArgumentException if user does not exist
      */
-    private User checkUserByRfid(String rfid) throws IllegalArgumentException {
+    public User checkUserByRfid(String rfid) throws IllegalArgumentException {
         Optional<User> user = this.userRepository.findByRfid(rfid);
         if (user.isEmpty()) {
             throw new IllegalArgumentException("User not found");

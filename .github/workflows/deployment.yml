@@ -1,0 +1,53 @@
+name: Deployment Workflow
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  job_one:
+    name: Kill old instances
+    runs-on: ubuntu-latest
+    environment: Strato Server
+    steps:
+      - name: Kill all running processes
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "Kill all running processes"
+            killall -9 java > /dev/null 2>&1 || true
+  job_two:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment: Strato Server
+    needs: job_one
+    steps:
+    - name: Run Tests and start application
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+          cd /home/felix/ZKS-Backend
+          echo "Pull latest changes from Main"
+          git pull origin main
+          if [ $? -eq 0 ]; then
+            echo "Successfully installed"
+            echo "Starting Server"
+            ./scripts/start.sh
+            exit 0
+          else
+            echo "Test failed"
+            echo "Exiting Deployment"
+            exit 1
+          fi
