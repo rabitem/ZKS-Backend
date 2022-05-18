@@ -35,6 +35,7 @@ function initializeManageUsers () {
     // hide and show inputs, based on add/remove option
     const inputWrapperRole = document.querySelector("#inputWrapperRole");
     const inputWrapperRFID = document.querySelector("#inputWrapperRFID");
+    const submitButton     = document.querySelector("#button_manage_location");
  
     // add new user
     addUserBtn.addEventListener("click", () => {
@@ -45,7 +46,7 @@ function initializeManageUsers () {
 
         manageUsersModal.setAttribute("data-remove", false);
 
-        addUserBtn.innerHTML = "Add User";
+        submitButton.value = "Add User";
     });
 
     // try to remove existing user
@@ -57,7 +58,7 @@ function initializeManageUsers () {
         inputWrapperRole.style.display = "none";
         inputWrapperRFID.style.display = "none";
     
-        addUserBtn.innerHTML = "Remove User";
+        submitButton.value = "Remove User";
 
         manageUsersModal.setAttribute("data-remove", true);
     });
@@ -84,7 +85,7 @@ function initializeManageLocations () {
     // hide and show inputs, based on add/remove option
     const inputWrapperRole = document.querySelector("#inputWrapperRole");
     const inputWrapperRFID = document.querySelector("#inputWrapperRFID");
- 
+    const submitButton     = document.querySelector("#button_manage_location");
     // add new Location
     addLocationBtn.addEventListener("click", () => {
         
@@ -94,7 +95,7 @@ function initializeManageLocations () {
 
         manageLocationsModal.setAttribute("data-remove", false);
 
-        addLocationBtn.innerHTML = "Add Location";
+        submitButton.value = "Add Location";
     });
 
     // try to remove existing Location
@@ -106,7 +107,7 @@ function initializeManageLocations () {
         inputWrapperRole.style.display = "none";
         inputWrapperRFID.style.display = "none";
     
-        addLocationBtn.innerHTML = "Remove Location";
+        submitButton.value = "Remove Location";
 
         manageLocationsModal.setAttribute("data-remove", true);
     });

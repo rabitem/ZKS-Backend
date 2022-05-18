@@ -388,10 +388,6 @@ a:visited {
           transform: scale(0.55);
 }
 
-.cAdjustments .cOptions p {
-  font-weight: bold;
-}
-
 table {
   border-collapse: collapse;
   width: 100%;
