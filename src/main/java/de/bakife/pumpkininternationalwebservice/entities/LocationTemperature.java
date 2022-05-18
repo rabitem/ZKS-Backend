@@ -28,5 +28,5 @@ public class LocationTemperature {
 
     @Column(name = "timestamp")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date dateCreated;
+    private Date timestamp;
 }
