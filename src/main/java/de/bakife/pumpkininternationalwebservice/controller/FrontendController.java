@@ -234,7 +234,7 @@ public class FrontendController {
      * @param removeAuthorizationPayload The payload containing the location authorization id.
      * @return The response entity.
      */
-    @DeleteMapping("/removeAuthorization")
+    @DeleteMapping("/removeAuthorizationById")
     public ResponseEntity<?> deleteAuthorization(@RequestBody @Valid RemoveAuthorizationPayload removeAuthorizationPayload) {
         log.info("Removing authorization request for id: {}", removeAuthorizationPayload.getId());
 

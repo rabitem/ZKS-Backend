@@ -73,8 +73,12 @@ public class LoginService {
         } catch (IllegalArgumentException e) {
             result.put("status", "400");
             result.put("message", "Something went wrong while fetching User or Location!");
+            result.put("user", null);
             return result;
         }
+
+        // add user to result
+        result.put("user", user.getName());
 
         // if user is logged in
         if (Objects.nonNull(user.getLocation())) {
@@ -90,9 +94,9 @@ public class LoginService {
             }
             // user logged in elsewhere, throw error
             else {
-                this.createAuthorizationHistory(user, location, Constants.USER_ALREADY_LOGGED_IN);
-                result.put("status", "400");
-                result.put("message", Constants.USER_ALREADY_LOGGED_IN);
+                this.createAuthorizationHistory(user, location, Constants.USER_ALREADY_LOGGED_IN_ELSEWHERE);
+                result.put("status", "409");
+                result.put("message", Constants.USER_ALREADY_LOGGED_IN_ELSEWHERE);
             }
             return result;
         }
@@ -105,7 +109,7 @@ public class LoginService {
             this.createAuthorizationHistory(user, location, Constants.SUCCESSFULLY_LOGGED_IN);
 
             result.put("status", "200");
-            result.put("message", user.getName());
+            result.put("message", Constants.SUCCESSFULLY_LOGGED_IN);
             return result;
         }
         // user not authorized, throw error

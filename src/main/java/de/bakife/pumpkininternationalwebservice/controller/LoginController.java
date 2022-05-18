@@ -2,6 +2,7 @@ package de.bakife.pumpkininternationalwebservice.controller;
 
 import de.bakife.pumpkininternationalwebservice.entities.User;
 import de.bakife.pumpkininternationalwebservice.services.LoginService;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -40,11 +41,24 @@ public class LoginController {
      */
     @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<String> login(@RequestBody Map<String, Object> payload) {
+    public ResponseEntity<LoginResponse> login(@RequestBody Map<String, Object> payload) {
         String rfid = (String) payload.get("rfid");
         String macAddress = (String) payload.get("macAddress");
         log.info("login requested with rfid: {} to {}", rfid, macAddress);
         Map<String, String> result = this.loginService.login(rfid, macAddress);
-        return new ResponseEntity<>(result.get("message"), HttpStatus.valueOf(Integer.parseInt(result.get("status"))));
+
+        LoginResponse response = new LoginResponse();
+        response.setMessage(result.get("message"));
+        response.setUser(result.get("user"));
+        return new ResponseEntity<>(response, HttpStatus.valueOf(Integer.parseInt(result.get("status"))));
+    }
+
+    /**
+     * Response entity for login.
+     */
+    @Data
+    static class LoginResponse {
+        private String message;
+        private String user;
     }
 }

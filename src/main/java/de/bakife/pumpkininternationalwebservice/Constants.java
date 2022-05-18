@@ -12,17 +12,17 @@ public class Constants {
     /**
      * Constant for successful login.
      */
-    public static final String SUCCESSFULLY_LOGGED_IN = "Successfully logged in";
+    public static final String SUCCESSFULLY_LOGGED_IN = "Login";
 
     /**
      * Constant for successful logout.
      */
-    public static final String SUCCESSFULLY_LOGGED_OUT = "Successfully logged out";
+    public static final String SUCCESSFULLY_LOGGED_OUT = "Logout";
 
     /**
      * Constant for already logged in.
      */
-    public static final String USER_ALREADY_LOGGED_IN = "User already logged in";
+    public static final String USER_ALREADY_LOGGED_IN_ELSEWHERE = "Logged in elsewhere";
 
     /**
      * Constant for not authorized.

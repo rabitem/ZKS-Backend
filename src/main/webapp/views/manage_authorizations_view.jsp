@@ -35,7 +35,7 @@
                     <td>${authObj.user.role}</td>
                     <td>${authObj.user.rfid}</td>
                     <td>${authObj.location.label}</td>
-                    <td>${authObj.location.macAdress}</td>
+                    <td>${authObj.location.macAddress}</td>
                 </tr>
             </c:forEach>
         </table>
