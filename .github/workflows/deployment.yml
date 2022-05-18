@@ -27,6 +27,7 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     environment: Strato Server
+    needs: job_one
     steps:
     - name: Run Tests and start application
       uses: appleboy/ssh-action@master
