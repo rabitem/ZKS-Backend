@@ -359,11 +359,11 @@ a:visited {
 
 // Options for Buttons --------------------------------------------------
 
-#svgAddSign path {
+.svgAdd path {
     stroke: $color_rag_green;
 }
 
-#svgRemoveSign path {
+.svgRemove path {
     stroke: $color_primary;
 }
 

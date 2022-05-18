@@ -410,11 +410,11 @@ a:visited {
   margin-bottom: 1rem;
 }
 
-#svgAddSign path {
+.svgAdd path {
   stroke: #18BD47;
 }
 
-#svgRemoveSign path {
+.svgRemove path {
   stroke: #e9676e;
 }
 
