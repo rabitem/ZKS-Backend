@@ -173,4 +173,15 @@ public class LoginService {
         authorizationHistory.setTimestamp(new Date());
         this.authorizationHistoryRepository.save(authorizationHistory);
     }
+
+    /**
+     * Determine if user is logged in.
+     * @param  rfid of user
+     * @return True if user is logged in, false otherwise.
+     * @throws IllegalArgumentException If user does not exist.
+     */
+    public boolean isLoggedIn(String rfid) throws NoSuchElementException {
+        User user = this.userRepository.findByRfid(rfid).orElseThrow();
+        return Objects.nonNull(user.getLocation());
+    }
 }

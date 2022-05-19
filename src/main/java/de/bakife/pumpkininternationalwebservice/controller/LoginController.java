@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 import java.util.Map;
 
 /**
@@ -51,6 +54,32 @@ public class LoginController {
         response.setMessage(result.get("message"));
         response.setUser(result.get("user"));
         return new ResponseEntity<>(response, HttpStatus.valueOf(Integer.parseInt(result.get("status"))));
+    }
+
+    /**
+     * Determine if the given user is logged in.
+     * @param request The request containing the rfid.
+     * @return The response entity.
+     */
+    @GetMapping(value = "/isLoggedIn", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<?> isLoggedIn(@RequestBody @Valid IsLoggedInRequest request) {
+        log.info("isLoggedIn requested with rfid: {}", request.getRfid());
+        try {
+            return new ResponseEntity<>(this.loginService.isLoggedIn(request.getRfid()), HttpStatus.OK);
+        } catch (Exception e) {
+            log.error("Error while checking if user is logged in: {}", e.getMessage());
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    /**
+     * The payload for the isLoggedIn request.
+     */
+    @Data
+    static class IsLoggedInRequest {
+        @NotBlank(message = "RFID must be given!")
+        private String rfid;
     }
 
     /**
