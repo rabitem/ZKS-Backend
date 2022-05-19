@@ -23,35 +23,35 @@ $(document).ready(() => {
                 rfid: rfid
             }),
 
-            success: (res, statusText, rhx) => {
+            success: () => {
 
-                let messageStatus = "Successfully created a new user";
-
-                if (rhx.status !== 200) {
-                    messageStatus = "Failed to create user. Error Code: " + rhx.status;
-                }
-
-                updateStatusText("#pAddUserResponse", rhx.status, messageStatus);
+                updateStatusText("#pAddUserResponse", 200, "Successfully created a new user!");
 
                 $.fn.loadManageUserView();
 
-                // clears input fields
+                // clear input fields
                 $("#iUserName").val("");
                 $("#iUserRole").val("");
                 $("#iUserRFID").val("");
+            },
+
+            error: (err) => {
+
+                updateStatusText("#pAddUserResponse", err.status,
+                    "Failed to add a new User! Error Code: " + err.status);
             }
         });
-
     });
 
-    // Remove Users Form ----------------------------------------------------------------------------------
+    // Remove Users Form -------------------------------------------------------------------------------
+
     $("#removeUserForm").on("submit", (event) => {
 
         // prevents POST form to refresh the page
         event.preventDefault();
+        
         const id = $("#pRemoveUserDropFirst").attr("data-id");
-        const targetID = getDatabaseIDByLabel(id);
-
+        
         $.ajax({
 
             url: "/removeUserById",
@@ -61,102 +61,101 @@ $(document).ready(() => {
                 id: id
             }),
 
-            success: (res, statusText, rhx) => {
+            success: () => {
 
-                let messageStatus = "Successfully removed User";
-
-                if (rhx.status !== 200) {
-                    messageStatus = "Failed to remove User. Error Code: " + rhx.status;
-                }
-
-                updateStatusText("#pRemoveUserResponse", rhx.status, messageStatus);
+                updateStatusText("#pRemoveUserResponse", 200, "Successfully removed user!");
 
                 $.fn.loadManageUserView();
 
-                // clears input fields
-                $("#iUserName").val("");
+            },
+
+            error: (err) => {
+
+                updateStatusText("#pRemoveUserResponse", err.status,
+                    "Failed to remove User! Error Code: " + err.status);
             }
         });
     });
 
-    // Manage Locations View ------------------------------------------------------------------------------
+    // Add Locations View ------------------------------------------------------------------------------
 
-    $("#updateLocationForm").on("submit", (event) => {
+    $("#addLocationForm").on("submit", (event) => {
 
         // prevents POST form to refresh the page
         event.preventDefault();
 
         // retrieves data from input fields
-        const locationName = $("#iLocationName").val();
+        const locationName      = $("#iLocationName").val();
         const locationMACAdress = $("#iLocationMACAdress").val();
 
-        const removeLocation = document.querySelector("#popUpManageLocation").getAttribute("data-remove");
+        $.ajax({
 
-        // remove and add user functionality
-        if (removeLocation === "false") {
+            url: "/addLocation",
+            method: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify({
+                label: locationName,
+                macAddress: locationMACAdress
+            }),
 
-            $.ajax({
+            success: () => {
 
-                url: "/addLocation",
-                method: "PUT",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    label: locationName,
-                    macAddress: locationMACAdress
-                }),
+                updateStatusText("#pAddLocationResponse", 200, "Successfully added new location " + locationName + "!");
 
-                success: (res, statusText, rhx) => {
+                $.fn.loadManageLocations();
 
-                    let messageStatus = "Successfully created a new Location";
+                // clear input fields
+                $("#iUserName").val("");
+                $("#iUserRole").val("");
+                $("#iUserRFID").val("");
+            },
 
-                    if (rhx.status !== 200) {
-                        messageStatus = "Failed to create new Location. Error Code: " + rhx.status;
-                    }
+            error: (err) => {
 
-                    updateStatusText("#pManageLocationResponse", rhx.status, messageStatus);
+                updateStatusText("#pAddLocationResponse", err.status,
+                    "Failed to add a new Location! Error Code: " + err.status);
+            }
+            
+        });
+    });
 
-                    $.fn.loadManageLocations();
+    // Remove Locations View ----------------------------------------------------------------------------
+       
+    $("#removeLocationForm").on("submit", (event) => {
 
-                    // clears input fields
-                    $("#iLocationName").val("");
-                    $("#iLocationMACAdress").val("");
-                }
-            });
+        // prevents POST form to refresh the page
+        event.preventDefault();
 
-        } else {
+        const id = $("#pRemoveLocationDropFirst").attr("data-id");
+        const name = $("#pRemoveLocationDropFirst").val();
 
-            const targetID = getDatabaseIDByLabel(locationName);
+        $.ajax({
 
-            $.ajax({
+            url: "/removeLocationById",
+            method: "DELETE",
+            contentType: "application/json",
+            data: JSON.stringify({
+                id: id,
+            }),
 
-                url: "/removeLocationById",
-                method: "DELETE",
-                contentType: "application/json",
-                data: JSON.stringify({
-                    id: targetID,
-                }),
+            success: () => {
 
-                success: (res, statusText, rhx) => {
+                updateStatusText("#pRemoveLocationResponse", 200, "Successfully removed location " + name + "!");
 
-                    let messageStatus = "Successfully removed location " + locationName;
+                $.fn.loadManageLocations();
 
-                    if (rhx.status !== 200) {
-                        messageStatus = "Failed to remove location " + locationName + ". Error Code: " + rhx.status;
-                    }
+            },
 
-                    updateStatusText("#pManageLocationResponse", rhx.status, messageStatus);
+            error: (err) => {
 
-                    $.fn.loadManageLocations();
-
-                    // clears input fields
-                    $("#iLocationName").val("");
-                    $("#iLocationMACAdress").val("");
-                }
-            });
-        }
+                updateStatusText("#pRemoveLocationResponse", err.status,
+                    "Failed to remove location! " + name +  " Error Code: " + err.status);
+            }
+        });
     });
 
     // Add Authorization View ---------------------------------------------------------------------------
+
     $("#addAuthorizationForm").on("submit", (event) => {
 
         // prevents POST form to refresh the page
@@ -164,10 +163,10 @@ $(document).ready(() => {
 
         // retrieves data from input fields
         const locationId = $("#pAddAuthorizationLocationDropdownFirst").attr("data-id");
-        const userId = $("#pAddAuthorizationDropdownFirst").attr("data-id");
+        const userId     = $("#pAddAuthorizationDropdownFirst").attr("data-id");
 
-        // remove and add user functionality
         $.ajax({
+            
             url: "/addAuthorization",
             method: "PUT",
             contentType: "application/json",
@@ -176,21 +175,23 @@ $(document).ready(() => {
                 userId: userId
             }),
 
-            success: (res, statusText, rhx) => {
-                let messageStatus = "Successfully granted user " + userId + " access to location: " + locationId;
-
-                if (rhx.status !== 200) {
-                    messageStatus = "Failed to create new Authorisation. Error Code: " + rhx.status;
-                }
-
-                updateStatusText("#pAddAuthorizationResponse", rhx.status, messageStatus);
+            success: () => {
+                
+                updateStatusText("#pAddAuthorizationResponse", 200,
+                    "Successfully granted user " + userId + " access to location: " + locationId);
 
                 $.fn.loadManageAuthorizations();
-            }, error: (err) => {
+            }, 
+            
+            error: (err) => {
+
                 if (err.status === 409) {
+                    
                     updateStatusText("#pAddAuthorizationResponse", err.status,
                         "User already has access to this location");
+
                 } else {
+                    
                     updateStatusText("#pAddAuthorizationResponse", err.status,
                         "Failed to create new Authorisation. Error Code: " + err.status);
                 }
@@ -200,16 +201,17 @@ $(document).ready(() => {
 });
 
 // Remove Authorization View ---------------------------------------------------------------------------
+
 $("#removeAuthorizationForm").on("submit", (event) => {
 
     // prevents POST form to refresh the page
     event.preventDefault();
 
-    // retrieves data from input fields
+    // retrieves data from input field
     const id = $("#pRemoveAuthorizationLocationDropdownFirst").attr("data-id");
 
-    // remove and add user functionality
     $.ajax({
+        
         url: "/removeAuthorizationById",
         method: "DELETE",
         contentType: "application/json",
@@ -217,17 +219,16 @@ $("#removeAuthorizationForm").on("submit", (event) => {
             id: id,
         }),
 
-        success: (res, statusText, rhx) => {
-            let messageStatus = "Successfully removed authorization";
-
-            if (rhx.status !== 200) {
-                messageStatus = "Failed to remove authorization. Error Code: " + rhx.status;
-            }
-
-            updateStatusText("#pAddAuthorizationResponse", rhx.status, messageStatus);
+        success: () => {
+                
+            updateStatusText("#pAddAuthorizationResponse", 200,
+                "Successfully removed authorization");
 
             $.fn.loadManageAuthorizations();
-        }, error: (err) => {
+        }, 
+        
+        error: (err) => {
+
             updateStatusText("#pRemoveAuthorizationResponse", err.status,
                 "Failed to delete Authorisation. Error Code: " + err.status);
         }

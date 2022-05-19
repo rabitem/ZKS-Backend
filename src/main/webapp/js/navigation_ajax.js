@@ -55,7 +55,8 @@ $.fn.loadManageUserView = async () => {
 $.fn.loadManageLocations = async () => {
 
     await $.fn.loadNewMainContent("/manageLocations", "- Manage Locations");
-    initializeManageLocations();
+    initializeAddLocations();
+    initializeRemoveLocations();
 }
 
 $.fn.loadManageAuthorizations = async () => {

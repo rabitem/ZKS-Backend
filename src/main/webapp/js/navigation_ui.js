@@ -62,7 +62,7 @@ removeUserClose.addEventListener("click", () => {
     removeUsersModal.style.display = "none";
 });
 
-// Bind static dropdowns, for existing html ----------------------------------------------------
+// Bind static dropdowns, for existing html --------------------------------------------------
 
 function bindStaticDropdowns(imTargetDropDownID) {
 
@@ -102,13 +102,15 @@ function bindStaticDropdowns(imTargetDropDownID) {
     }
 }
 
-// Build dropdown - prev items are removed in ajax control -----------------------------------
+// Build dropdown - prev items are removed in ajax control ------------------------------------
 
 function buildDropdown(imTargetDropDownID) {
 
     const dropDownContainer = document.querySelector(imTargetDropDownID);
     const firstDropDownItem = dropDownContainer.querySelector(".pDropdownFirst");
     const dropDownContent   = dropDownContainer.querySelector(".cDropdownContent");
+
+    cleanDropdown(imTargetDropDownID);
 
     // dropdown show
     dropDownContainer.addEventListener("mouseover", () => {
@@ -167,53 +169,66 @@ function buildDropdown(imTargetDropDownID) {
     }
 }
 
-// Pop-Up Manage Location: -----------------------------------------------------------------------
+// Deletes all items of dropdown div ----------------------------------------------------------
 
-const manageLocationsModal = document.querySelector("#popUpManageLocation");
-const manageLocationClose  = document.querySelector("#btnCloseManageLocation");
-const manageLocationStatus = document.querySelector("#pManageLocationResponse");
+function cleanDropdown(imTargetDropDownID) {
 
-function initializeManageLocations () {
+    const dropDownContainer = document.querySelector(imTargetDropDownID);
+    const dropDownContent   = dropDownContainer.querySelector(".cDropdownContent");
+    const allDropDownItems  = dropDownContent.querySelectorAll(".dropdownItem");
+
+    for (let i = 0; i < allDropDownItems.length; i++) {
+
+        const dropDownItem = allDropDownItems[i];
+        dropDownItem.remove();
+    }
+}
+
+// Pop-Up Add Location: -----------------------------------------------------------------------
+
+const addLocationsModal = document.querySelector("#popUpAddLocation");
+const addLocationClose  = document.querySelector("#btnCloseAddLocation");
+const addLocationStatus = document.querySelector("#pAddLocationResponse");
+
+function initializeAddLocations () {
  
     const addLocationBtn = document.querySelector("#svgAddSignLocation");
     
-    // hide and show inputs, based on add/remove option
-    const inputWrapperRole = document.querySelector("#inputWrapperRole");
-    const inputWrapperRFID = document.querySelector("#inputWrapperRFID");
-    const submitButton     = document.querySelector("#button_manage_location");
     // add new Location
     addLocationBtn.addEventListener("click", () => {
-        
-        manageLocationsModal.style.display = "block";
-        inputWrapperRole.style.display = "block";
-        inputWrapperRFID.style.display = "block";
-
-        manageLocationsModal.setAttribute("data-remove", false);
-
-        submitButton.value = "Add Location";
+        addLocationsModal.style.display = "block";
     });
+}
 
+addLocationClose.addEventListener("click", () => {
+    
+    addLocationsModal.style.display = "none";
+    addLocationStatus.style.display = "none";
+});
+
+// Pop-Up Remove Location: -----------------------------------------------------------------------
+
+const removeLocationsModal = document.querySelector("#popUpRemoveLocation");
+const removeLocationClose  = document.querySelector("#btnCloseRemoveLocation");
+const removeLocationStatus = document.querySelector("#pRemoveLocationResponse");
+
+function initializeRemoveLocations () {
+ 
     // try to remove existing Location
     const rmvLocationBtn = document.querySelector("#svgRemoveSignLocation");
 
     rmvLocationBtn.addEventListener("click", () => {
-        
-        manageLocationsModal.style.display = "block";
-        inputWrapperRole.style.display = "none";
-        inputWrapperRFID.style.display = "none";
-    
-        submitButton.value = "Remove Location";
-
-        manageLocationsModal.setAttribute("data-remove", true);
+        removeLocationsModal.style.display = "block";    
     });
+
+    buildDropdown("#cDropdownRemLocation");
 }
 
-manageLocationClose.addEventListener("click", () => {
+removeLocationClose.addEventListener("click", () => {
     
-    manageLocationsModal.style.display = "none";
-    manageLocationStatus.style.display = "none";
-    document.querySelector("#hManageLocation").innerHTML = "Remove Location";
-
+    removeLocationsModal.style.display = "none";
+    removeLocationStatus.style.display = "none";
+    
 });
 
 // Pop-Up Manage Authorizations ----------------------------------------------------------------
@@ -315,19 +330,26 @@ window.onmousedown = (event) => {
     if (event.target === addUsersModal) {
 
         addUsersModal.style.display = "none";
-        addUsersModal.style.display = "none";
+        addUserStatus.style.display = "none";
     }
 
     if (event.target === removeUsersModal) {
 
         removeUsersModal.style.display = "none";
-        removeUsersModal.style.display = "none";
+        removeUserStatus.style.display = "none";
     }
 
-    if (event.target === manageLocationsModal) {
+    if (event.target === addLocationsModal) {
 
-        manageLocationsModal.style.display = "none";
-        manageLocationStatus.style.display = "none";
+        addLocationsModal.style.display = "none";
+        addLocationStatus.style.display = "none";
+    }
+
+    
+    if (event.target === removeLocationsModal) {
+
+        removeLocationsModal.style.display = "none";
+        removeLocationStatus.style.display = "none";
     }
 
     if (manageAuthsModal !== null & event.target === manageAuthsModal) {

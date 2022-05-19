@@ -32,16 +32,6 @@
                 </div>
             </div>
 
-            <%-- <div class="cInputWrapper" id = "inputWrapperRole">
-                <div class="cSingleInput">
-                    <input type="text"  id="iUserRole" name="iUserRole" required
-                           onfocus="pInputOnFocus('iUserRole', 'lUserRoleLabel', 'cUserRoleUnderline')"
-                           onblur="pInputOnBlur('iUserRole', 'lUserRoleLabel', 'cUserRoleUnderline')">
-                    <div class="cInputUnderline" id="cUserRoleUnderline"></div>
-                    <label id="lUserRoleLabel">User Role</label>
-                </div>
-            </div> --%>
-
             <div class = "cDropdown" id = "cDropdownAddUser">
                 <p class = "pDropdownFirst" id = "pUserRole" data-id="USER">USER</p>
                 <div class = "cDropdownIcon"></div>
@@ -88,15 +78,15 @@
     </div>
 </div>
 
-<!-- Pop-Up Add User -->
-<div class = "cPopUpModal" id = "popUpManageLocation" data-remove = "false">
+<!-- Pop-Up Add Location -->
+<div class = "cPopUpModal" id = "popUpAddLocation" data-remove = "false">
     <div class = "cPopUpContent">
         <div class="cPopUpHeader">
-            <h1 id = "hManageLocation">Add Location</h1>
-            <span class="btnClose" id = "btnCloseManageLocation">&times;</span>
+            <h1 id = "hAddLocation">Add Location</h1>
+            <span class="btnClose" id = "btnCloseAddLocation">&times;</span>
         </div>
-        <p class = "pResponseText" id = "pManageLocationResponse"></p>
-        <form method="POST" id="updateLocationForm">
+        <p class = "pResponseText" id = "pAddLocationResponse"></p>
+        <form method="POST" id="addLocationForm">
 
             <div class="cInputWrapper">
                 <div class="cSingleInput">
@@ -118,11 +108,35 @@
                 </div>
             </div>
 
-            <input type="submit" id="button_manage_location">
+            <input type="submit" id="button_Add_location">
         </form>
     </div>
 </div>
 
+<!-- Pop-Up Remove Location -->
+<div class = "cPopUpModal" id = "popUpRemoveLocation" data-remove = "false">
+    <div class = "cPopUpContent">
+        <div class="cPopUpHeader">
+            <h1 id = "hRemoveLocation">Remove Location</h1>
+            <span class="btnClose" id = "btnCloseRemoveLocation">&times;</span>
+        </div>
+        <p class = "pResponseText" id = "pRemoveLocationResponse"></p>
+        <form method="POST" id="removeLocationForm">
+
+            <div class="cInputWrapper">
+                <div class="cSingleInput">          
+                    <div class = "cDropdown" id = "cDropdownRemLocation">
+                        <p class = "pDropdownFirst" id = "pRemoveLocationDropFirst" data-id=""></p>
+                        <div class = "cDropdownIcon"></div>
+                        <div class = "cDropdownContent" id = "cDropdownContentRemoveLocation">
+                    </div>
+                    <label id="lLocationNameLabel">Location Name</label>
+                </div>
+            </div>
+            <input type="submit" id="button_Remove_location">
+        </form>
+    </div>
+</div>
 
 <!-- Main Content -->
 <div class="cGlobal">
