@@ -62,6 +62,142 @@ removeUserClose.addEventListener("click", () => {
     removeUsersModal.style.display = "none";
 });
 
+// Pop-Up Add Location: -----------------------------------------------------------------------
+
+const addLocationsModal = document.querySelector("#popUpAddLocation");
+const addLocationClose  = document.querySelector("#btnCloseAddLocation");
+const addLocationStatus = document.querySelector("#pAddLocationResponse");
+
+function initializeAddLocations () {
+ 
+    const addLocationBtn = document.querySelector("#svgAddSignLocation");
+    
+    // add new Location
+    addLocationBtn.addEventListener("click", () => {
+        addLocationsModal.style.display = "block";
+    });
+}
+
+addLocationClose.addEventListener("click", () => {
+    
+    addLocationsModal.style.display = "none";
+    addLocationStatus.style.display = "none";
+});
+
+// Pop-Up Remove Location: -----------------------------------------------------------------------
+
+const removeLocationsModal = document.querySelector("#popUpRemoveLocation");
+const removeLocationClose  = document.querySelector("#btnCloseRemoveLocation");
+const removeLocationStatus = document.querySelector("#pRemoveLocationResponse");
+
+function initializeRemoveLocations () {
+ 
+    // try to remove existing Location
+    const rmvLocationBtn = document.querySelector("#svgRemoveSignLocation");
+
+    rmvLocationBtn.addEventListener("click", () => {
+        removeLocationsModal.style.display = "block";    
+    });
+
+    buildDropdown("#cDropdownRemLocation");
+}
+
+removeLocationClose.addEventListener("click", () => {
+    
+    removeLocationsModal.style.display = "none";
+    removeLocationStatus.style.display = "none";
+    
+});
+
+// Pop-Up Add Authorizations ----------------------------------------------------------------
+
+let manageAuthsModal = null;
+
+function initializeAddAuthorizations () {
+
+    manageAuthsModal       = document.querySelector("#popUpAddAuthorization");
+    const manageAuthClose  = document.querySelector("#btnCloseManageAuthorization");
+    const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
+    const addAuthBtn       = document.querySelector("#svgAddSignAuthorization");
+        
+    addAuthBtn.addEventListener("click", () => {
+        manageAuthsModal.style.display = "block";
+    });
+
+    manageAuthClose.addEventListener("click", () => {
+    
+        manageAuthsModal.style.display = "none";
+        manageAuthStatus.style.display = "none";
+        document.querySelector("#hManageAuth").innerHTML = "Remove Auth";
+    });
+}
+
+// Pop-Up Remove Authorizations ----------------------------------------------------------------
+
+let removeAuthsModal = null;
+
+function initializeRemoveAuthorizations () {
+
+    removeAuthsModal       = document.querySelector("#popUpRemoveAuthorization");
+    const removeAuthClose  = document.querySelector("#btnCloseRemoveAuthorization");
+    const removeAuthStatus = document.querySelector("#pRemoveAuthorizationResponse");
+    const removeAuthBtn    = document.querySelector("#svgRemoveSignAuthorization");
+
+    removeAuthBtn.addEventListener("click", () => {
+        removeAuthsModal.style.display = "block";
+    });
+
+    removeAuthClose.addEventListener("click", () => {
+
+        removeAuthsModal.style.display = "none";
+        removeAuthStatus.style.display = "none";
+    });
+}
+
+// close all pop-ups if user clicks outside of pop-up ui --------------------------------------
+
+window.onmousedown = (event) => {
+
+    if (event.target === addUsersModal) {
+
+        addUsersModal.style.display = "none";
+        addUserStatus.style.display = "none";
+    }
+
+    if (event.target === removeUsersModal) {
+
+        removeUsersModal.style.display = "none";
+        removeUserStatus.style.display = "none";
+    }
+
+    if (event.target === addLocationsModal) {
+
+        addLocationsModal.style.display = "none";
+        addLocationStatus.style.display = "none";
+    }
+
+    
+    if (event.target === removeLocationsModal) {
+
+        removeLocationsModal.style.display = "none";
+        removeLocationStatus.style.display = "none";
+    }
+
+    if (manageAuthsModal !== null && event.target === manageAuthsModal) {
+        
+        const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
+        manageAuthsModal.style.display = "none";
+        manageAuthStatus.style.display = "none";
+    }
+
+    if (removeAuthsModal !== null && event.target === removeAuthsModal) {
+        
+        const removeAuthStatus = document.querySelector("#pRemoveAuthorizationResponse");
+        removeAuthStatus.style.display = "none";
+        removeAuthsModal.style.display = "none";
+    }
+}
+
 // Bind static dropdowns, for existing html --------------------------------------------------
 
 function bindStaticDropdowns(imTargetDropDownID) {
@@ -181,182 +317,6 @@ function cleanDropdown(imTargetDropDownID) {
 
         const dropDownItem = allDropDownItems[i];
         dropDownItem.remove();
-    }
-}
-
-// Pop-Up Add Location: -----------------------------------------------------------------------
-
-const addLocationsModal = document.querySelector("#popUpAddLocation");
-const addLocationClose  = document.querySelector("#btnCloseAddLocation");
-const addLocationStatus = document.querySelector("#pAddLocationResponse");
-
-function initializeAddLocations () {
- 
-    const addLocationBtn = document.querySelector("#svgAddSignLocation");
-    
-    // add new Location
-    addLocationBtn.addEventListener("click", () => {
-        addLocationsModal.style.display = "block";
-    });
-}
-
-addLocationClose.addEventListener("click", () => {
-    
-    addLocationsModal.style.display = "none";
-    addLocationStatus.style.display = "none";
-});
-
-// Pop-Up Remove Location: -----------------------------------------------------------------------
-
-const removeLocationsModal = document.querySelector("#popUpRemoveLocation");
-const removeLocationClose  = document.querySelector("#btnCloseRemoveLocation");
-const removeLocationStatus = document.querySelector("#pRemoveLocationResponse");
-
-function initializeRemoveLocations () {
- 
-    // try to remove existing Location
-    const rmvLocationBtn = document.querySelector("#svgRemoveSignLocation");
-
-    rmvLocationBtn.addEventListener("click", () => {
-        removeLocationsModal.style.display = "block";    
-    });
-
-    buildDropdown("#cDropdownRemLocation");
-}
-
-removeLocationClose.addEventListener("click", () => {
-    
-    removeLocationsModal.style.display = "none";
-    removeLocationStatus.style.display = "none";
-    
-});
-
-// Pop-Up Manage Authorizations ----------------------------------------------------------------
-
-let manageAuthsModal = null;
-
-function initializeAddAuthorizations () {
-
-    manageAuthsModal = document.querySelector("#popUpAddAuthorization");
-
-    const manageAuthClose  = document.querySelector("#btnCloseManageAuthorization");
-    const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
-
-    const addAuthBtn   = document.querySelector("#svgAddSignAuthorization");
-    const submitButton = document.querySelector("#button_manage_Authorization");
-    
-    // add new Auth
-    addAuthBtn.addEventListener("click", () => {
-        
-        manageAuthsModal.style.display = "block";
-
-        manageAuthsModal.setAttribute("data-remove", false);
-
-        submitButton.value = "Add Auth";
-    });
-
-    // try to remove existing Auth
-    const rmvAuthBtn = document.querySelector("#svgRemoveSignAuthorization");
-
-    rmvAuthBtn.addEventListener("click", () => {
-        
-        manageAuthsModal.style.display = "block";
-
-        submitButton.value = "Remove Auth";
-
-        manageAuthsModal.setAttribute("data-remove", true);
-    });
-
-    manageAuthClose.addEventListener("click", () => {
-    
-        manageAuthsModal.style.display = "none";
-        manageAuthStatus.style.display = "none";
-        document.querySelector("#hManageAuth").innerHTML = "Remove Auth";
-    
-    });
-}
-
-// Pop-Up Remove Authorizations ----------------------------------------------------------------
-
-let removeAuthsModal = null;
-
-function initializeRemoveAuthorizations () {
-
-    removeAuthsModal = document.querySelector("#popUpRemoveAuthorization");
-
-    const removeAuthClose  = document.querySelector("#btnCloseRemoveAuthorization");
-    const removeAuthStatus = document.querySelector("#pRemoveAuthorizationResponse");
-
-    const removeAuthBtn   = document.querySelector("#svgRemoveSignAuthorization");
-    const submitButton = document.querySelector("#button_remove_Authorization");
-
-    // add new Auth
-    removeAuthBtn.addEventListener("click", () => {
-
-        removeAuthsModal.style.display = "block";
-
-        removeAuthsModal.setAttribute("data-remove", false);
-
-        submitButton.value = "Add Auth";
-    });
-
-    // try to remove existing Auth
-    const rmvAuthBtn = document.querySelector("#svgRemoveSignAuthorization");
-
-    rmvAuthBtn.addEventListener("click", () => {
-
-        removeAuthsModal.style.display = "block";
-
-        submitButton.value = "Remove Auth";
-
-        removeAuthsModal.setAttribute("data-remove", true);
-    });
-
-    removeAuthClose.addEventListener("click", () => {
-
-        removeAuthsModal.style.display = "none";
-        removeAuthStatus.style.display = "none";
-        document.querySelector("#hManageAuth").innerHTML = "Remove Auth";
-
-    });
-}
-
-
-
-// close all pop-ups if user clicks outside of pop-up ui --------------------------------------
-
-window.onmousedown = (event) => {
-
-    if (event.target === addUsersModal) {
-
-        addUsersModal.style.display = "none";
-        addUserStatus.style.display = "none";
-    }
-
-    if (event.target === removeUsersModal) {
-
-        removeUsersModal.style.display = "none";
-        removeUserStatus.style.display = "none";
-    }
-
-    if (event.target === addLocationsModal) {
-
-        addLocationsModal.style.display = "none";
-        addLocationStatus.style.display = "none";
-    }
-
-    
-    if (event.target === removeLocationsModal) {
-
-        removeLocationsModal.style.display = "none";
-        removeLocationStatus.style.display = "none";
-    }
-
-    if (manageAuthsModal !== null & event.target === manageAuthsModal) {
-        
-        const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
-        manageAuthsModal.style.display = "none";
-        manageAuthStatus.style.display = "none";
     }
 }
 

@@ -18,35 +18,47 @@
             <p class="pResponseText" id="pAddAuthorizationResponse"></p>
 
             <form method="POST" id="addAuthorizationForm">
-                <h3 class="labelAuth">Location</h3>
-                <div class="cDropdown" id="cDropdownAuthLocation">
-                    <p class="pDropdownFirst" id="pAddAuthorizationLocationDropdownFirst" data-id="${locations.get(0).id}">${locations.get(0).label}
-                        (${locations.get(0).id})</p>
-                    <div class="cDropdownIcon"></div>
-                    <div class="cDropdownContent" id="cDropdownContentAddAuthorizationLocation">
-                        <c:forEach items="${locations}" var="location">
-                            <p class="dropdownItem" data-id="${location.id}">${location.label} (${location.id})</p>
-                        </c:forEach>
+
+                <div class="cInputWrapper">
+                    <div class="cSingleInput">
+                        <div class="cDropdown" id="cDropdownAuthLocation">
+                            <p class="pDropdownFirst" id="pAddAuthorizationLocationDropdownFirst" data-id="${locations.get(0).id}">${locations.get(0).label}
+                                (${locations.get(0).id})</p>
+                            <div class="cDropdownIcon"></div>
+                            <div class="cDropdownContent" id="cDropdownContentAddAuthorizationLocation">
+                                <c:forEach items="${locations}" var="location">
+                                    <p class="dropdownItem" data-id="${location.id}">${location.label} (${location.id})</p>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <div class="cInputUnderline"></div>
+                        <label>Location Name</label>
                     </div>
                 </div>
 
-                <h3 class="labelAuth">User</h3>
-                <div class="cDropdown" id="cDropdownAuthUser">
-                    <p class="pDropdownFirst" id="pAddAuthorizationDropdownFirst" data-id="${users.get(0).id}">${users.get(0).name}
-                        (${users.get(0).id})</p>
-                    <div class="cDropdownIcon"></div>
-                    <div class="cDropdownContent" id="cDropdownContentAddAuthorization">
-                        <c:forEach items="${users}" var="user">
-                            <p class="dropdownItem" data-id="${user.id}">${user.name} (${user.id})</p>
-                        </c:forEach>
+                <div class="cInputWrapper">
+                    <div class="cSingleInput">
+                        <div class="cDropdown" id="cDropdownAuthUser">
+                            <p class="pDropdownFirst" id="pAddAuthorizationDropdownFirst" data-id="${users.get(0).id}">${users.get(0).name}
+                                (${users.get(0).id})</p>
+                            <div class="cDropdownIcon"></div>
+                            <div class="cDropdownContent" id="cDropdownContentAddAuthorization">
+                                <c:forEach items="${users}" var="user">
+                                    <p class="dropdownItem" data-id="${user.id}">${user.name} (${user.id})</p>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <div class="cInputUnderline"></div>
+                        <label>User Name</label>
                     </div>
-                </div>
+                </div>               
+
                 <input type="submit" id="button_manage_Authorization">
             </form>
         </div>
     </div>
 
-    <!-- Pop-Up Add Authorization -->
+    <!-- Pop-Up Remove Authorization -->
     <div class="cPopUpModal" id="popUpRemoveAuthorization" data-remove="false">
         <div class="cPopUpContent">
             <div class="cPopUpHeader">
@@ -56,20 +68,27 @@
             <p class="pResponseText" id="pRemoveAuthorizationResponse"></p>
 
             <form method="POST" id="removeAuthorizationForm">
-                <h3 class="labelAuth">Authorizations</h3>
-                <div class="cDropdown" id="cDropdownAuthorizations">
-                    <p class="pDropdownFirst" id="pRemoveAuthorizationLocationDropdownFirst" data-id="${authorizations.get(0).id}">
-                        User ${authorizations.get(0).user.name} to Location ${authorizations.get(0).location.label}</p>
-                    </p>
-                    <div class="cDropdownIcon"></div>
-                    <div class="cDropdownContent" id="cDropdownContentRemoveAuthorizationLocation">
-                        <c:forEach items="${authorizations}" var="authorization">
-                            <p class="dropdownItem" data-id="${authorization.id}">
-                                User <em>${authorization.user.name}</em> to Location <em>${authorization.location.label}</em>
+
+                <div class="cInputWrapper">
+                    <div class="cSingleInput">
+                        <div class="cDropdown" id="cDropdownAuthorizations">
+                            <p class="pDropdownFirst" id="pRemoveAuthorizationLocationDropdownFirst" data-id="${authorizations.get(0).id}">
+                                User ${authorizations.get(0).user.name} to Location ${authorizations.get(0).location.label}</p>
                             </p>
-                        </c:forEach>
+                            <div class="cDropdownIcon"></div>
+                            <div class="cDropdownContent" id="cDropdownContentRemoveAuthorizationLocation">
+                                <c:forEach items="${authorizations}" var="authorization">
+                                    <p class="dropdownItem" data-id="${authorization.id}">
+                                        User <em>${authorization.user.name}</em> to Location <em>${authorization.location.label}</em>
+                                    </p>
+                                </c:forEach>
+                            </div>
+                        </div>
+                        <div class="cInputUnderline"></div>
+                        <label>Revoke Authorizations</label>
                     </div>
                 </div>
+
                 <input type="submit" id="button_remove_Authorization">
             </form>
         </div>

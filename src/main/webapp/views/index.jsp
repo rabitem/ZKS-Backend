@@ -32,15 +32,21 @@
                 </div>
             </div>
 
-            <div class = "cDropdown" id = "cDropdownAddUser">
-                <p class = "pDropdownFirst" id = "pUserRole" data-id="USER">USER</p>
-                <div class = "cDropdownIcon"></div>
-                <div class = "cDropdownContent" id = "cDropdownContentAddUser">
-                    <p class="dropdownItem" data-id="USER">USER</p>
-                    <p class="dropdownItem" data-id="ADMIN">ADMIN</p>
+            <div class="cInputWrapper">
+                <div class="cSingleInput">
+                    <div class = "cDropdown" id = "cDropdownAddUser">
+                        <p class = "pDropdownFirst" id = "pUserRole" data-id="USER">USER</p>
+                        <div class = "cDropdownIcon"></div>
+                        <div class = "cDropdownContent" id = "cDropdownContentAddUser">
+                            <p class="dropdownItem" data-id="USER">USER</p>
+                            <p class="dropdownItem" data-id="ADMIN">ADMIN</p>
+                        </div>
+                    </div>    
+                    <div class="cInputUnderline"></div>
+                    <label>User Role</label>
                 </div>
-            </div>     
-
+            </div>
+             
             <div class="cInputWrapper" id = "inputWrapperRFID">
                 <div class="cSingleInput">
                     <input type="text"  id="iUserRFID" name="iUserRFID" required
@@ -66,12 +72,18 @@
         <p class = "pResponseText" id = "pRemoveUserResponse"></p>
         <form method="POST" id="removeUserForm">
 
-            <div class = "cDropdown" id = "cDropdownRemUser">
-                <p class = "pDropdownFirst" id = "pRemoveUserDropFirst" data-id=""></p>
-                <div class = "cDropdownIcon"></div>
-                <div class = "cDropdownContent" id = "cDropdownContentRemoveUser">
+            <div class="cInputWrapper">
+                <div class="cSingleInput">
+                    <div class = "cDropdown" id = "cDropdownRemUser">
+                        <p class = "pDropdownFirst" id = "pRemoveUserDropFirst" data-id=""></p>
+                        <div class = "cDropdownIcon"></div>
+                        <div class = "cDropdownContent" id = "cDropdownContentRemoveUser">
+                        </div>
+                    </div>     
+                    <div class="cInputUnderline"></div>
+                    <label>User Name</label>
                 </div>
-            </div>     
+            </div>
 
             <input type="submit" id="button_Remove_user" value = "Remove User">
         </form>
@@ -109,6 +121,7 @@
             </div>
 
             <input type="submit" id="button_Add_location">
+
         </form>
     </div>
 </div>
@@ -130,10 +143,11 @@
                         <div class = "cDropdownIcon"></div>
                         <div class = "cDropdownContent" id = "cDropdownContentRemoveLocation">
                     </div>
+                    <div class="cInputUnderline"></div>
                     <label>Location Name</label>
                 </div>
             </div>
-            </div>
+            
             <input type="submit" id="button_Remove_location">
         </form>
     </div>

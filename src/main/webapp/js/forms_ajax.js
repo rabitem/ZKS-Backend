@@ -198,43 +198,42 @@ $(document).ready(() => {
             }
         });
     });
-});
 
-// Remove Authorization View ---------------------------------------------------------------------------
+    // Remove Authorization View ---------------------------------------------------------------------------
 
-$("#removeAuthorizationForm").on("submit", (event) => {
+    $("#removeAuthorizationForm").on("submit", (event) => {
 
-    // prevents POST form to refresh the page
-    event.preventDefault();
+        // prevents POST form to refresh the page
+        event.preventDefault();
 
-    // retrieves data from input field
-    const id = $("#pRemoveAuthorizationLocationDropdownFirst").attr("data-id");
+        // retrieves data from input field
+        const id = $("#pRemoveAuthorizationLocationDropdownFirst").attr("data-id");
 
-    $.ajax({
-        
-        url: "/removeAuthorizationById",
-        method: "DELETE",
-        contentType: "application/json",
-        data: JSON.stringify({
-            id: id,
-        }),
+        $.ajax({
+            
+            url: "/removeAuthorizationById",
+            method: "DELETE",
+            contentType: "application/json",
+            data: JSON.stringify({
+                id: id,
+            }),
 
-        success: () => {
-                
-            updateStatusText("#pAddAuthorizationResponse", 200,
-                "Successfully removed authorization");
+            success: () => {
+                    
+                updateStatusText("#pAddAuthorizationResponse", 200,
+                    "Successfully removed authorization");
 
-            $.fn.loadManageAuthorizations();
-        }, 
-        
-        error: (err) => {
+                $.fn.loadManageAuthorizations();
+            }, 
+            
+            error: (err) => {
 
-            updateStatusText("#pRemoveAuthorizationResponse", err.status,
-                "Failed to delete Authorisation. Error Code: " + err.status);
-        }
+                updateStatusText("#pRemoveAuthorizationResponse", err.status,
+                    "Failed to delete Authorisation. Error Code: " + err.status);
+            }
+        });
     });
 });
-
 
 // searches all elements of class trCurData for id trDate + imLabel ------------------------------------------------
 

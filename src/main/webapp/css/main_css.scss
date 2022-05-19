@@ -385,6 +385,20 @@ svg:active { transform: scale(0.55) }
     border-radius: 0.3rem;
     background-color: #f7f7f7;
 
+    .cInputUnderline {
+                    
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        bottom: 0px;
+        background: $color_text_secondary;
+    }
+
+    label {
+        transform: translateY(-2.4rem);
+        color: $color_primary;
+    }
+
     .cDropdownIcon {
         
         float: right;
@@ -435,11 +449,11 @@ svg:active { transform: scale(0.55) }
     }
 }
 
-.cDropdown:hover {
-    .cDropdownContent {
-        display: block;
-    }
-}
+// .cDropdown:hover {
+//     .cDropdownContent {
+//         display: block;
+//     }
+// }
 
 // Table Formatting -----------------------------------------------------
 
@@ -579,7 +593,7 @@ table {
                     width: 100%;
                     height: 100%;
                     border: none;
-                    font-size: 1.9rem;
+                    font-size: 1.5rem;
                     color: $color_sidebar_dark;
                     border-bottom: 2px solid $color_text_secondary;
                     transition: all 0.5s ease;
@@ -589,7 +603,7 @@ table {
                 // when text is entered or user is entering text
                 input:focus ~ label,
                 input:valid ~ label{
-                    transform: translateY(-2.65rem);
+                    transform: translateY(-2.4rem);
                 }
         
                 label {
@@ -597,7 +611,7 @@ table {
                     position: absolute;
                     bottom: 10px;
                     left: 0px;
-                    font-size: 1.25rem;
+                    font-size: 1.1rem;
                     color: $color_text_secondary;
                     position: absolute;
                     pointer-events: none;
@@ -614,10 +628,6 @@ table {
                     transition: all 0.3s ease;
                     transform: scaleX(0);
                 }
-            }
-
-            .cSingleInput:last-child {
-                margin-bottom: 3rem;
             }
         }
     }
