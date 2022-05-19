@@ -28,13 +28,14 @@
                 <th>Action</th>
             </tr>
             <!-- Generated JSP Content -->
-            <jsp:useBean id="users" scope="request" type="java.util.List"/>
-            <c:forEach items="${users}" var="user">
-                <tr class = "trCurData" id = "trData${user.name}" data-valueID = ${user.id}>
-                    <td>${user.name}</td>
-                    <td>${user.role.label}</td>
-                    <td>${user.rfid}</td>
-                    <td>${user.location.label}</td>
+            <jsp:useBean id="logs" scope="request" type="java.util.List"/>
+            <c:forEach items="${logs}" var="log">
+                <tr>
+                    <td>${log.user.name}</td>
+                    <td>${log.location.label}</td>
+                    <td>${fn:split(log.timestamp, ' ')[0]}</td>
+                    <td>${fn:split(log.timestamp, ' ')[1]}</td>
+                    <td>${log.status}</td>
                 </tr>
             </c:forEach>
         </table>

@@ -37,6 +37,10 @@ function initializeAddUsers () {
     });
 }
 
+addUserClose.addEventListener("click", () => {
+    addUsersModal.style.display = "none";
+});
+
 // Pop-Up Manage Users: Remove User -----------------------------------------------------------
 
 const removeUsersModal = document.querySelector("#popUpRemoveUser");
@@ -54,6 +58,10 @@ function initializeRemoveUsers () {
     buildDropdown("#cDropdownRemUser");
 }
 
+removeUserClose.addEventListener("click", () => {
+    removeUsersModal.style.display = "none";
+});
+
 // Build dropdown - prev items are removed in ajax control -----------------------------------
 
 function buildDropdown(imTargetDropDownID) {
@@ -68,21 +76,21 @@ function buildDropdown(imTargetDropDownID) {
     // exclude header from data table
     if (dataRows.length <= 1) { return }
 
-    for (let i = 1; i < array.length; i++) {
+    for (let i = 1; i < dataRows.length; i++) {
         
         const dataObj = dataRows[i];
         const dataID  = dataObj.getAttribute("data-valueID");
-        const label   = dataObj.getAttribute("data-label");
+        const label   = dataObj.getAttribute("data-name");
         
         // first element
         if (i === 1) {
             firstDropDownItem.innerHTML = label + " (" + dataID + ")";
             firstDropDownItem.setAttribute("data-id") = dataID;
-
         }
         
         // insert dropdown item
         const newHTMLObj = document.createElement("p")
+
         newHTMLObj.innerHTML = label + " (" + dataID + ")";
         newHTMLObj.classList.add("dropdownItem");
         newHTMLObj.setAttribute("data-id") = dataID;
@@ -91,18 +99,12 @@ function buildDropdown(imTargetDropDownID) {
 
         // dropdown click functionality
         newHTMLObj.addEventListener("click", () => {
+
+            firstDropDownItem.innerHTML = newHTMLObj.innerHTML;
             firstDropDownItem.setAttribute("data-id") = newHTMLObj.getAttribute("data-id");
         });
     }
 }
-
-manageUserClose.addEventListener("click", () => {
-    
-    manageUsersModal.style.display = "none";
-    manageUserStatus.style.display = "none";
-    document.querySelector("#hManageUser").innerHTML = "Remove User";
-
-});
 
 // Pop-Up Manage Location: -----------------------------------------------------------------------
 
@@ -197,10 +199,16 @@ manageAuthClose.addEventListener("click", () => {
 
 window.onmousedown = (event) => {
 
-    if (event.target === manageUsersModal) {
+    if (event.target === addUsersModal) {
 
-        manageUsersModal.style.display = "none";
-        manageUserStatus.style.display = "none";
+        addUsersModal.style.display = "none";
+        addUsersModal.style.display = "none";
+    }
+
+    if (event.target === removeUsersModal) {
+
+        removeUsersModal.style.display = "none";
+        removeUsersModal.style.display = "none";
     }
 
     if (event.target === manageLocationsModal) {
