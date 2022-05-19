@@ -435,7 +435,7 @@ svg:active {
   display: inline-block;
 }
 
-.cDropdown .dropdownIcon {
+.cDropdown .cDropdownIcon {
   float: right;
   margin-left: 0.5rem;
   margin-top: 0.2rem;

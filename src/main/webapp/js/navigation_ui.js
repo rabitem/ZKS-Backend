@@ -157,17 +157,21 @@ manageLocationClose.addEventListener("click", () => {
 
 // Pop-Up Manage Authorizations ----------------------------------------------------------------
 
-const manageAuthsModal = document.querySelector("#popUpManageAuthorization");
-const manageAuthClose  = document.querySelector("#btnCloseManageAuthorization");
-const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
+let manageAuthsModal = null;
 
 function initializeManageAuthorizations () {
- 
+    
+    manageAuthsModal = document.querySelector("#popUpManageAuthorization");
+
+    const manageAuthClose  = document.querySelector("#btnCloseManageAuthorization");
+    const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
+
     const addAuthBtn   = document.querySelector("#svgAddSignAuthorization");
     const submitButton = document.querySelector("#button_manage_Authorization");
     
     // add new Auth
     addAuthBtn.addEventListener("click", () => {
+        
         manageAuthsModal.style.display = "block";
 
         manageAuthsModal.setAttribute("data-remove", false);
@@ -179,21 +183,23 @@ function initializeManageAuthorizations () {
     const rmvAuthBtn = document.querySelector("#svgRemoveSignAuthorization");
 
     rmvAuthBtn.addEventListener("click", () => {
+        
         manageAuthsModal.style.display = "block";
 
         submitButton.value = "Remove Auth";
 
         manageAuthsModal.setAttribute("data-remove", true);
     });
+
+    manageAuthClose.addEventListener("click", () => {
+    
+        manageAuthsModal.style.display = "none";
+        manageAuthStatus.style.display = "none";
+        document.querySelector("#hManageAuth").innerHTML = "Remove Auth";
+    
+    });
 }
 
-manageAuthClose.addEventListener("click", () => {
-    
-    manageAuthsModal.style.display = "none";
-    manageAuthStatus.style.display = "none";
-    document.querySelector("#hManageAuth").innerHTML = "Remove Auth";
-
-});
 
 // close all pop-ups if user clicks outside of pop-up ui --------------------------------------
 
@@ -217,8 +223,9 @@ window.onmousedown = (event) => {
         manageLocationStatus.style.display = "none";
     }
 
-    if (event.target === manageAuthsModal) {
-
+    if (manageAuthsModal !== null & event.target === manageAuthsModal) {
+        
+        const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
         manageAuthsModal.style.display = "none";
         manageAuthStatus.style.display = "none";
     }
