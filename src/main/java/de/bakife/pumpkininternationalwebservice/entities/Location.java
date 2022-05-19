@@ -24,4 +24,7 @@ public class Location {
 
     @Column(name = "label", nullable = false)
     private String label;
+
+    @Column(name = "color")
+    private String color;
 }

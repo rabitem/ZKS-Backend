@@ -130,8 +130,9 @@
                         <div class = "cDropdownIcon"></div>
                         <div class = "cDropdownContent" id = "cDropdownContentRemoveLocation">
                     </div>
-                    <label id="lLocationNameLabel">Location Name</label>
+                    <label>Location Name</label>
                 </div>
+            </div>
             </div>
             <input type="submit" id="button_Remove_location">
         </form>
