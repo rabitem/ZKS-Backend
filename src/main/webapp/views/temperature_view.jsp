@@ -4,8 +4,8 @@
 <%@ page import = "java.sql.*" %>
 <jsp:useBean id="temperatures" scope="request" type="java.util.List"/>
 <script>
-const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
+ctx = document.getElementById('myChart').getContext('2d');
+myChart = new Chart(ctx, {
     type: 'line',
     data: {
 
