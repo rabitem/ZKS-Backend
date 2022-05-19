@@ -284,6 +284,10 @@ public class FrontendController {
         List<LocationTemperature> temperatures =
                 StreamSupport.stream(this.locationTemperatureRepository.findAll().spliterator(), true)
                         .collect(Collectors.toList());
+        List<Location> locations =
+                StreamSupport.stream(this.locationRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        model.addAttribute("locations", locations);
         model.addAttribute("temperatures", temperatures);
         return "temperature_view";
     }
