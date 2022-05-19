@@ -15,6 +15,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -273,6 +274,7 @@ public class FrontendController {
         List<AuthorizationHistory> logs =
                 StreamSupport.stream(this.authorizationHistoryRepository.findAll().spliterator(), true)
                         .collect(Collectors.toList());
+        logs.sort(Comparator.comparing(AuthorizationHistory::getTimestamp).reversed());
         model.addAttribute("logs", logs);
         return "logs_view";
     }
