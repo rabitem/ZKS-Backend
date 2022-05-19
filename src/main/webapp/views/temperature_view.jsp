@@ -1,8 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.List"%>
 <%@ page import = "java.sql.*" %>
 <jsp:useBean id="temperatures" scope="request" type="java.util.List"/>
+
 <script>
 ctx = document.getElementById('myChart').getContext('2d');
 myChart = new Chart(ctx, {
@@ -10,7 +12,7 @@ myChart = new Chart(ctx, {
     data: {
 
          datasets: [{
-         label: "This will be hide",
+
          borderColor: "rgba(0,0,0,0)",
          backgroundColor: function ( context ) {
                                    const index = context.dataIndex;
@@ -23,7 +25,9 @@ myChart = new Chart(ctx, {
 
          data: [
              <c:forEach items="${temperatures}" var="temperature">
-             { color:'${temperature.location.color}',x:'${temperature.timestamp}', y:'${temperature.temperature}' },
+             <fmt:parseDate pattern="yyyy-MM-dd HH:mm:ss.S" value="${temperature.timestamp}" var="parsedTimestamp" />
+             <fmt:formatDate value="${parsedTimestamp}" pattern="HH:mm:ss dd.MM.yyyy" var="formatedTimestamp" />
+             { color:'${temperature.location.color}',x:'${formatedTimestamp}', y:'${temperature.temperature}' },
              </c:forEach>]
           }]
     },
