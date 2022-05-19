@@ -41,25 +41,25 @@ myChart = new Chart(ctx, {
         <h2>Temperature Data</h2>
 
             <!-- Generated JSP Content -->
-            <div style="width:1200px;border:1px">
-            <canvas id="myChart" width="1200" height="700"></canvas>
-            </div>
-            <div style="width:220px;border:1px">
-            <Table>
-                <tr>
-                   <th width=20>&nbsp;</th>
-                   <th width=200>Location</th>
-                </tr>
-
-
-            <jsp:useBean id="locations" scope="request" type="java.util.List"/>
-                <c:forEach items="${locations}" var="location">
-                    <tr class = "trCurData" id = "trData${location.label}" data-valueID = "${location.id}" data-name="${location.label}">
-                       <td style ="color : ${location.color}">&#9673;</td>
-                       <td>${location.label}</td>
-                    </tr>
-            </c:forEach>
-            </Table>
+            <div>
+                <div style="width:1200px;border:1px;float:left;">
+                    <canvas id="myChart" width="1200" height="700"></canvas>
+                </div>
+                <div style="width:220px;border:1px;float:right;">
+                    <Table>
+                        <tr>
+                            <th width=20>&nbsp;</th>
+                            <th width=200>Location</th>
+                        </tr>
+                        <jsp:useBean id="locations" scope="request" type="java.util.List"/>
+                        <c:forEach items="${locations}" var="location">
+                        <tr class = "trCurData" id = "trData${location.label}" data-valueID = "${location.id}" data-name="${location.label}">
+                           <td style ="color : ${location.color}">&#9673;</td>
+                           <td>${location.label}</td>
+                        </tr>
+                        </c:forEach>
+                    </Table>
+                </div>
             </div>
     </div>
 </div>
