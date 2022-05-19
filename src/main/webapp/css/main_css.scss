@@ -373,88 +373,6 @@ a:visited {
 svg { transition: all 0.2s }
 svg:active { transform: scale(0.55) }
 
-// Dropdown -------------------------------------------------------------
-
-.cDropdown {
-            
-    position: relative;
-    display: inline-block;
-
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 0.3rem;
-    background-color: #f7f7f7;
-
-    .cInputUnderline {
-                    
-        position: absolute;
-        height: 2px;
-        width: 100%;
-        bottom: 0px;
-        background: $color_text_secondary;
-    }
-
-    label {
-        transform: translateY(-2.4rem);
-        color: $color_primary;
-    }
-
-    .cDropdownIcon {
-        
-        float: right;
-        margin-left: 0.5rem;
-        margin-top: 0.2rem;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 1rem 0.55rem 0 0.55rem;
-        border-color: $color_sidebar_dark transparent transparent transparent;
-    }
-    
-    .pDropdownFirst {
-        
-        font-weight: bold;
-        float: left;
-        border: none;
-        cursor: pointer;
-    }
-
-    .cDropdownContent {
-        
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 0px 10px $color_shadow;
-        z-index: 1;
-        padding: 0.3rem;
-        max-height: 50vh;
-        overflow-y: auto;
-        border-radius: 0.2rem;
-        width: 100%;
-
-        .dropdownItem {
-            
-            color: $color_sidebar_dark;
-            padding: 0.4rem 0.4rem;
-            display: block;
-            cursor: pointer;         
-        }
-
-        .dropdownItem:hover { 
-
-            background-color: #f1f1f1;
-            color: $color_primary;
-        }
-    }
-}
-
-// .cDropdown:hover {
-//     .cDropdownContent {
-//         display: block;
-//     }
-// }
-
 // Table Formatting -----------------------------------------------------
 
 table {
@@ -661,4 +579,80 @@ table {
     input[type=submit]:hover, button[type=button]:hover {
         background-color: $color_primary;
     }       
+}
+
+// Dropdown -------------------------------------------------------------
+
+.cDropdown {
+            
+    position: relative;
+    display: inline-block;
+
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    background-color: #f7f7f7;
+
+    .cInputUnderline {
+                    
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        bottom: 0px;
+        background: $color_text_secondary;
+    }
+
+    label {
+        transform: translateY(-2.4rem);
+        color: $color_primary;
+    }
+
+    .cDropdownIcon {
+        
+        float: right;
+        margin-left: 0.5rem;
+        margin-top: 0.2rem;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 1rem 0.55rem 0 0.55rem;
+        border-color: $color_sidebar_dark transparent transparent transparent;
+    }
+    
+    .pDropdownFirst {
+        
+        font-weight: bold;
+        float: left;
+        border: none;
+        cursor: pointer;
+    }
+
+    .cDropdownContent {
+        
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 0px 10px $color_shadow;
+        z-index: 1;
+        padding: 0.3rem;
+        max-height: 50vh;
+        overflow-y: auto;
+        border-radius: 0.2rem;
+        width: 100%;
+
+        .dropdownItem {
+            
+            color: $color_sidebar_dark;
+            padding: 0.4rem 0.4rem;
+            display: block;
+            cursor: pointer;         
+        }
+
+        .dropdownItem:hover { 
+
+            background-color: #f1f1f1;
+            color: $color_primary;
+        }
+    }
 }
