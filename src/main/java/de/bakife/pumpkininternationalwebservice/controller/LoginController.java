@@ -1,5 +1,6 @@
 package de.bakife.pumpkininternationalwebservice.controller;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import de.bakife.pumpkininternationalwebservice.Constants;
 import de.bakife.pumpkininternationalwebservice.entities.User;
 import de.bakife.pumpkininternationalwebservice.repositories.AuthorizationHistoryRepository;
@@ -105,6 +106,7 @@ public class LoginController {
     @Data
     static class IsLoggedInResponse {
         private boolean loggedIn;
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private Date lastLogin;
     }
 
