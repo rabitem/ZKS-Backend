@@ -453,7 +453,7 @@ svg:active {
   cursor: pointer;
 }
 
-.cDropdown .cDropDownContent {
+.cDropdown .cDropdownContent {
   display: none;
   position: absolute;
   background-color: white;
@@ -467,19 +467,19 @@ svg:active {
   border-radius: 0.2rem;
 }
 
-.cDropdown .cDropDownContent .dropdownItem {
+.cDropdown .cDropdownContent .dropdownItem {
   color: #0a0c16;
   padding: 0.4rem 0.4rem;
   display: block;
   cursor: pointer;
 }
 
-.cDropdown .cDropDownContent .dropdownItem:hover {
+.cDropdown .cDropdownContent .dropdownItem:hover {
   background-color: #f1f1f1;
   color: #e9676e;
 }
 
-.cTeamDropDown:hover .cDropDownContent {
+.cDropdown:hover .cDropDownContent {
   display: block;
 }
 
