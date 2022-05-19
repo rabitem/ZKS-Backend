@@ -430,74 +430,6 @@ svg:active {
           transform: scale(0.55);
 }
 
-.cDropdown {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 0.3rem;
-  background-color: #f7f7f7;
-}
-
-.cDropdown .cInputUnderline {
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  bottom: 0px;
-  background: #8b92b0;
-}
-
-.cDropdown label {
-  -webkit-transform: translateY(-2.4rem);
-          transform: translateY(-2.4rem);
-  color: #e9676e;
-}
-
-.cDropdown .cDropdownIcon {
-  float: right;
-  margin-left: 0.5rem;
-  margin-top: 0.2rem;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 1rem 0.55rem 0 0.55rem;
-  border-color: #0a0c16 transparent transparent transparent;
-}
-
-.cDropdown .pDropdownFirst {
-  font-weight: bold;
-  float: left;
-  border: none;
-  cursor: pointer;
-}
-
-.cDropdown .cDropdownContent {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
-  z-index: 1;
-  padding: 0.3rem;
-  max-height: 50vh;
-  overflow-y: auto;
-  border-radius: 0.2rem;
-  width: 100%;
-}
-
-.cDropdown .cDropdownContent .dropdownItem {
-  color: #0a0c16;
-  padding: 0.4rem 0.4rem;
-  display: block;
-  cursor: pointer;
-}
-
-.cDropdown .cDropdownContent .dropdownItem:hover {
-  background-color: #f1f1f1;
-  color: #e9676e;
-}
-
 table {
   border-collapse: collapse;
   width: 100%;
@@ -723,5 +655,73 @@ table tr:hover {
 
 .cPopUpModal input[type=submit]:hover, .cPopUpModal button[type=button]:hover {
   background-color: #e9676e;
+}
+
+.cDropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: #f7f7f7;
+}
+
+.cDropdown .cInputUnderline {
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  bottom: 0px;
+  background: #8b92b0;
+}
+
+.cDropdown label {
+  -webkit-transform: translateY(-2.4rem);
+          transform: translateY(-2.4rem);
+  color: #e9676e;
+}
+
+.cDropdown .cDropdownIcon {
+  float: right;
+  margin-left: 0.5rem;
+  margin-top: 0.2rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 1rem 0.55rem 0 0.55rem;
+  border-color: #0a0c16 transparent transparent transparent;
+}
+
+.cDropdown .pDropdownFirst {
+  font-weight: bold;
+  float: left;
+  border: none;
+  cursor: pointer;
+}
+
+.cDropdown .cDropdownContent {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.075);
+  z-index: 1;
+  padding: 0.3rem;
+  max-height: 50vh;
+  overflow-y: auto;
+  border-radius: 0.2rem;
+  width: 100%;
+}
+
+.cDropdown .cDropdownContent .dropdownItem {
+  color: #0a0c16;
+  padding: 0.4rem 0.4rem;
+  display: block;
+  cursor: pointer;
+}
+
+.cDropdown .cDropdownContent .dropdownItem:hover {
+  background-color: #f1f1f1;
+  color: #e9676e;
 }
 /*# sourceMappingURL=main_css.css.map */
