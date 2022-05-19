@@ -430,12 +430,12 @@ svg:active {
           transform: scale(0.55);
 }
 
-.cTeamDropDown {
+.cDropdown {
   position: relative;
   display: inline-block;
 }
 
-.cTeamDropDown .dropdownIcon {
+.cDropdown .dropdownIcon {
   float: right;
   margin-left: 0.5rem;
   margin-top: 0.2rem;
@@ -446,14 +446,14 @@ svg:active {
   border-color: #0a0c16 transparent transparent transparent;
 }
 
-.cTeamDropDown #dropDownCurTeamText {
+.cDropdown .pDropdownFirst {
   font-weight: bold;
   float: left;
   border: none;
   cursor: pointer;
 }
 
-.cTeamDropDown .cDropDownContent {
+.cDropdown .cDropDownContent {
   display: none;
   position: absolute;
   background-color: white;
@@ -467,14 +467,14 @@ svg:active {
   border-radius: 0.2rem;
 }
 
-.cTeamDropDown .cDropDownContent .dropdownItem {
+.cDropdown .cDropDownContent .dropdownItem {
   color: #0a0c16;
   padding: 0.4rem 0.4rem;
   display: block;
   cursor: pointer;
 }
 
-.cTeamDropDown .cDropDownContent .dropdownItem:hover {
+.cDropdown .cDropDownContent .dropdownItem:hover {
   background-color: #f1f1f1;
   color: #e9676e;
 }
