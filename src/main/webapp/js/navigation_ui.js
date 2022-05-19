@@ -62,6 +62,46 @@ removeUserClose.addEventListener("click", () => {
     removeUsersModal.style.display = "none";
 });
 
+// Bind static dropdowns, for existing html ----------------------------------------------------
+
+function bindStaticDropdowns(imTargetDropDownID) {
+    
+    const dropDownContainer = document.querySelector(imTargetDropDownID);
+    const firstDropDownItem = dropDownContainer.querySelector(".pDropdownFirst");
+    const dropDownContent   = dropDownContainer.querySelector(".cDropdownContent");
+    const allDropDownItems = dropDownContent.querySelectorAll("#dropdownItem");
+
+    // dropdown show
+    dropDownContainer.addEventListener("mouseover", () => {
+        dropDownContent.style.display = "block"
+    });
+
+    // dropdown hide
+    dropDownContainer.addEventListener("mouseout", () => {
+        dropDownContent.style.display = "none"
+    });
+
+    for (let i = 0; i < allDropDownItems.length; i++) {
+        
+        const dropDownItem = allDropDownItems[i];
+
+        dropDownItem.addEventListener("click", () => {
+
+            for (let j = 0; j < allDropDownItems.length; j++) {
+                const obj = allDropDownItems[j];
+                obj.style.fontWeight = "normal";
+            }
+    
+            // make new selection bold
+            dropDownItem.style.fontWeight = "bold";
+    
+            firstDropDownItem.innerHTML = dropDownItem.innerHTML;
+            firstDropDownItem.setAttribute("data-id", dropDownItem.getAttribute("data-id"));
+            dropDownContent.style.display = "none";
+        });
+    }
+}
+
 // Build dropdown - prev items are removed in ajax control -----------------------------------
 
 function buildDropdown(imTargetDropDownID) {
@@ -69,6 +109,16 @@ function buildDropdown(imTargetDropDownID) {
     const dropDownContainer = document.querySelector(imTargetDropDownID);
     const firstDropDownItem = dropDownContainer.querySelector(".pDropdownFirst");
     const dropDownContent   = dropDownContainer.querySelector(".cDropdownContent");
+
+    // dropdown show
+    dropDownContainer.addEventListener("mouseover", () => {
+        dropDownContent.style.display = "block"
+    });
+
+    // dropdown hide
+    dropDownContainer.addEventListener("mouseout", () => {
+        dropDownContent.style.display = "none"
+    });
 
     // get existing data rows
     const dataRows = document.querySelectorAll("tr");

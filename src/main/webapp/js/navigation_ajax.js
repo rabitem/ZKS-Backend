@@ -4,6 +4,8 @@ $(document).ready(() => {
 
     // load inital view: manage users and enable buttons of view
     $.fn.loadManageUserView();
+
+    bindStaticDropdowns("#cDropdownAddUser");
     
     // change views: manage users
     $("#navManageUsers").click((event) => {
@@ -60,6 +62,8 @@ $.fn.loadManageAuthorizations = async () => {
 
     await $.fn.loadNewMainContent("/manageAuthorizations", "- Manage Authorizations");
     initializeManageAuthorizations();
+    bindStaticDropdowns("#cDropdownAuthLocation");
+    bindStaticDropdowns("#cDropdownAuthUser");
 }
 
 $.fn.loadTempView = () => {
