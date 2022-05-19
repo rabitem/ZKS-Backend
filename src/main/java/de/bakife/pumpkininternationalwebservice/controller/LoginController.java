@@ -84,6 +84,7 @@ public class LoginController {
             if (response.isLoggedIn()) {
                 response.setLastLogin(this.authorizationHistoryRepository.findFirstByUserAndStatusOrderByTimestampDesc(
                         user, Constants.SUCCESSFULLY_LOGGED_IN).orElseThrow().getTimestamp());
+                log.info(response.getLastLogin().toString());
             } else {
                 response.setLastLogin(null);
             }
@@ -106,7 +107,7 @@ public class LoginController {
     @Data
     static class IsLoggedInResponse {
         private boolean loggedIn;
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Europe/Berlin")
         private Date lastLogin;
     }
 
