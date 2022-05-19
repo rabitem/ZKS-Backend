@@ -8,12 +8,32 @@ const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-         datasets: [{data: [
+
+         datasets: [{
+         label: "This will be hide",
+         borderColor: "rgba(0,0,0,0)",
+         backgroundColor: function ( context ) {
+                                   const index = context.dataIndex;
+                                   const value = context.dataset.data[index];
+                                   if (typeof value !="undefined"){
+                                       //alert(value.id);
+                                       return value.color ;
+                                       }
+                                   },
+
+         data: [
              <c:forEach items="${temperatures}" var="temperature">
-             { x:'${temperature.timestamp}', y:'${temperature.temperature}' },
+             { color:'${temperature.location.color}',x:'${temperature.timestamp}', y:'${temperature.temperature}' },
              </c:forEach>]
           }]
-    }
+    },
+    options: {
+       scales: {
+           x: { display: true, title: { display: true, text: 'Date/Time' } },
+           y: { display: true, title: { display: true, text: 'Temperature' }, suggestedMin: 20, suggestedMax: 100 }
+       },
+
+   }
 });
 </script>
 
@@ -22,22 +42,12 @@ const myChart = new Chart(ctx, {
 <div class="cMainContentManageUsers" id = "cMainContentSubFolder">
     <div class="cTableContent cMainBox">
         <h2>Temperature Data</h2>
-        <table>
-            <tr>
-                <th>Temperature</th>
-                <th>Timestamp</th>
-            </tr>
+
             <!-- Generated JSP Content -->
-            <div style="width:400px;border:1px">
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <div style="width:1200px;border:1px">
+            <canvas id="myChart" width="1200" height="700"></canvas>
             </div>
-            <%--jsp:useBean id="temperatures" scope="request" type="java.util.List"/--%>
-            <c:forEach items="${temperatures}" var="temperature">
-                <tr class = "trCurData" id = "trData${temperature.id}" data-valueID = ${temperature.id}>
-                    <td>${temperature.temperature}</td>
-                    <td>${temperature.timestamp}</td>
-                </tr>
-            </c:forEach>
+
         </table>
     </div>
 </div>
