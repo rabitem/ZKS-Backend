@@ -16,7 +16,6 @@ public class PumpkinInternationalWebserviceApplication {
 	 * @param args Command line arguments.
 	 */
 	public static void main(String[] args) {
-		TimeZone.setDefault(TimeZone.getTimeZone("UTC+2"));
 		SpringApplication.run(PumpkinInternationalWebserviceApplication.class, args);
 	}
 
