@@ -123,6 +123,14 @@ public class FrontendController {
         List<LocationAuthorization> authorizations =
                 StreamSupport.stream(this.locationAuthorizationRepository.findAll().spliterator(), true)
                         .collect(Collectors.toList());
+        List<Location> locations =
+                StreamSupport.stream(this.locationRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        List<User> users =
+                StreamSupport.stream(this.userRepository.findAll().spliterator(), true)
+                        .collect(Collectors.toList());
+        model.addAttribute("users", users);
+        model.addAttribute("locations", locations);
         model.addAttribute("authorizations", authorizations);
         return "manage_authorizations_view";
     }

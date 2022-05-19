@@ -114,40 +114,6 @@
     </div>
 </div>
 
-<!-- Pop-Up Add Authorization -->
-<div class = "cPopUpModal" id = "popUpManageAuthorization" data-remove = "false">
-    <div class = "cPopUpContent">
-        <div class="cPopUpHeader">
-            <h1 id = "hManageAuthorization">Add Authorization</h1>
-            <span class="btnClose" id = "btnCloseManageAuthorization">&times;</span>
-        </div>
-        <p class = "pResponseText" id = "pManageAuthorizationResponse"></p>
-        <form method="POST" id="updateAuthorizationForm">
-
-            <div class="cInputWrapper">
-                <div class="cSingleInput">
-                    <input type="text"  id="iAuthLocationName" name="iAuthLocationName" required
-                           onfocus="pInputOnFocus('iAuthLocationName', 'lAuthLocationNameLabel', 'cAuthLocationNameUnderline')"
-                           onblur="pInputOnBlur('iAuthLocationName', 'lAuthLocationNameLabel', 'cAuthLocationNameUnderline')">
-                    <div class="cInputUnderline" id="cAuthLocationNameUnderline"></div>
-                    <label id="lAuthLocationNameLabel">Location Name</label>
-                </div>
-            </div>
-
-            <div class="cInputWrapper">
-                <div class="cSingleInput">
-                    <input type="text"  id="iAuthUserName" name="iAuthUserName" required
-                           onfocus="pInputOnFocus('iAuthUserName', 'lAuthUserNameLabel', 'cAuthUserNameUnderline')"
-                           onblur="pInputOnBlur('iAuthUserName', 'lAuthUserNameLabel', 'cAuthUserNameUnderline')">
-                    <div class="cInputUnderline" id="cAuthUserNameUnderline"></div>
-                    <label id="lAuthUserNameLabel">User Name</label>
-                </div>
-            </div>
-
-            <input type="submit" id="button_manage_Authorization">
-        </form>
-    </div>
-</div>
 
 <!-- Main Content -->
 <div class="cGlobal">

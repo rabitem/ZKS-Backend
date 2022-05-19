@@ -2,7 +2,7 @@ $(document).ready(() => {
 
     // Add Users Form ----------------------------------------------------------------------------------
 
-    $("#pAddUserResponse").on("submit", (event) => {
+    $("#addUserForm").on("submit", (event) => {
 
         // prevents POST form to refresh the page
         event.preventDefault();
@@ -31,7 +31,7 @@ $(document).ready(() => {
                     messageStatus = "Failed to create user. Error Code: " + rhx.status;
                 }
 
-                updateStatusText("#pManageUserResponse",rhx.status, messageStatus);
+                updateStatusText("#pAddUserResponse",rhx.status, messageStatus);
                 
                 $.fn.loadManageUserView();
 
@@ -69,7 +69,7 @@ $(document).ready(() => {
                     messageStatus = "Failed to remove User. Error Code: " + rhx.status;
                 }
 
-                updateStatusText("#pManageUserResponse",rhx.status, messageStatus);
+                updateStatusText("#pRemoveUserResponse",rhx.status, messageStatus);
                 
                 $.fn.loadManageUserView();
 
@@ -242,7 +242,6 @@ function getDatabaseIDByLabel(imTargetLabel) {
 
     for (let i = 0; i < tableData.length; i++) {
         const obj = tableData[i];
-        console.log(imTargetLabel, obj.id)
 
         if (obj.id === "trData" + imTargetLabel) {
             return obj.getAttribute("data-valueID");
