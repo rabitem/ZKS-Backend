@@ -32,7 +32,7 @@
                 </div>
             </div>
 
-            <div class="cInputWrapper" id = "inputWrapperRole">
+            <%-- <div class="cInputWrapper" id = "inputWrapperRole">
                 <div class="cSingleInput">
                     <input type="text"  id="iUserRole" name="iUserRole" required
                            onfocus="pInputOnFocus('iUserRole', 'lUserRoleLabel', 'cUserRoleUnderline')"
@@ -40,7 +40,16 @@
                     <div class="cInputUnderline" id="cUserRoleUnderline"></div>
                     <label id="lUserRoleLabel">User Role</label>
                 </div>
-            </div>
+            </div> --%>
+
+            <div class = "cDropdown" id = "cDropdownAddUser">
+                <p class = "pDropdownFirst" id = "pUserRole" data-id="USER">USER</p>
+                <div class = "cDropdownIcon"></div>
+                <div class = "cDropdownContent" id = "cDropdownContentAddUser">
+                    <p class="dropdownItem" data-id="USER">USER</p>
+                    <p class="dropdownItem" data-id="ADMIN">ADMIN</p>
+                </div>
+            </div>     
 
             <div class="cInputWrapper" id = "inputWrapperRFID">
                 <div class="cSingleInput">

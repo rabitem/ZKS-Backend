@@ -433,6 +433,10 @@ svg:active {
 .cDropdown {
   position: relative;
   display: inline-block;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: #f7f7f7;
 }
 
 .cDropdown .cDropdownIcon {
@@ -465,6 +469,7 @@ svg:active {
   max-height: 50vh;
   overflow-y: auto;
   border-radius: 0.2rem;
+  width: 100%;
 }
 
 .cDropdown .cDropdownContent .dropdownItem {
@@ -582,6 +587,7 @@ table tr:hover {
 .cPopUpModal .cPopUpContent .pResponseText {
   display: none;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .cPopUpModal .cPopUpContent .cPopUpHeader {
@@ -626,7 +632,8 @@ table tr:hover {
 
 .cPopUpModal .cPopUpContent .cInputWrapper {
   width: 100%;
-  padding-top: 4rem;
+  padding-top: 2rem;
+  margin-bottom: 1rem;
 }
 
 .cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput {
@@ -649,8 +656,8 @@ table tr:hover {
 
 .cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput input:focus ~ label,
 .cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput input:valid ~ label {
-  -webkit-transform: translateY(-2.2rem);
-          transform: translateY(-2.2rem);
+  -webkit-transform: translateY(-2.65rem);
+          transform: translateY(-2.65rem);
 }
 
 .cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput label {
@@ -677,6 +684,10 @@ table tr:hover {
           transform: scaleX(0);
 }
 
+.cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput:last-child {
+  margin-bottom: 3rem;
+}
+
 .cPopUpModal input[type=checkbox] {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
@@ -691,7 +702,7 @@ table tr:hover {
 .cPopUpModal input[type=submit], .cPopUpModal button[type=button] {
   border: none;
   outline: none;
-  margin-top: 4.4rem;
+  margin-top: 1.5rem;
   background: #0a0c16;
   color: #fff;
   font-size: 1.5rem;

@@ -9,7 +9,7 @@ $(document).ready(() => {
 
         // retrieves data from input fields
         const name = $("#iUserName").val();
-        const role = $("#iUserRole").val();
+        const role = $("#pUserRole").val();
         const rfid = $("#iUserRFID").val();
 
         $.ajax({

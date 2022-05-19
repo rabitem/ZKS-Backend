@@ -380,6 +380,11 @@ svg:active { transform: scale(0.55) }
     position: relative;
     display: inline-block;
 
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    background-color: #f7f7f7;
+
     .cDropdownIcon {
         
         float: right;
@@ -412,6 +417,7 @@ svg:active { transform: scale(0.55) }
         max-height: 50vh;
         overflow-y: auto;
         border-radius: 0.2rem;
+        width: 100%;
 
         .dropdownItem {
             
@@ -516,8 +522,10 @@ table {
         transform: translate(-50%, -50%);
         
         .pResponseText { 
+            
             display: none;
             margin-top: 1rem;
+            margin-bottom: 1rem;
         }
 
         .cPopUpHeader {
@@ -557,7 +565,8 @@ table {
         .cInputWrapper {
             
             width: 100%;
-            padding-top: 4rem;
+            padding-top: 2rem;
+            margin-bottom: 1rem;
         
             .cSingleInput {
                 
@@ -580,7 +589,7 @@ table {
                 // when text is entered or user is entering text
                 input:focus ~ label,
                 input:valid ~ label{
-                    transform: translateY(-2.2rem);
+                    transform: translateY(-2.65rem);
                 }
         
                 label {
@@ -606,6 +615,10 @@ table {
                     transform: scaleX(0);
                 }
             }
+
+            .cSingleInput:last-child {
+                margin-bottom: 3rem;
+            }
         }
     }
 
@@ -622,7 +635,8 @@ table {
         
         border: none;
         outline: none;
-        margin-top: 4.4rem;
+        //margin-top: 4.4rem;
+        margin-top: 1.5rem;
         background:$color_sidebar_dark;
         color: #fff;
         font-size: 1.5rem;

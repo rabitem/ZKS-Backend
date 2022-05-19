@@ -100,8 +100,19 @@ function buildDropdown(imTargetDropDownID) {
         // dropdown click functionality
         newHTMLObj.addEventListener("click", () => {
 
+            const allDropDownItems = dropDownContent.querySelectorAll("#dropdownItem");
+
+            for (let j = 0; j < allDropDownItems.length; j++) {
+                const obj = allDropDownItems[j];
+                obj.style.fontWeight = "normal";
+            }
+
+            // make new selection bold
+            newHTMLObj.style.fontWeight = "bold";
+
             firstDropDownItem.innerHTML = newHTMLObj.innerHTML;
             firstDropDownItem.setAttribute("data-id", newHTMLObj.getAttribute("data-id"));
+            dropDownContent.style.display = "none";
         });
     }
 }
