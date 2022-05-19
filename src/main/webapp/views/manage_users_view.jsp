@@ -29,7 +29,7 @@
             <!-- Generated JSP Content -->
             <jsp:useBean id="users" scope="request" type="java.util.List"/>
             <c:forEach items="${users}" var="user">
-                <tr class = "trCurData" id = "trData${user.name}" data-valueID = ${user.id}>
+                <tr class = "trCurData" id = "trData${user.name}" data-valueID = ${user.id}  data-name = ${user.name}>
                     <td>${user.name}</td>
                     <td>${user.role.label}</td>
                     <td>${user.rfid}</td>

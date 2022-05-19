@@ -80,7 +80,7 @@ function buildDropdown(imTargetDropDownID) {
         
         const dataObj = dataRows[i];
         const dataID  = dataObj.getAttribute("data-valueID");
-        const label   = dataObj.getAttribute("data-label");
+        const label   = dataObj.getAttribute("data-name");
         
         // first element
         if (i === 1) {
@@ -90,7 +90,7 @@ function buildDropdown(imTargetDropDownID) {
         
         // insert dropdown item
         const newHTMLObj = document.createElement("p")
-        
+
         newHTMLObj.innerHTML = label + " (" + dataID + ")";
         newHTMLObj.classList.add("dropdownItem");
         newHTMLObj.setAttribute("data-id") = dataID;
@@ -99,12 +99,12 @@ function buildDropdown(imTargetDropDownID) {
 
         // dropdown click functionality
         newHTMLObj.addEventListener("click", () => {
+
+            firstDropDownItem.innerHTML = newHTMLObj.innerHTML;
             firstDropDownItem.setAttribute("data-id") = newHTMLObj.getAttribute("data-id");
         });
     }
 }
-
-
 
 // Pop-Up Manage Location: -----------------------------------------------------------------------
 
@@ -199,10 +199,16 @@ manageAuthClose.addEventListener("click", () => {
 
 window.onmousedown = (event) => {
 
-    if (event.target === manageUsersModal) {
+    if (event.target === addUsersModal) {
 
-        manageUsersModal.style.display = "none";
-        manageUserStatus.style.display = "none";
+        addUsersModal.style.display = "none";
+        addUsersModal.style.display = "none";
+    }
+
+    if (event.target === removeUsersModal) {
+
+        removeUsersModal.style.display = "none";
+        removeUsersModal.style.display = "none";
     }
 
     if (event.target === manageLocationsModal) {
