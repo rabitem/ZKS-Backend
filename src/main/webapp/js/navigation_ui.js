@@ -39,6 +39,7 @@ function initializeAddUsers () {
 
 addUserClose.addEventListener("click", () => {
     addUsersModal.style.display = "none";
+    addUserStatus.style.display = "none";
 });
 
 // Pop-Up Manage Users: Remove User -----------------------------------------------------------
@@ -60,6 +61,7 @@ function initializeRemoveUsers () {
 
 removeUserClose.addEventListener("click", () => {
     removeUsersModal.style.display = "none";
+    removeUserStatus.style.display = "none";
 });
 
 // Pop-Up Add Location: -----------------------------------------------------------------------
@@ -111,24 +113,23 @@ removeLocationClose.addEventListener("click", () => {
 
 // Pop-Up Add Authorizations ----------------------------------------------------------------
 
-let manageAuthsModal = null;
+let addAuthsModal = null;
 
 function initializeAddAuthorizations () {
 
-    manageAuthsModal       = document.querySelector("#popUpAddAuthorization");
+    addAuthsModal       = document.querySelector("#popUpAddAuthorization");
     const manageAuthClose  = document.querySelector("#btnCloseManageAuthorization");
     const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
     const addAuthBtn       = document.querySelector("#svgAddSignAuthorization");
         
     addAuthBtn.addEventListener("click", () => {
-        manageAuthsModal.style.display = "block";
+        addAuthsModal.style.display = "block";
     });
 
     manageAuthClose.addEventListener("click", () => {
     
-        manageAuthsModal.style.display = "none";
+        addAuthsModal.style.display = "none";
         manageAuthStatus.style.display = "none";
-        document.querySelector("#hManageAuth").innerHTML = "Remove Auth";
     });
 }
 
@@ -183,10 +184,10 @@ window.onmousedown = (event) => {
         removeLocationStatus.style.display = "none";
     }
 
-    if (manageAuthsModal !== null && event.target === manageAuthsModal) {
+    if (addAuthsModal !== null && event.target === addAuthsModal) {
         
         const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
-        manageAuthsModal.style.display = "none";
+        addAuthsModal.style.display = "none";
         manageAuthStatus.style.display = "none";
     }
 

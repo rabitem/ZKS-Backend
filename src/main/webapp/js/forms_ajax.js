@@ -105,9 +105,8 @@ $(document).ready(() => {
                 $.fn.loadManageLocations();
 
                 // clear input fields
-                $("#iUserName").val("");
-                $("#iUserRole").val("");
-                $("#iUserRFID").val("");
+                $("#iLocationName").val("");
+                $("#iLocationMACAdress").val("");
             },
 
             error: (err) => {
