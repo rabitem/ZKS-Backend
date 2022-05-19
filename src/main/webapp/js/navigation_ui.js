@@ -85,7 +85,7 @@ function buildDropdown(imTargetDropDownID) {
         // first element
         if (i === 1) {
             firstDropDownItem.innerHTML = label + " (" + dataID + ")";
-            firstDropDownItem.setAttribute("data-id") = dataID;
+            firstDropDownItem.setAttribute("data-id", dataID);
         }
         
         // insert dropdown item
@@ -93,7 +93,7 @@ function buildDropdown(imTargetDropDownID) {
 
         newHTMLObj.innerHTML = label + " (" + dataID + ")";
         newHTMLObj.classList.add("dropdownItem");
-        newHTMLObj.setAttribute("data-id") = dataID;
+        newHTMLObj.setAttribute("data-id", dataID);
 
         dropDownContent.appendChild(newHTMLObj);
 
@@ -101,7 +101,7 @@ function buildDropdown(imTargetDropDownID) {
         newHTMLObj.addEventListener("click", () => {
 
             firstDropDownItem.innerHTML = newHTMLObj.innerHTML;
-            firstDropDownItem.setAttribute("data-id") = newHTMLObj.getAttribute("data-id");
+            firstDropDownItem.setAttribute("data-id", newHTMLObj.getAttribute("data-id"));
         });
     }
 }

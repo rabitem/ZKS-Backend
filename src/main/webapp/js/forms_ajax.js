@@ -49,8 +49,8 @@ $(document).ready(() => {
 
         // prevents POST form to refresh the page
         event.preventDefault();
-        const name = $("#pRemoveUserDropFirst").getAttribute("data-id");
-        const targetID = getDatabaseIDByLabel(name);
+        const id = $("#pRemoveUserDropFirst").attr("data-id");
+        const targetID = getDatabaseIDByLabel(id);
 
         $.ajax({
             
@@ -58,7 +58,7 @@ $(document).ready(() => {
             method: "DELETE",
             contentType: "application/json",
             data: JSON.stringify({
-                id: targetID
+                id: id
             }),
 
             success: (res, statusText, rhx) => {
@@ -242,6 +242,7 @@ function getDatabaseIDByLabel(imTargetLabel) {
 
     for (let i = 0; i < tableData.length; i++) {
         const obj = tableData[i];
+        console.log(imTargetLabel, obj.id)
 
         if (obj.id === "trData" + imTargetLabel) {
             return obj.getAttribute("data-valueID");

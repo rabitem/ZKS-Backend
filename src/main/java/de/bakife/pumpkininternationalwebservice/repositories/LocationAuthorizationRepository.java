@@ -5,6 +5,7 @@ import de.bakife.pumpkininternationalwebservice.entities.LocationAuthorization;
 import de.bakife.pumpkininternationalwebservice.entities.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,4 +18,11 @@ public interface LocationAuthorizationRepository extends CrudRepository<Location
      * @return The LocationAuthorization if it exists, otherwise empty.
      */
     Optional<LocationAuthorization> findByUserAndLocation(User user, Location location);
+
+    /**
+     * Deletes all LocationAuthorization entries for the given User.
+     * @param user The User for which the LocationAuthorization entries should be deleted.
+     */
+    @Transactional
+    void deleteAllByUser(User user);
 }

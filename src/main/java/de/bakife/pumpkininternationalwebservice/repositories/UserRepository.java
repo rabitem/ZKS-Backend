@@ -14,10 +14,4 @@ public interface UserRepository extends CrudRepository<User, Integer> {
      * @return The User.
      */
     Optional<User> findByRfid(String rfid);
-
-    /**
-     * Deletes a User by the given id.
-     * @param id The id to delete the User for.
-     */
-    void deleteById(int id);
 }

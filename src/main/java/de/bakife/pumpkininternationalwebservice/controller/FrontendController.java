@@ -160,7 +160,10 @@ public class FrontendController {
 
         // remove user
         try {
-            userRepository.deleteById(removeUserByIdPayload.getId());
+            User user = this.userRepository.findById(removeUserByIdPayload.getId()).orElseThrow();
+            this.authorizationHistoryRepository.deleteAllByUser(user);
+            this.locationAuthorizationRepository.deleteAllByUser(user);
+            this.userRepository.delete(user);
         } catch (EmptyResultDataAccessException e) {
             log.error("User with id {} not found", removeUserByIdPayload.getId());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

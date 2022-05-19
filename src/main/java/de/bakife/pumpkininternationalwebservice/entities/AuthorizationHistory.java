@@ -1,5 +1,6 @@
 package de.bakife.pumpkininternationalwebservice.entities;
 
+import de.bakife.pumpkininternationalwebservice.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,4 +35,17 @@ public class AuthorizationHistory {
 
     @Column(name = "status")
     private String status;
+
+    @Transient
+    @Setter
+    private boolean wasSuccessful = false;
+
+    /**
+     * Returns if the authorization was successful.
+     * @return True if the authorization was successful, false otherwise.
+     */
+    public boolean getWasSuccessful() {
+        return this.status.equals(Constants.SUCCESSFULLY_LOGGED_IN) ||
+                this.status.equals(Constants.SUCCESSFULLY_LOGGED_OUT);
+    }
 }
