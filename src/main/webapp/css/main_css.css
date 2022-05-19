@@ -479,7 +479,7 @@ svg:active {
   color: #e9676e;
 }
 
-.cDropdown:hover .cDropDownContent {
+.cDropdown:hover .cDropdownContent {
   display: block;
 }
 
