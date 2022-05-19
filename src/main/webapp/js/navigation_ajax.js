@@ -61,9 +61,11 @@ $.fn.loadManageLocations = async () => {
 $.fn.loadManageAuthorizations = async () => {
 
     await $.fn.loadNewMainContent("/manageAuthorizations", "- Manage Authorizations");
-    initializeManageAuthorizations();
+    initializeAddAuthorizations();
+    initializeRemoveAuthorizations();
     bindStaticDropdowns("#cDropdownAuthLocation");
     bindStaticDropdowns("#cDropdownAuthUser");
+    bindStaticDropdowns("#cDropdownAuthorizations");
 }
 
 $.fn.loadTempView = () => {

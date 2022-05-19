@@ -719,3 +719,10 @@ table tr:hover {
   background-color: #e9676e;
 }
 /*# sourceMappingURL=main_css.css.map */
+
+.labelAuth {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #0a0c16;
+  margin-bottom: 0.2rem;
+}

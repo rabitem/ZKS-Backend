@@ -234,7 +234,7 @@ public class FrontendController {
             // throw error, already exists
             log.info("Authorization from userId {} to locationId {} already exists",
                     addAuthorizationPayload.getUserId(), addAuthorizationPayload.getLocationId());
-            return new ResponseEntity<>("Authorization already exists!", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Authorization already exists!", HttpStatus.CONFLICT);
         }
 
         // create location authorization

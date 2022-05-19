@@ -65,11 +65,11 @@ removeUserClose.addEventListener("click", () => {
 // Bind static dropdowns, for existing html ----------------------------------------------------
 
 function bindStaticDropdowns(imTargetDropDownID) {
-    
+
     const dropDownContainer = document.querySelector(imTargetDropDownID);
     const firstDropDownItem = dropDownContainer.querySelector(".pDropdownFirst");
     const dropDownContent   = dropDownContainer.querySelector(".cDropdownContent");
-    const allDropDownItems = dropDownContent.querySelectorAll("#dropdownItem");
+    const allDropDownItems = dropDownContent.querySelectorAll(".dropdownItem");
 
     // dropdown show
     dropDownContainer.addEventListener("mouseover", () => {
@@ -82,7 +82,7 @@ function bindStaticDropdowns(imTargetDropDownID) {
     });
 
     for (let i = 0; i < allDropDownItems.length; i++) {
-        
+
         const dropDownItem = allDropDownItems[i];
 
         dropDownItem.addEventListener("click", () => {
@@ -150,7 +150,7 @@ function buildDropdown(imTargetDropDownID) {
         // dropdown click functionality
         newHTMLObj.addEventListener("click", () => {
 
-            const allDropDownItems = dropDownContent.querySelectorAll("#dropdownItem");
+            const allDropDownItems = dropDownContent.querySelectorAll(".dropdownItem");
 
             for (let j = 0; j < allDropDownItems.length; j++) {
                 const obj = allDropDownItems[j];
@@ -220,9 +220,9 @@ manageLocationClose.addEventListener("click", () => {
 
 let manageAuthsModal = null;
 
-function initializeManageAuthorizations () {
-    
-    manageAuthsModal = document.querySelector("#popUpManageAuthorization");
+function initializeAddAuthorizations () {
+
+    manageAuthsModal = document.querySelector("#popUpAddAuthorization");
 
     const manageAuthClose  = document.querySelector("#btnCloseManageAuthorization");
     const manageAuthStatus = document.querySelector("#pManageAuthorizationResponse");
@@ -260,6 +260,52 @@ function initializeManageAuthorizations () {
     
     });
 }
+
+// Pop-Up Remove Authorizations ----------------------------------------------------------------
+
+let removeAuthsModal = null;
+
+function initializeRemoveAuthorizations () {
+
+    removeAuthsModal = document.querySelector("#popUpRemoveAuthorization");
+
+    const removeAuthClose  = document.querySelector("#btnCloseRemoveAuthorization");
+    const removeAuthStatus = document.querySelector("#pRemoveAuthorizationResponse");
+
+    const removeAuthBtn   = document.querySelector("#svgRemoveSignAuthorization");
+    const submitButton = document.querySelector("#button_remove_Authorization");
+
+    // add new Auth
+    removeAuthBtn.addEventListener("click", () => {
+
+        removeAuthsModal.style.display = "block";
+
+        removeAuthsModal.setAttribute("data-remove", false);
+
+        submitButton.value = "Add Auth";
+    });
+
+    // try to remove existing Auth
+    const rmvAuthBtn = document.querySelector("#svgRemoveSignAuthorization");
+
+    rmvAuthBtn.addEventListener("click", () => {
+
+        removeAuthsModal.style.display = "block";
+
+        submitButton.value = "Remove Auth";
+
+        removeAuthsModal.setAttribute("data-remove", true);
+    });
+
+    removeAuthClose.addEventListener("click", () => {
+
+        removeAuthsModal.style.display = "none";
+        removeAuthStatus.style.display = "none";
+        document.querySelector("#hManageAuth").innerHTML = "Remove Auth";
+
+    });
+}
+
 
 
 // close all pop-ups if user clicks outside of pop-up ui --------------------------------------

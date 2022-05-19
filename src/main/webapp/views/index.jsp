@@ -208,9 +208,9 @@
     </div>
 </div>
 
-<script src="/js/navigation_ui.js"></script>
-<script src="/js/navigation_ajax.js"></script>
-<script src="/js/forms_ajax.js"></script>
+<script src="${pageContext.request.contextPath}/js/navigation_ui.js"></script>
+<script src="${pageContext.request.contextPath}/js/navigation_ajax.js"></script>
+<script src="${pageContext.request.contextPath}/js/forms_ajax.js"></script>
 
 </body>
 </html>
