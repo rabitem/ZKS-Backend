@@ -176,12 +176,10 @@ public class LoginService {
 
     /**
      * Determine if user is logged in.
-     * @param  rfid of user
+     * @param  user the user
      * @return True if user is logged in, false otherwise.
-     * @throws IllegalArgumentException If user does not exist.
      */
-    public boolean isLoggedIn(String rfid) throws NoSuchElementException {
-        User user = this.userRepository.findByRfid(rfid).orElseThrow();
+    public boolean isLoggedIn(User user)  {
         return Objects.nonNull(user.getLocation());
     }
 }

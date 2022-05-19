@@ -1,6 +1,8 @@
 package de.bakife.pumpkininternationalwebservice.controller;
 
+import de.bakife.pumpkininternationalwebservice.Constants;
 import de.bakife.pumpkininternationalwebservice.entities.User;
+import de.bakife.pumpkininternationalwebservice.repositories.AuthorizationHistoryRepository;
 import de.bakife.pumpkininternationalwebservice.services.LoginService;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -12,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Positive;
+import java.util.Date;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 /**
  * @author rabitem
@@ -30,11 +33,18 @@ public class LoginController {
     private final LoginService loginService;
 
     /**
+     * The Authorization history repository.
+     */
+    private final AuthorizationHistoryRepository authorizationHistoryRepository;
+
+    /**
      * Constructor. Initializes the services.
      * @param loginService The login service.
+     * @param authorizationHistoryRepository The authorization history repository.
      */
-    public LoginController(final LoginService loginService) {
+    public LoginController(final LoginService loginService, AuthorizationHistoryRepository authorizationHistoryRepository) {
         this.loginService = loginService;
+        this.authorizationHistoryRepository = authorizationHistoryRepository;
     }
 
     /**
@@ -66,8 +76,18 @@ public class LoginController {
     public ResponseEntity<?> isLoggedIn(@RequestBody @Valid IsLoggedInRequest request) {
         log.info("isLoggedIn requested with rfid: {}", request.getRfid());
         try {
-            return new ResponseEntity<>(this.loginService.isLoggedIn(request.getRfid()), HttpStatus.OK);
-        } catch (Exception e) {
+            User user = this.loginService.checkUserByRfid(request.getRfid());
+            IsLoggedInResponse response = new IsLoggedInResponse();
+            response.setLoggedIn(this.loginService.isLoggedIn(user));
+
+            if (response.isLoggedIn()) {
+                response.setLastLogin(this.authorizationHistoryRepository.findFirstByUserAndStatusOrderByTimestampDesc(
+                        user, Constants.SUCCESSFULLY_LOGGED_IN).orElseThrow().getTimestamp());
+            } else {
+                response.setLastLogin(null);
+            }
+            return new ResponseEntity<>(response, HttpStatus.OK);
+        } catch (IllegalArgumentException | NoSuchElementException e) {
             log.error("Error while checking if user is logged in: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -80,6 +100,12 @@ public class LoginController {
     static class IsLoggedInRequest {
         @NotBlank(message = "RFID must be given!")
         private String rfid;
+    }
+
+    @Data
+    static class IsLoggedInResponse {
+        private boolean loggedIn;
+        private Date lastLogin;
     }
 
     /**

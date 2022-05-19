@@ -42,8 +42,4 @@ public class User {
     @Getter
     @Setter
     private Role role;
-
-    @OneToMany(mappedBy = "user")
-    @Column(nullable = true)
-    private List<LocationAuthorization> locationAuthorizations;
 }
