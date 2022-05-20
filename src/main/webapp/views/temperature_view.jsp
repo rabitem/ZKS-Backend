@@ -5,7 +5,6 @@
 <%@ page import="java.sql.*" %>
 <jsp:useBean id="temperatures" scope="request" type="java.util.List"/>
 <jsp:useBean id="locations" scope="request" type="java.util.List"/>
-
 <script>
     ctx = document.getElementById('myChart').getContext('2d');
     myChart = new Chart(ctx, {
@@ -17,13 +16,9 @@
                 {
                     data: [
                         <c:forEach items="${location.locationTemperatures}" var="temperature">
-                        <fmt:parseDate pattern="yyyy-MM-dd HH:mm:ss.S" value="${temperature.timestamp}" var="parsedTimestamp" />
-                        <fmt:formatDate value="${parsedTimestamp}" pattern="HH:mm:ss dd.MM.yyyy" var="formatedTimestamp" />
                         {
-                            x: '${formatedTimestamp}',
+                            x: '${temperature.timestamp}',
                             y: ${temperature.temperature},
-                            backgroundColor: 'rgba(0, 0, 0, 0)',
-                            borderColor: 'rgba(0, 0, 0, 0)',
                         }, </c:forEach>
                     ],
                     backgroundColor: '${location.color}',
@@ -32,7 +27,6 @@
                     showLine: false,
                     pointRadius: 5,
                     pointHoverRadius: 7,
-                    boxShadow: '0 0 100px 60px #f0f',
                     label: '${location.label}',
                 },
                 </c:forEach>
@@ -42,7 +36,24 @@
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                x: {display: true, title: {display: true, text: 'Timestamp'}},
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'minute',
+                        displayFormats: {
+                            minute: 'HH:mm:ss (dd.MM.yyyy)'
+                        }
+                    },
+                    ticks: {
+                        autoSkip: true,
+                        maxTicksLimit: 50,
+                    },
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Timestamp'
+                    },
+                },
                 y: {
                     display: true,
                     title: {display: true, text: 'Temperature'},
