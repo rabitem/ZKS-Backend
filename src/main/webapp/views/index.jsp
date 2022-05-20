@@ -32,7 +32,7 @@
                            onfocus="pInputOnFocus('iUserName', 'lUserNameLabel', 'cUserNameUnderline')"
                            onblur="pInputOnBlur('iUserName', 'lUserNameLabel', 'cUserNameUnderline')">
                     <div class="cInputUnderline" id="cUserNameUnderline"></div>
-                    <label id="lUserNameLabel">User Name</label>
+                    <label id="lUserNameLabel" for="iUserName">User Name</label>
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                            onfocus="pInputOnFocus('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')"
                            onblur="pInputOnBlur('iUserRFID', 'lUserFIDLabel', 'cUserFIDUnderline')">
                     <div class="cInputUnderline" id="cUserFIDUnderline"></div>
-                    <label id="lUserFIDLabel">User RFID</label>
+                    <label id="lUserFIDLabel" for="iUserRFID">User RFID</label>
                 </div>
             </div>
 
@@ -110,17 +110,17 @@
                            onfocus="pInputOnFocus('iLocationName', 'lLocationNameLabel', 'cLocationNameUnderline')"
                            onblur="pInputOnBlur('iLocationName', 'lLocationNameLabel', 'cLocationNameUnderline')">
                     <div class="cInputUnderline" id="cLocationNameUnderline"></div>
-                    <label id="lLocationNameLabel">Location Name</label>
+                    <label id="lLocationNameLabel" for="iLocationName">Location Name</label>
                 </div>
             </div>
 
             <div class="cInputWrapper">
                 <div class="cSingleInput">
                     <input type="text" id="iLocationMACAdress" name="iLocationMACAdress" required
-                           onfocus="pInputOnFocus('iLocationMACAdress', 'lLocationMACAdressLabel', 'cLocationMACAdressUnderline')"
-                           onblur="pInputOnBlur('iLocationMACAdress', 'lLocationMACAdressLabel', 'cLocationMACAdressUnderline')">
+                                                                   onfocus="pInputOnFocus('iLocationMACAdress', 'lLocationMACAdressLabel', 'cLocationMACAdressUnderline')"
+                                                                   onblur="pInputOnBlur('iLocationMACAdress', 'lLocationMACAdressLabel', 'cLocationMACAdressUnderline')">
                     <div class="cInputUnderline" id="cLocationMACAdressUnderline"></div>
-                    <label id="lLocationMACAdressLabel">Location MACAdress</label>
+                    <label id="lLocationMACAdressLabel" for="iLocationMACAdress">Location MACAdress</label>
                 </div>
             </div>
 
@@ -167,8 +167,8 @@
                 <div class="cSidebarNavArrow">
                     <svg class="svgSidebarNavArrow" width="14" height="20" viewBox="0 0 14 20" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.8968 18.4384L2 10.2192L11.8968 2" stroke-width="2" ; stroke-linecap="round"
-                              stroke-linejoin="round"/>
+                        <path d="M11.8968 18.4384L2 10.2192L11.8968 2" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
                     </svg>
                 </div>
             </div>
@@ -178,7 +178,7 @@
                     <a href="#" id="navManageUsers">
                         <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M21 23V20.6667C21 19.429 20.4732 18.242 19.5355 17.3668C18.5979 16.4917 17.3261 16 16 16H6C4.67392 16 3.40215 16.4917 2.46447 17.3668C1.52678 18.242 1 19.429 1 20.6667V23M16 6C16 8.76142 13.7614 11 11 11C8.23858 11 6 8.76142 6 6C6 3.23858 8.23858 1 11 1C13.7614 1 16 3.23858 16 6Z"
-                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <p>Manage Users</p>
                     </a>
@@ -188,7 +188,7 @@
                     <a href="" id="navManageLocations">
                         <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 21V11H13V21M1 8L10 1L19 8V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21H3C2.46957 21 1.96086 20.7893 1.58579 20.4142C1.21071 20.0391 1 19.5304 1 19V8Z"
-                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <p>Manage Locations</p>
                     </a>
@@ -198,7 +198,7 @@
                     <a href="#" id="navManageAccess">
                         <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 10V6C5 4.67392 5.52678 3.40215 6.46447 2.46447C7.40215 1.52678 8.67392 1 10 1C11.3261 1 12.5979 1.52678 13.5355 2.46447C14.4732 3.40215 15 4.67392 15 6V10M3 10H17C18.1046 10 19 10.8954 19 12V19C19 20.1046 18.1046 21 17 21H3C1.89543 21 1 20.1046 1 19V12C1 10.8954 1.89543 10 3 10Z"
-                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <p>Manage Access</p>
                     </a>
@@ -208,7 +208,7 @@
                     <a href="" id="navLogs">
                         <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M15 5H1M19 1H1M19 9H1M15 13H1" stroke="white" stroke-width="2"
-                                  stroke-linecap="round" stroke-linejoin="round"/>
+                                  stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <p>View Logs</p>
                     </a>
@@ -218,7 +218,7 @@
                     <a href="" id="navTemparature">
                         <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17 8H18C19.0609 8 20.0783 8.42143 20.8284 9.17157C21.5786 9.92172 22 10.9391 22 12C22 13.0609 21.5786 14.0783 20.8284 14.8284C20.0783 15.5786 19.0609 16 18 16H17M17 8H1V17C1 18.0609 1.42143 19.0783 2.17157 19.8284C2.92172 20.5786 3.93913 21 5 21H13C14.0609 21 15.0783 20.5786 15.8284 19.8284C16.5786 19.0783 17 18.0609 17 17V8ZM5 1V4M9 1V4M13 1V4"
-                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                         <p>Temperature</p>
                     </a>
@@ -240,8 +240,8 @@
     </div>
     <div class="cContentSection">
         <div class="cHeader">
-            <svg version="1.1" id="pumpkin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" float="left"
-                width="4rem" height="4rem" viewBox="0 0 864 864" enable-background="new 0 0 864 864" xml:space="preserve">
+            <svg id="pumpkin" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                width="4rem" height="4rem" viewBox="0 0 864 864" xml:space="preserve">
                 <g>
                     <path d="M840.541,537.2307c-5.5149-45.5801-18.0803-88.6279-37.3479-127.9487c-17.5037-35.7216-40.1042-67.6147-67.1726-94.7947
                         c-49.7932-49.9978-111.4966-79.8469-165.0613-79.8469c-11.8044,0.0005-23.0433,1.4712-33.4045,4.3705
@@ -322,7 +322,7 @@
                         c-20.0996-95.123-58.1364-168.0293-113.0541-216.6929c-29.5463-26.1814-63.705-44.5625-99.577-53.7019
                         c5.1108-2.6653,10.802-4.8662,17.1587-6.6451c8.4319-2.3596,17.6768-3.5558,27.4775-3.5563
                         c47.8384-0.002,103.715,27.4248,149.4712,73.3667c37.8445,37.9983,85.6133,105.2528,98.2703,209.8679
-                        C827.6843,614.1157,809.0718,683.5094,767.636,730.2612z"/>
+                        C827.6843,614.1157,809.0718,683.5094,767.636,730.2612z"></path>
                     <g>
                         <path fill="#e9676e" d="M576.2958,694.9998c3.0103-18.7771,4.6743-39.4563,4.9464-61.4636c0.027-2.2029,0.0405-4.4197,0.04-6.65
                             c-0.0015-8.8866-0.2253-18.1156-0.6647-27.432c-0.2209-4.6749-0.4993-9.4496-0.8278-14.1919
@@ -346,7 +346,7 @@
                             c19.2333,8.6648,41.5979,13.0583,66.4722,13.0583c17.1597,0,32.7827-3.6653,46.4348-10.894
                             c2.2148-1.1731,4.4163-2.4604,6.5425-3.8279c2.115-1.3599,4.2103-2.8328,6.2275-4.3792c2.0088-1.5398,4-3.1975,5.9177-4.9272
                             c1.9111-1.7239,3.7994-3.5645,5.6125-5.4707c1.8107-1.9038,3.5968-3.9258,5.3081-6.0098v0.0005
-                            c15.4117-18.7637,26.766-44.6682,33.7463-76.9941C574.3519,706.1914,575.3914,700.6401,576.2958,694.9998z"/>
+                            c15.4117-18.7637,26.766-44.6682,33.7463-76.9941C574.3519,706.1914,575.3914,700.6401,576.2958,694.9998z"></path>
                         <path fill="#e9676e" d="M337.5637,793.9946c-24.4073-27.3193-40.9695-64.8269-49.2256-111.4812
                             c-7.3123-41.3201-8.0166-88.8552-2.0939-141.2836c8.9923-79.6058,25.6831-147.4691,48.2687-196.2533
                             c11.0374-23.8418,23.4968-43.0839,37.099-57.3398c-3.3528-1.6381-6.6842-3.73-9.9554-6.3606
@@ -361,24 +361,24 @@
                             l1.3849-0.0454c0.3477-0.0076,0.6949-0.0134,1.0345-0.0356c0.3107-0.0198,0.6111-0.0544,0.9111-0.0874l1.3096-0.1287
                             c0.3448-0.0305,0.6902-0.0588,1.0278-0.1033c0.3063-0.0405,0.6088-0.0959,0.9111-0.1497l1.2676-0.2097
                             c0.3203-0.0496,0.64-0.0979,0.9531-0.1602c0.3043-0.0608,0.6044-0.1365,0.9049-0.2097l0.6815-0.1636
-                            C344.2644,801.1472,340.8281,797.6494,337.5637,793.9946z"/>
+                            C344.2644,801.1472,340.8281,797.6494,337.5637,793.9946z"></path>
                         <path fill="#e9676e" d="M148.7119,536.9409c7.9353-70.8479,39.1736-143.3016,85.704-198.7822
                             c33.3373-39.7498,71.806-67.5625,110.1351-80.4756c-0.8767-3.2473-1.1763-6.4474-0.9558-9.5525
                             c-15.5991-3.1641-31.5131-4.7661-47.6318-4.7661c-139.4357,0-252.8752,120.704-252.8752,269.0692
-                            c0,100.3995,26.5596,224.0033,149.0366,259.8832C150.4951,724.8059,136.2959,647.7908,148.7119,536.9409z"/>
+                            c0,100.3995,26.5596,224.0033,149.0366,259.8832C150.4951,724.8059,136.2959,647.7908,148.7119,536.9409z"></path>
                         <path fill="#e9676e" d="M720.4314,330.0051c-45.7562-45.9419-101.6328-73.3687-149.4712-73.3667
                             c-9.8008,0.0005-19.0457,1.1967-27.4775,3.5563c-6.3567,1.7789-12.0479,3.9799-17.1587,6.6451
                             c35.8721,9.1394,70.0308,27.5205,99.577,53.7019c54.9177,48.6636,92.9545,121.5698,113.0541,216.6929
                             c9.2778,43.906,10.4075,85.1628,3.3582,122.6243c-6.5103,34.5953-20.2419,65.574-39.7106,89.5869
                             c-10.3795,12.8018-22.0796,23.4734-34.9479,31.897c36.9906-1.854,72.28-19.8269,99.9812-51.0815
-                            c41.4358-46.7518,60.0483-116.1455,51.0657-190.3882C806.0447,435.2579,758.2759,368.0034,720.4314,330.0051z"/>
+                            c41.4358-46.7518,60.0483-116.1455,51.0657-190.3882C806.0447,435.2579,758.2759,368.0034,720.4314,330.0051z"></path>
                         <path fill="#e9676e" d="M685.3195,735.833c1.7889-2.1968,3.5504-4.4956,5.2352-6.8323
                             c9.5682-13.269,17.2944-28.5669,22.9639-45.4696c1.5902-4.7433,3.0347-9.6694,4.2932-14.641
                             c0.8503-3.3579,1.635-6.8145,2.3323-10.2747c1.0605-5.2605,1.9543-10.6998,2.656-16.1671
                             c0.4753-3.6986,0.873-7.4912,1.1833-11.2719c2.2866-27.9231,0.083-57.9994-6.5508-89.3938
                             c-37.1145-175.6431-134.5544-247.5942-220.3274-258.1704c17.0247,15.6736,32.8416,38.0779,47.1926,66.8914
                             c26.7278,53.6636,46.1584,125.7811,54.7126,203.0688c10.6685,96.3896,1.3926,174.0364-26.8195,225.3967
-                            c7.1951,1.6833,14.4972,2.5332,21.799,2.5332C628.9011,781.5024,661.3361,765.2832,685.3195,735.833z"/>
+                            c7.1951,1.6833,14.4972,2.5332,21.799,2.5332C628.9011,781.5024,661.3361,765.2832,685.3195,735.833z"></path>
                     </g>
                 </g>
             </svg>
