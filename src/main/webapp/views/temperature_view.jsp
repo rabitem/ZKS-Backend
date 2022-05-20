@@ -22,11 +22,11 @@
                         }, </c:forEach>
                     ],
                     backgroundColor: '${location.color}',
-                    borderColor: 'rgba(0,0,0,1)',
-                    borderWidth: 1,
-                    showLine: false,
-                    pointRadius: 5,
-                    pointHoverRadius: 7,
+                    borderColor: '${location.color.substring(0, location.color.length()-2)}0.75)',
+                    borderWidth: 2,
+                    showLine: true,
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
                     label: '${location.label}',
                 },
                 </c:forEach>
@@ -41,7 +41,7 @@
                     time: {
                         unit: 'minute',
                         displayFormats: {
-                            minute: 'HH:mm:ss (dd.MM.yyyy)'
+                            minute: 'dd.MM.yy - HH:mm'
                         }
                     },
                     ticks: {
@@ -57,7 +57,7 @@
                 y: {
                     display: true,
                     title: {display: true, text: 'Temperature'},
-                    suggestedMin: 20,
+                    suggestedMin: 30,
                     suggestedMax: 80,
                     ticks: {min: 20, max: 80, stepSize: 5}
                 }
