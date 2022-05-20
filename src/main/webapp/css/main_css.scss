@@ -16,6 +16,7 @@ $color_rag_green: #18BD47;
 // $color_sidebar_white: rgb(7, 7, 8);
 // $color_background_white: #07080d;
 // $color_primary: #00d188;
+// //$color_primary: #feba4e;
 // $color_shadow: rgba(0, 47, 33, 0.075);
 // $color_text_secondary: rgb(139, 146, 176);
 // $color_rag_red: #ea1212;
@@ -345,7 +346,11 @@ a:visited {
             overflow-y: auto;
         }
 
-        h2 { margin-bottom: 1rem }
+        h2 { 
+            
+            margin-bottom: 1rem;
+            margin-top: 0.8rem;
+        }
     }
 
 }
@@ -357,18 +362,15 @@ a:visited {
     display: flex;
     flex-direction: row;
     gap: 0.8rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+
+    svg { margin-top: 0.16rem }
 }
 
 // Options for Buttons --------------------------------------------------
 
-.svgAdd path {
-    stroke: $color_rag_green;
-}
-
-.svgRemove path {
-    stroke: $color_primary;
-}
+.svgAdd    path { stroke: $color_rag_green }
+.svgRemove path { stroke: $color_rag_red }
 
 svg { transition: all 0.2s }
 svg:active { transform: scale(0.55) }
@@ -384,16 +386,18 @@ table {
     th { 
         padding: 0.5rem;
         border-bottom: 2px solid $color_primary;
-        font-weight: bold;
-        font-size: 1.8em;
-        color: $color_sidebar_dark
+        font-weight: 600;
+        font-size: 1.5rem;
+        color: $color_primary;
     }
     td { 
         padding: 0.5rem ;
-        font-size: 1.5em;
+        font-size: 1.25rem;
     }
 
-    tr:nth-child(even){ background-color: #f6f5f5 }
+    tr:nth-child(even){ 
+        background-color: darken(#fff, 3%);
+    }
     tr:hover { color: $color_primary }
 
 }
@@ -515,15 +519,15 @@ table {
                     color: $color_sidebar_dark;
                     border-bottom: 2px solid $color_text_secondary;
                     transition: all 0.5s ease;
-                    background-color: darken(#fdfdfd, $amount: 1);;
+                    background-color: darken(#fff, 3%);;
                 }
         
                 // when text is entered or user is entering text
                 input:focus ~ label,
-                input:valid ~ label{
-                    transform: translateY(-2.4rem);
+                input:valid ~ label  {
+                     transform: translateY(-2.7rem);
                 }
-        
+
                 label {
                     
                     position: absolute;
@@ -534,6 +538,12 @@ table {
                     position: absolute;
                     pointer-events: none;
                     transition: all 0.3s ease;
+                }
+
+                .lDropdownLabel { 
+                 
+                    color: $color_text_secondary;
+                    transform: translateY(-2.7rem);
                 }
         
                 .cInputUnderline {
@@ -589,9 +599,10 @@ table {
     display: inline-block;
 
     width: 100%;
-    padding: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     border-radius: 0.3rem;
-    background-color: #f7f7f7;
+    background-color: darken( #fff , 3%);
 
     .cInputUnderline {
                     
@@ -602,16 +613,12 @@ table {
         background: $color_text_secondary;
     }
 
-    label {
-        transform: translateY(-2.4rem);
-        color: $color_primary;
-    }
-
     .cDropdownIcon {
         
         float: right;
         margin-left: 0.5rem;
-        margin-top: 0.2rem;
+        margin-top: 0.5rem;
+        margin-right: 1rem;
         width: 0;
         height: 0;
         border-style: solid;

@@ -12,7 +12,7 @@
     <div class="cPopUpModal" id="popUpAddAuthorization" data-remove="false">
         <div class="cPopUpContent">
             <div class="cPopUpHeader">
-                <h1 id="hManageAuthorization">Add Authorization</h1>
+                <h1 id="hManageAuthorization">Grant Access</h1>
                 <span class="btnClose" id="btnCloseManageAuthorization">&times;</span>
             </div>
             <p class="pResponseText" id="pAddAuthorizationResponse"></p>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="cInputUnderline"></div>
-                        <label>Location Name</label>
+                        <label class = "lDropdownLabel">Location Name</label>
                     </div>
                 </div>
 
@@ -49,11 +49,11 @@
                             </div>
                         </div>
                         <div class="cInputUnderline"></div>
-                        <label>User Name</label>
+                        <label class = "lDropdownLabel">User Name</label>
                     </div>
                 </div>               
 
-                <input type="submit" id="button_manage_Authorization">
+                <input type="submit" id="button_manage_Authorization" value = "Grant Access">
             </form>
         </div>
     </div>
@@ -62,7 +62,7 @@
     <div class="cPopUpModal" id="popUpRemoveAuthorization" data-remove="false">
         <div class="cPopUpContent">
             <div class="cPopUpHeader">
-                <h1 id="hRemoveAuthorization">Remove Authorization</h1>
+                <h1 id="hRemoveAuthorization">Revoke Access</h1>
                 <span class="btnClose" id="btnCloseRemoveAuthorization">&times;</span>
             </div>
             <p class="pResponseText" id="pRemoveAuthorizationResponse"></p>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
 
-                <input type="submit" id="button_remove_Authorization">
+                <input type="submit" id="button_remove_Authorization" value = "Revoke Access">
             </form>
         </div>
     </div>
@@ -97,13 +97,13 @@
     <div class="cAdjustments cMainBox">
         <h2>Manage User Location Authorization</h2>
         <div class="cOptions">
-            <p>Grant Access</p>
-            <svg class="svgAdd" id="svgAddSignAuthorization" width="20" height="20" viewBox="0 0 20 20" fill="none"
+            <p class = "svgBtnDescription">Grant Access</p>
+            <svg class="svgAdd" id="svgAddSignAuthorization" width="21" height="21" viewBox="0 0 21 21" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
                 <path d="M10 6V14M6 10H14M3 1H17C18.1046 1 19 1.89543 19 3V17C19 18.1046 18.1046 19 17 19H3C1.89543 19 1 18.1046 1 17V3C1 1.89543 1.89543 1 3 1Z"
                       stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <p>Revoke Access</p>
+            <p class = "svgBtnDescription">Revoke Access</p>
             <svg class="svgRemove" id="svgRemoveSignAuthorization" width="21" height="21" viewBox="0 0 21 21"
                  fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.50562 7.69464L13.5056 13.6946M13.5056 7.69464L7.50562 13.6946M3.50562 1.69464H17.5056C18.6102 1.69464 19.5056 2.59007 19.5056 3.69464V17.6946C19.5056 18.7992 18.6102 19.6946 17.5056 19.6946H3.50562C2.40105 19.6946 1.50562 18.7992 1.50562 17.6946V3.69464C1.50562 2.59007 2.40105 1.69464 3.50562 1.69464Z"

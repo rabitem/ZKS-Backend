@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="cInputUnderline"></div>
-                    <label>User Role</label>
+                    <label class = "lDropdownLabel">User Role</label>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <div class="cInputUnderline"></div>
-                    <label>User Name</label>
+                    <label class = "lDropdownLabel">User Name</label>
                 </div>
             </div>
 
@@ -122,7 +122,7 @@
                 </div>
             </div>
 
-            <input type="submit" id="button_Add_location">
+            <input type="submit" id="button_Add_location" value = "Add Location">
 
         </form>
     </div>
@@ -146,12 +146,12 @@
                         <div class="cDropdownContent" id="cDropdownContentRemoveLocation">
                         </div>
                         <div class="cInputUnderline"></div>
-                        <label>Location Name</label>
+                        <label class = "lDropdownLabel">Location Name</label>
                     </div>
                 </div>
             </div>
 
-            <input type="submit" id="button_Remove_location">
+            <input type="submit" id="button_Remove_location" value = "Remove Location">
         </form>
     </div>
 </div>
@@ -222,7 +222,7 @@
                     </a>
                 </li>
                 <!-- Element 05: Options  -->
-                <li class="ulSidebarItem">
+                <%-- <li class="ulSidebarItem">
                     <a href="#">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
@@ -232,7 +232,7 @@
                         </svg>
                         <p>Settings</p>
                     </a>
-                </li>
+                </li> --%>
             </ul>
         </nav>
     </div>

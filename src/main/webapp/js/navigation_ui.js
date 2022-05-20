@@ -340,7 +340,7 @@ function pInputOnFocus(imTargetID, imTargetLabel, imTargetLine) {
 
 function pInputOnBlur(imTargetID, imTargetLabel, imTargetLine) {
 
-    document.getElementById(imTargetID).style.color       = keyColors.colorTextPrimary;
+    document.getElementById(imTargetID).style.color       = keyColors.colorTextSecondary;
     document.getElementById(imTargetLabel).style.color    = keyColors.colorTextSecondary;
     document.getElementById(imTargetLine).style.transform = "scaleX(0)";
     
