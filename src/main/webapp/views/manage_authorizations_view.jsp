@@ -31,7 +31,7 @@
                                 </c:forEach>
                             </div>
                         </div>
-                        <div class="cInputUnderline"></div>
+                        <div class="cInputUnderline cDropdownLine"></div>
                         <label class = "lDropdownLabel">Location Name</label>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                 </c:forEach>
                             </div>
                         </div>
-                        <div class="cInputUnderline"></div>
+                        <div class="cInputUnderline cDropdownLine"></div>
                         <label class = "lDropdownLabel">User Name</label>
                     </div>
                 </div>               
@@ -84,7 +84,7 @@
                                 </c:forEach>
                             </div>
                         </div>
-                        <div class="cInputUnderline"></div>
+                        <div class="cInputUnderline cDropdownLine"></div>
                         <label class="lDropdownLabel">Revoke Authorizations</label>
                     </div>
                 </div>

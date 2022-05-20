@@ -46,7 +46,7 @@
                             <p class="dropdownItem" data-id="ADMIN">ADMIN</p>
                         </div>
                     </div>
-                    <div class="cInputUnderline"></div>
+                    <div class="cInputUnderline cDropdownLine"></div>
                     <label class = "lDropdownLabel">User Role</label>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                         <div class="cDropdownContent" id="cDropdownContentRemoveUser">
                         </div>
                     </div>
-                    <div class="cInputUnderline"></div>
+                    <div class="cInputUnderline cDropdownLine"></div>
                     <label class = "lDropdownLabel">User Name</label>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                         <div class="cDropdownIcon"></div>
                         <div class="cDropdownContent" id="cDropdownContentRemoveLocation">
                         </div>
-                        <div class="cInputUnderline"></div>
+                        <div class="cInputUnderline cDropdownLine"></div>
                         <label class = "lDropdownLabel">Location Name</label>
                     </div>
                 </div>

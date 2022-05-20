@@ -396,9 +396,24 @@ a:visited {
   overflow-y: auto;
 }
 
+.cMainContent #cMainContentSubFolder #cHeaderIcon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 .cMainContent #cMainContentSubFolder h2 {
   margin-bottom: 1rem;
   margin-top: 0.8rem;
+}
+
+.cMainContent #cMainContentSubFolder #refreshLogs {
+  margin-left: 1rem;
+  margin-top: 1.2rem;
 }
 
 .cAdjustments .cOptions {
@@ -541,6 +556,7 @@ table tr:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 2rem;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
@@ -637,6 +653,12 @@ table tr:hover {
           transform: scaleX(0);
 }
 
+.cPopUpModal .cPopUpContent .cInputWrapper .cSingleInput .cDropdownLine {
+  background: #8b92b0;
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
 .cPopUpModal input[type=checkbox] {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
@@ -651,7 +673,7 @@ table tr:hover {
 .cPopUpModal input[type=submit], .cPopUpModal button[type=button] {
   border: none;
   outline: none;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   background: #0a0c16;
   color: #fff;
   font-size: 1.5rem;
@@ -671,25 +693,23 @@ table tr:hover {
 .cDropdown {
   position: relative;
   display: inline-block;
+  height: 3.5rem;
   width: 100%;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border-radius: 0.3rem;
   background-color: #f7f7f7;
-}
-
-.cDropdown .cInputUnderline {
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  bottom: 0px;
-  background: #8b92b0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .cDropdown .cDropdownIcon {
   float: right;
-  margin-left: 0.5rem;
-  margin-top: 0.5rem;
+  margin-left: auto;
   margin-right: 1rem;
   width: 0;
   height: 0;
@@ -699,7 +719,7 @@ table tr:hover {
 }
 
 .cDropdown .pDropdownFirst {
-  font-weight: bold;
+  font-weight: normal;
   float: left;
   border: none;
   cursor: pointer;
@@ -725,6 +745,11 @@ table tr:hover {
   padding: 0.4rem 0.4rem;
   display: block;
   cursor: pointer;
+}
+
+.cDropdown .cDropdownContent .dropdownItem em {
+  font-size: 1.1rem;
+  font-weight: bold;
 }
 
 .cDropdown .cDropdownContent .dropdownItem:hover {

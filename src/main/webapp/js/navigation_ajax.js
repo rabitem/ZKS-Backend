@@ -41,6 +41,13 @@ $(document).ready(() => {
         event.preventDefault();
         $.fn.loadLogsViews();
     });
+
+    // refresh logs
+    $("#refreshLogs").click((event) => {
+
+        event.preventDefault();
+        $.fn.loadLogsViews();
+    });
 });
 
 // sub pages functions ---------------------------------------------------------------

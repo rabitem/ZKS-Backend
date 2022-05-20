@@ -346,16 +346,28 @@ a:visited {
             overflow-y: auto;
         }
 
+        #cHeaderIcon {
+
+            display: flex;
+            flex-direction: row;
+        }
+
         h2 { 
             
             margin-bottom: 1rem;
             margin-top: 0.8rem;
         }
+
+        #refreshLogs {
+
+            margin-left: 1rem;
+            margin-top: 1.2rem;
+        }
     }
 
 }
 
-// Manage Users ---------------------------------------------------------
+// Views -------------------------------------------------------------
 
 .cAdjustments .cOptions{
 
@@ -367,7 +379,7 @@ a:visited {
     svg { margin-top: 0.16rem }
 }
 
-// Options for Buttons --------------------------------------------------
+// Options for Buttons -----------------------------------------------
 
 .svgAdd    path { stroke: $color_rag_green }
 .svgRemove path { stroke: $color_rag_red }
@@ -375,7 +387,7 @@ a:visited {
 svg { transition: all 0.2s }
 svg:active { transform: scale(0.55) }
 
-// Table Formatting -----------------------------------------------------
+// Table Formatting --------------------------------------------------
 
 table {
 
@@ -402,7 +414,7 @@ table {
 
 }
 
-// Pop-Ups -------------------------------------------------------------
+// Pop-Ups -----------------------------------------------------------
 
 .cSpinnerLoading {
     
@@ -467,7 +479,7 @@ table {
         .cPopUpHeader {
             
             display: flex;
-            //align-items: center;
+            margin-bottom: 2rem;
             align-items: flex-start;
             gap: 1rem;
             p { transform: translateY(2.75rem); }
@@ -556,6 +568,12 @@ table {
                     transition: all 0.3s ease;
                     transform: scaleX(0);
                 }
+
+                .cDropdownLine {
+
+                    background: $color_text_secondary;
+                    transform: scaleX(1);
+                }
             }
         }
     }
@@ -573,8 +591,7 @@ table {
         
         border: none;
         outline: none;
-        //margin-top: 4.4rem;
-        margin-top: 1.5rem;
+        margin-top: 2rem;
         background:$color_sidebar_dark;
         color: #fff;
         font-size: 1.5rem;
@@ -591,33 +608,25 @@ table {
     }       
 }
 
-// Dropdown -------------------------------------------------------------
+// Dropdown ----------------------------------------------------------
 
 .cDropdown {
             
     position: relative;
     display: inline-block;
-
+    height: 3.5rem;
     width: 100%;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-radius: 0.3rem;
     background-color: darken( #fff , 3%);
-
-    .cInputUnderline {
-                    
-        position: absolute;
-        height: 2px;
-        width: 100%;
-        bottom: 0px;
-        background: $color_text_secondary;
-    }
+    display: flex;
+    align-items: center;
 
     .cDropdownIcon {
         
         float: right;
-        margin-left: 0.5rem;
-        margin-top: 0.5rem;
+        margin-left: auto;
         margin-right: 1rem;
         width: 0;
         height: 0;
@@ -628,7 +637,7 @@ table {
     
     .pDropdownFirst {
         
-        font-weight: bold;
+        font-weight: normal;
         float: left;
         border: none;
         cursor: pointer;
@@ -653,7 +662,12 @@ table {
             color: $color_sidebar_dark;
             padding: 0.4rem 0.4rem;
             display: block;
-            cursor: pointer;         
+            cursor: pointer;
+            
+            em {
+                font-size: 1.1rem;
+                font-weight: bold;
+            }
         }
 
         .dropdownItem:hover { 
