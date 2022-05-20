@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "location")
 @Table(name = "location")
@@ -27,4 +28,7 @@ public class Location {
 
     @Column(name = "color")
     private String color;
+
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
+    private List<LocationTemperature> locationTemperatures;
 }

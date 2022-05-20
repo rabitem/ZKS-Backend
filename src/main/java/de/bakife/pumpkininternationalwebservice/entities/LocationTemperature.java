@@ -19,7 +19,7 @@ public class LocationTemperature {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "loc_id", referencedColumnName = "id")
     private Location location;
 

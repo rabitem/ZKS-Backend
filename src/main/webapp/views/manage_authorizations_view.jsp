@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         <div class="cInputUnderline"></div>
-                        <label>Revoke Authorizations</label>
+                        <label class="lDropdownLabel">Revoke Authorizations</label>
                     </div>
                 </div>
 
