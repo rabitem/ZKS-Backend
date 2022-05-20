@@ -47,7 +47,7 @@
 
 <script>
     document.getElementById("refreshLogs").addEventListener("click", () => {
-        console.log("refresh logs");
+        
         $.fn.loadLogsViews();
     });
 </script>
