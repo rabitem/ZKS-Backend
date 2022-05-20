@@ -238,8 +238,8 @@
     </div>
     <div class="cContentSection">
         <div class="cHeader">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" float="left"
-                width="4rem" height="4rem" viewBox="0 0 864 864" enable-background="new 0 0 864 864" xml:space="preserve" id = "pumpkin">
+            <svg version="1.1" id="pumpkin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" float="left"
+                width="4rem" height="4rem" viewBox="0 0 864 864" enable-background="new 0 0 864 864" xml:space="preserve">
                 <g>
                     <path d="M840.541,537.2307c-5.5149-45.5801-18.0803-88.6279-37.3479-127.9487c-17.5037-35.7216-40.1042-67.6147-67.1726-94.7947
                         c-49.7932-49.9978-111.4966-79.8469-165.0613-79.8469c-11.8044,0.0005-23.0433,1.4712-33.4045,4.3705
