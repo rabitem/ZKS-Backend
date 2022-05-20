@@ -103,7 +103,6 @@ $.fn.loadNewMainContent = (imRoute, imViewName) => {
 
             // add new main content
             $("#spinnerMainContent").css("display", "none");
-            console.log(res);
             $(".cMainContent").append(res);
         }
     });
