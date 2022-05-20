@@ -392,8 +392,12 @@ a:visited {
   -webkit-box-flex: 3;
       -ms-flex: 3;
           flex: 3;
-  max-height: 80vh;
+  max-height: 65vh;
   overflow-y: auto;
+}
+
+.cMainContent #cMainContentSubFolder .cMainBoxLogs {
+  max-height: 80vh;
 }
 
 .cMainContent #cMainContentSubFolder #cHeaderIcon {

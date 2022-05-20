@@ -342,9 +342,11 @@ a:visited {
         .cMainBox:last-of-type {
             
             flex: 3;
-            max-height: 80vh;
+            max-height: 65vh;
             overflow-y: auto;
         }
+
+        .cMainBoxLogs { max-height: 80vh }
 
         #cHeaderIcon {
 

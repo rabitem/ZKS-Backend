@@ -6,7 +6,7 @@
 <%@ page import = "java.sql.*" %>
 
 <div class="cMainContentManageUsers" id = "cMainContentSubFolder">
-    <div class="cTableContent cMainBox">
+    <div class="cTableContent cMainBox cMainBoxLogs">
         <div id = "cHeaderIcon">
             <h2>Logs</h2>
             <svg id = "refreshLogs" width="2.5rem" height="2.5rem" viewBox="0 0 49 43" fill="none" xmlns="http://www.w3.org/2000/svg">
