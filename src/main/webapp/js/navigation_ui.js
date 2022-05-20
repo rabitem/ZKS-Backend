@@ -345,3 +345,13 @@ function pInputOnBlur(imTargetID, imTargetLabel, imTargetLine) {
     document.getElementById(imTargetLine).style.transform = "scaleX(0)";
     
 }
+
+// Pumpkin eat sound effect -------------------------------------------------------------------
+
+const mightyPumpkin = document.querySelector("#pumpkin");
+const sfx = new Audio("/sfx/minecraft_eating_sound_effect.mp3");
+
+mightyPumpkin.addEventListener("click", () => {
+
+    sfx.play();
+});
