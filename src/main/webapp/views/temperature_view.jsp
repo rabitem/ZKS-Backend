@@ -59,7 +59,7 @@
                 },
                 y: {
                     display: true,
-                    title: {display: true, text: 'Temperature in �C'},
+                    title: {display: true, text: 'Temperature'},
                     suggestedMin: 30,
                     suggestedMax: 80,
                     ticks: {min: 20, max: 80, stepSize: 5}

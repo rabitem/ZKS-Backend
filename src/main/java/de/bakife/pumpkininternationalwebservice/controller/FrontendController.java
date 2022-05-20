@@ -78,7 +78,7 @@ public class FrontendController {
      * The frontend main page.
      * @return The frontend page.
      */
-    @GetMapping("/")
+    @GetMapping(path = {"/", "/index", "/home"}, produces = "text/html")
     public String getIndex(Model model) {
         List<Role> roles = StreamSupport.stream(this.roleRepository.findAll().spliterator(), true)
                         .collect(Collectors.toList());
