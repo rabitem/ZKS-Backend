@@ -424,6 +424,11 @@ a:visited {
   margin-top: 1.2rem;
 }
 
+.cMainContent #cMainContentSubFolder #refreshTemperature {
+  margin-left: 1rem;
+  margin-top: 1.2rem;
+}
+
 .cAdjustments .cOptions {
   display: -webkit-box;
   display: -ms-flexbox;
