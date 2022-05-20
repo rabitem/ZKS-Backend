@@ -111,7 +111,7 @@
             </svg>
         </div>
     </div>
-    <div class="cTableContent cMainBox">
+    <div class="cTableContent cMainBox cMainBoxHalfStretch">
         <h2>Current Authorizations</h2>
         <table>
             <tr>

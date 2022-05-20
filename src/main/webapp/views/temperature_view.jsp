@@ -59,7 +59,7 @@
                 },
                 y: {
                     display: true,
-                    title: {display: true, text: 'Temperature in °C'},
+                    title: {display: true, text: 'Temperature in ï¿½C'},
                     suggestedMin: 30,
                     suggestedMax: 80,
                     ticks: {min: 20, max: 80, stepSize: 5}
@@ -69,7 +69,7 @@
     });
 </script>
 <div class="cMainContentManageUsers" id="cMainContentSubFolder">
-    <div class="cTableContent cMainBox">
+    <div class="cTableContent cMainBox cMainBoxFullStretch">
         <div style="display: flex;flex-direction: column; height: 100%">
             <h2 style="flex: 0 1 auto">Temperature Data</h2>
             <div style="flex: 1 1 auto">

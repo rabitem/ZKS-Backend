@@ -17,7 +17,7 @@
             </svg>                                
         </div>        
     </div>
-    <div class="cTableContent cMainBox">
+    <div class="cTableContent cMainBox cMainBoxHalfStretch">
         <h2>User Data</h2>
         <table>
             <tr>

@@ -339,14 +339,21 @@ a:visited {
             width: 100%;
         }
 
-        .cMainBox:last-of-type {
+        //.cMainBox:last-of-type {
+
+        .cMainBoxHalfStretch {
             
             flex: 3;
             max-height: 65vh;
             overflow-y: auto;
         }
 
-        .cMainBoxLogs { max-height: 80vh }
+        .cMainBoxFullStretch { 
+            
+            max-height: 80vh;
+            flex: 3;
+            overflow-y: auto; 
+        }
 
         #cHeaderIcon {
 
