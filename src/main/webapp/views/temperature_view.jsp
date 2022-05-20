@@ -22,12 +22,14 @@
                         }, </c:forEach>
                     ],
                     backgroundColor: '${location.color}',
-                    borderColor: '${location.color.substring(0, location.color.length()-2)}0.75)',
+                    borderColor: '${location.color.substring(0, location.color.length()-2)}0.5)',
+                    hoverBorderColor: '${location.color.substring(0, location.color.length()-2)}1)',
                     borderWidth: 2,
                     showLine: true,
+                    tension: 0.3,
                     pointRadius: 3,
                     pointHoverRadius: 5,
-                    label: '${location.label}',
+                    label: '${location.label}'
                 },
                 </c:forEach>
             ]
@@ -42,7 +44,8 @@
                         unit: 'minute',
                         displayFormats: {
                             minute: 'dd.MM.yy - HH:mm'
-                        }
+                        },
+                        tooltipFormat: 'dd.MM.yy - HH:mm'
                     },
                     ticks: {
                         autoSkip: true,
@@ -56,13 +59,12 @@
                 },
                 y: {
                     display: true,
-                    title: {display: true, text: 'Temperature'},
+                    title: {display: true, text: 'Temperature in °C'},
                     suggestedMin: 30,
                     suggestedMax: 80,
                     ticks: {min: 20, max: 80, stepSize: 5}
                 }
             },
-
         }
     });
 </script>
