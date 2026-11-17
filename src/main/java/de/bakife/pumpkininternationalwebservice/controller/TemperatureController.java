@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -62,11 +62,13 @@ public class TemperatureController {
      */
     @Data
     static class TemperaturePayload {
+        @NotBlank(message = "MAC address is required")
         @Pattern(regexp = "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$", message = "Invalid MAC address")
         private String macAddress;
 
+        @NotNull(message = "Temperature is required")
         @Min(value = 0, message = "Temperature must be between 0 and 100")
         @Max(value = 100, message = "Temperature must be between 0 and 100")
-        private float temperature;
+        private Float temperature;
     }
 }

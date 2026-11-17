@@ -1,6 +1,4 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<div class="cMainContentManageUsers" id = "cMainContentSubFolder">
+<div xmlns:th="http://www.thymeleaf.org" th:inline="text" class="cMainContentManageUsers" id = "cMainContentSubFolder">
     <div class="cAdjustments cMainBox">
         <h2>Manage Location</h2>
         <div class="cOptions">
@@ -22,13 +20,12 @@
                 <th>Location MAC-Adress</th>
             </tr>
             <!-- Generated JSP Content -->
-            <jsp:useBean id="locations" scope="request" type="java.util.List"/>
-            <c:forEach items="${locations}" var="location">
-                <tr class = "trCurData" id = "trData${location.label}" data-valueID = "${location.id}" data-name="${location.label}">
-                    <td>${location.label}</td>
-                    <td>${location.macAddress}</td>
+            <th:block th:each="location : ${locations}">
+                <tr class = "trCurData"    th:attr="id=|trData${location.label}|,data-valueID=|${location.id}|,data-name=|${location.label}|">
+                    <td>[[${location.label}]]</td>
+                    <td>[[${location.macAddress}]]</td>
                 </tr>
-            </c:forEach>
+            </th:block>
         </table>
     </div>
 </div>

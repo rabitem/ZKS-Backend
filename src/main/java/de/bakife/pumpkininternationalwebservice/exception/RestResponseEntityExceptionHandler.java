@@ -2,9 +2,9 @@ package de.bakife.pumpkininternationalwebservice.exception;
 
 import lombok.Builder;
 import lombok.Data;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -28,9 +28,9 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
      * @return A {@link ResponseEntity} instance.
      */
     @Override
-    protected @NotNull ResponseEntity<Object> handleMethodArgumentNotValid(
-            MethodArgumentNotValidException ex, @NotNull HttpHeaders headers,
-            @NotNull HttpStatus status, @NotNull WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(
+            MethodArgumentNotValidException ex, HttpHeaders headers,
+            HttpStatusCode status, WebRequest request) {
         Exception exception = new Exception(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
         return this.createResponseEntity(exception, request);
     }
