@@ -2,6 +2,7 @@ CREATE TABLE `location` (
                             `id` int(11) NOT NULL AUTO_INCREMENT,
                             `mac_address` varchar(255) NOT NULL,
                             `label` varchar(255) NOT NULL,
+                            `color` varchar(255) DEFAULT NULL,
                             PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 

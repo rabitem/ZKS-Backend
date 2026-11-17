@@ -31,7 +31,7 @@ with socket.socket() as probe:
 env = dict(os.environ, SERVER_PORT=str(port), SERVER_ADDRESS='0.0.0.0' if args.app_container else '127.0.0.1',
            SPRING_DATASOURCE_URL=f'jdbc:mariadb://{args.database_host}:{args.database_port}/zks_smoke',
            SPRING_DATASOURCE_USERNAME='zks_smoke', SPRING_DATASOURCE_PASSWORD='zks_synthetic_password',
-           SPRING_JPA_HIBERNATE_DDL_AUTO='create-drop')
+           SPRING_JPA_HIBERNATE_DDL_AUTO='validate')
 args.log.parent.mkdir(parents=True, exist_ok=True)
 checks = []
 
@@ -59,6 +59,9 @@ INSERT INTO `user`(id,name,rfid,role) VALUES
 INSERT INTO location_authorization(id,user_id,loc_id) VALUES (101,101,101);
 INSERT INTO authorization_history(id,user_id,loc_id,timestamp,status) VALUES (101,101,101,'2026-01-01 12:34:56','Login');
 """
+schema = (Path(__file__).resolve().parent.parent / 'sql/tables.sql').read_text(encoding='utf-8')
+reset = 'SET FOREIGN_KEY_CHECKS=0; DROP TABLE IF EXISTS authorization_history,location_authorization,location_temperature,`user`,role,location; SET FOREIGN_KEY_CHECKS=1;'
+subprocess.run(['docker', 'exec', '-i', args.database_container, 'mariadb', '-uzks_smoke', '-pzks_synthetic_password', 'zks_smoke'], input=(reset + schema).encode(), check=True, capture_output=True)
 with args.log.open('wb') as log:
     child = subprocess.Popen([token.replace('{port}', str(port)) for token in command], env=env, stdout=log, stderr=subprocess.STDOUT)
     try:

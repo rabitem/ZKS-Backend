@@ -1,0 +1,85 @@
+name: Verify JVM and native application
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: zks-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+jobs:
+  jvm:
+    name: JVM ${{ matrix.java }} and packaged HTTP contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        java: ['17', '25']
+    services:
+      database:
+        image: mariadb:11.8
+        env:
+          MARIADB_ROOT_PASSWORD: zks_synthetic_root
+          MARIADB_DATABASE: zks_smoke
+          MARIADB_USER: zks_smoke
+          MARIADB_PASSWORD: zks_synthetic_password
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd='healthcheck.sh --connect --innodb_initialized'
+          --health-interval=5s --health-timeout=5s --health-retries=20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+      - run: mvn -B verify
+      - name: Run the executable JAR against isolated MariaDB
+        run: python scripts/smoke-http.py --database-container '${{ job.services.database.id }}' --log target/jvm-smoke.log -- java -jar target/pumpkin-international-webservice-22.0.0.1.jar
+      - name: Print application log on failure
+        if: failure()
+        run: cat target/jvm-smoke.log 2>/dev/null || true
+  native:
+    name: Native image and packaged HTTP contracts
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    services:
+      database:
+        image: mariadb:11.8
+        env:
+          MARIADB_ROOT_PASSWORD: zks_synthetic_root
+          MARIADB_DATABASE: zks_smoke
+          MARIADB_USER: zks_smoke
+          MARIADB_PASSWORD: zks_synthetic_password
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd='healthcheck.sh --connect --innodb_initialized'
+          --health-interval=5s --health-timeout=5s --health-retries=20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: graalvm/setup-graalvm@d6eca2595046623d69d636041513c80abf745406 # v1.6.9
+        with:
+          java-version: '25'
+          distribution: graalvm-community
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          cache: maven
+      - name: Compile the full application including templates
+        env:
+          MAVEN_OPTS: -Xmx512m
+          SPRING_DATASOURCE_URL: jdbc:mariadb://127.0.0.1:3306/zks_smoke
+          SPRING_DATASOURCE_USERNAME: zks_smoke
+          SPRING_DATASOURCE_PASSWORD: zks_synthetic_password
+          SPRING_JPA_HIBERNATE_DDL_AUTO: none
+        run: mvn -B -Pnative -DskipTests native:compile
+      - name: Run the native binary against isolated MariaDB
+        run: python scripts/smoke-http.py --database-container '${{ job.services.database.id }}' --log target/native-smoke.log -- target/pumpkin-international-webservice
+      - name: Print application log on failure
+        if: failure()
+        run: cat target/native-smoke.log 2>/dev/null || true

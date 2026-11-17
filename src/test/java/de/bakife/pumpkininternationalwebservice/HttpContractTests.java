@@ -99,7 +99,7 @@ class HttpContractTests {
     }
 
     @Test
-    void authorizedLoginReconnectStateConflictAndLogoutKeepTheirContracts() throws Exception {
+    void authorizedLoginStatusConflictAndLogoutKeepTheirContracts() throws Exception {
         User user = seed("Fixture operator", true);
         String login = "{\"rfid\":\"fixture-rfid\",\"macAddress\":\"" + MAC + "\"}";
         var response = request("POST", "/login", login);
@@ -125,7 +125,7 @@ class HttpContractTests {
     }
 
     @Test
-    void deniedAndUnknownCardsDoNotChangeTheSeat() throws Exception {
+    void deniedAndUnknownCardsDoNotSetALocation() throws Exception {
         User user = seed("Denied operator", false);
         var denied = request("POST", "/login", "{\"rfid\":\"fixture-rfid\",\"macAddress\":\"" + MAC + "\"}");
         assertEquals(403, denied.statusCode(), denied.body());
